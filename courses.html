@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Courses | EasyLatih</title>
+    <title>Professional Training Courses for SMEs | EasyLatih</title>
+    <meta name="description" content="Explore HRD Corp-claimable training courses by EasyLatih, a brand under Easy Latih Consultancy (SSM 202503030373). Public & in-house sessions available.">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-dP4dK+4RHzvoSdBj8kJLtbU+IYfPJ9gU8zXwjL4KPSj+JdyTxr3eb9L9l8J++6pT14tcP7rjzU4Z5ZChSR+ohw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -30,6 +31,7 @@
     <!-- Courses Section -->
     <section class="container">
         <h2 class="section-title">Our Courses</h2>
+        <p class="mb-2"><em>EasyLatih is a brand under <strong>Easy Latih Consultancy</strong> (SSM No. 202503030373)</em></p>
         <p class="mb-4">Browse our extensive catalogue of training programmes. Click on a course to learn more
            about its objectives, duration and trainer. We offer classroom, workshop, seminar and hybrid formats
            to suit different learning preferences.</p>
@@ -66,11 +68,11 @@
             <div>
                 <h4>Follow Us</h4>
                 <div class="socials">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://facebook.com/easylatih" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/easylatih" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/company/easylatih" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://youtube.com/@easylatih" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://tiktok.com/@easylatih" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
         </div>
@@ -80,203 +82,8 @@
         </div>
     </footer>
 
-    <!-- Course Data and Script -->
-    <script>
-    // Data for courses generated from the uploaded Excel file
-    const coursesData = /*<![CDATA[*/
-    [
-        {"name": "Accounting Skills with E-Invoicing for Accounts Assistants & Clerk", "description": "Accounts assistants & clerks needing electronic invoicing skills", "trainingType": "Classroom", "duration": "1 Day", "trainer": "LHDN"},
-        {"name": "Bookkeeping & Basic Accounting for SMEs", "description": "Basics of bookkeeping and accounting for small businesses", "trainingType": "Classroom", "duration": "2 Days", "trainer": "Local Accountants"},
-        {"name": "Income Tax Submission & Compliance for SMEs", "description": "Guidelines on preparing and filing corporate tax returns", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Tax Consultants"},
-        {"name": "GST/SST Implementation & Compliance", "description": "Understanding GST/SST rules and implementation", "trainingType": "Classroom", "duration": "1 Day", "trainer": "Customs Officers"},
-        {"name": "Payroll Administration & PCB Calculation", "description": "Processing payroll and calculating PCB deductions", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Payroll Specialists"},
-        {"name": "Financial Analysis & Budgeting for Non-Finance Managers", "description": "Simple financial analysis and budgeting for managers", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Finance Trainers"},
-        {"name": "Financial Reporting Standards (MFRS/IFRS) Update", "description": "Updates on latest financial reporting standards", "trainingType": "Seminar", "duration": "1 Day", "trainer": "Audit Firms"},
-        {"name": "Managing Cash Flow & Working Capital", "description": "Strategies to manage cash flow and working capital", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Finance Coaches"},
-        {"name": "Internal Audit & Risk Management for SMEs", "description": "Setting up internal audit and risk management systems", "trainingType": "Classroom", "duration": "2 Days", "trainer": "Internal Auditors"},
-        {"name": "Handling Accounts Receivable & Payable", "description": "Efficient management of AR & AP processes", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Accounting Firms"},
-        {"name": "Interpretation & Practical Application of the Employment Act 1955", "description": "Understand and apply the Employment Act provisions", "trainingType": "Seminar", "duration": "2 Days", "trainer": "SSM / Legal Experts"},
-        {"name": "Managing Discipline & Misconduct", "description": "Handling absenteeism, poor performance & misconduct", "trainingType": "Workshop", "duration": "2 Days", "trainer": "HR Consultants"},
-        {"name": "Sexual Harassment & Workplace Misconduct Awareness", "description": "Preventing sexual harassment & promoting safe workplaces", "trainingType": "Workshop", "duration": "2 Days", "trainer": "HR Trainers"},
-        {"name": "Personal Data Protection Act (PDPA) Compliance", "description": "Implement PDPA and protect personal data", "trainingType": "Hybrid", "duration": "2 Days", "trainer": "PDPA Consultants"},
-        {"name": "HR Documentation & Record Keeping", "description": "Maintain compliant HR records & documentation", "trainingType": "Classroom", "duration": "1 Day", "trainer": "HR Practitioners"},
-        {"name": "Talent Acquisition & Recruitment Best Practices", "description": "Effective recruitment processes & interview techniques", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Recruitment Experts"},
-        {"name": "Compensation & Benefits Structure & Compliance", "description": "Design salary, benefits & ensure compliance", "trainingType": "Seminar", "duration": "2 Days", "trainer": "Compensation Specialists"},
-        {"name": "Payroll & Statutory Contributions: EPF, SOCSO & EIS", "description": "Understand payroll contributions & statutory payments", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Payroll Agencies"},
-        {"name": "HR Business Partnering for SMEs", "description": "Align HR strategy with business objectives", "trainingType": "Classroom", "duration": "2 Days", "trainer": "HR Strategists"},
-        {"name": "Grievance Handling & Industrial Relations", "description": "Resolve employee grievances & IR disputes", "trainingType": "Seminar", "duration": "1 Day", "trainer": "IR Consultants"},
-        {"name": "OSH Coordinator Course", "description": "Training to fulfil Section 29A OSH Act requirement", "trainingType": "Classroom", "duration": "3 Days", "trainer": "DOSH Approved Providers"},
-        {"name": "Safety & Health Committee Training", "description": "Roles & responsibilities of safety committee", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Safety Consultants"},
-        {"name": "Risk Assessment & Hazard Identification (HIRARC)", "description": "Conduct hazard identification, risk assessment & control", "trainingType": "Workshop", "duration": "2 Days", "trainer": "OSH Trainers"},
-        {"name": "Fire Safety & Emergency Response", "description": "Prepare for fire emergencies & evacuation procedures", "trainingType": "Practical", "duration": "1 Day", "trainer": "BOMBA Officers"},
-        {"name": "Chemical Safety & Hazard Communication", "description": "Safe handling of chemicals & compliance with USECHH", "trainingType": "Workshop", "duration": "1 Day", "trainer": "DOSH & Chem Specialists"},
-        {"name": "Ergonomics & Workplace Wellness", "description": "Prevent musculoskeletal disorders & improve ergonomics", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Ergonomics Experts"},
-        {"name": "Safety & Health Induction for New Employees", "description": "Introduce safety policies & procedures to new hires", "trainingType": "Classroom", "duration": "1 Day", "trainer": "Safety Officers"},
-        {"name": "Forklift & Industrial Vehicle Safety", "description": "Safe operation of forklifts & industrial vehicles", "trainingType": "Practical", "duration": "1 Day", "trainer": "Certified Instructors"},
-        {"name": "Incident Investigation & Reporting", "description": "Investigate accidents & prepare reports", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Incident Investigators"},
-        {"name": "First Aid & CPR Certification", "description": "Basic first aid and CPR techniques", "trainingType": "Practical", "duration": "2 Days", "trainer": "Red Crescent / St. John"},
-        {"name": "Lean Manufacturing & Continuous Improvement", "description": "Implement lean tools and continuous improvement", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Lean Consultants"},
-        {"name": "5S Workplace Organisation", "description": "Implement 5S to organise the workplace", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Kaizen Trainers"},
-        {"name": "Quality Management (ISO 9001)", "description": "Understand QMS requirements and implementation", "trainingType": "Classroom", "duration": "2 Days", "trainer": "Quality Auditors"},
-        {"name": "Inventory Control & Warehouse Management", "description": "Manage inventory and warehouse operations effectively", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Supply Chain Experts"},
-        {"name": "Procurement & Vendor Management", "description": "Select, evaluate and manage suppliers", "trainingType": "Classroom", "duration": "1 Day", "trainer": "Procurement Professionals"},
-        {"name": "Production Planning & Scheduling", "description": "Plan and schedule production effectively", "trainingType": "Classroom", "duration": "2 Days", "trainer": "Manufacturing Engineers"},
-        {"name": "Supply Chain Risk & Resilience", "description": "Identify risks and build resilient supply chains", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Supply Chain Consultants"},
-        {"name": "Maintenance Management (TPM)", "description": "Implement Total Productive Maintenance systems", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Maintenance Experts"},
-        {"name": "Environmental Management & Sustainability", "description": "Ensure compliance with environmental regulations", "trainingType": "Classroom", "duration": "2 Days", "trainer": "Environmental Consultants"},
-        {"name": "Food Safety & Hygiene", "description": "Implement food safety and hygiene practices", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Food Safety Officers"},
-        {"name": "Digital Marketing Fundamentals for SMEs", "description": "Essentials of digital marketing channels", "trainingType": "Online", "duration": "3 Days", "trainer": "Digital Marketing Agencies"},
-        {"name": "Social Media Marketing & Content Creation", "description": "Create and manage social media content", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Social Media Experts"},
-        {"name": "Customer Relationship Management (CRM) Implementation", "description": "Implement CRM tools and manage customer data", "trainingType": "Classroom", "duration": "2 Days", "trainer": "CRM Consultants"},
-        {"name": "Sales Strategies & Negotiation Skills", "description": "Develop persuasive sales techniques & negotiation", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Sales Trainers"},
-        {"name": "Branding & Corporate Identity", "description": "Build and manage brand identity for SMEs", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Brand Consultants"},
-        {"name": "E-commerce & Online Business Models", "description": "Start and manage online stores and platforms", "trainingType": "Online", "duration": "3 Days", "trainer": "E-commerce Specialists"},
-        {"name": "Market Research & Consumer Insights", "description": "Conduct market research and interpret insights", "trainingType": "Classroom", "duration": "2 Days", "trainer": "Market Analysts"},
-        {"name": "Effective Sales Presentation & Pitching", "description": "Craft and deliver compelling sales presentations", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Sales Coaches"},
-        {"name": "Marketing Analytics & Metrics", "description": "Measure marketing performance using analytics", "trainingType": "Classroom", "duration": "2 Days", "trainer": "Data Analysts"},
-        {"name": "Customer Service Excellence & Complaint Management", "description": "Deliver excellent service & handle complaints", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Customer Service Experts"},
-        {"name": "Supervisory Skills for New Managers", "description": "Equip new managers with supervisory skills", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Leadership Trainers"},
-        {"name": "Leadership & Team Building", "description": "Develop leadership and build cohesive teams", "trainingType": "Retreat", "duration": "2 Days", "trainer": "Leadership Coaches"},
-        {"name": "Strategic Planning & Execution", "description": "Create and execute strategic plans", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Strategy Consultants"},
-        {"name": "Change Management & Organisational Transformation", "description": "Manage change and transform organisations", "trainingType": "Classroom", "duration": "2 Days", "trainer": "Change Experts"},
-        {"name": "Time Management & Productivity", "description": "Improve time management and productivity", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Productivity Coaches"},
-        {"name": "Conflict Resolution & Negotiation", "description": "Resolve conflicts and negotiate effectively", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Mediators"},
-        {"name": "Emotional Intelligence & Employee Engagement", "description": "Enhance emotional intelligence & engagement", "trainingType": "Seminar", "duration": "1 Day", "trainer": "EQ Trainers"},
-        {"name": "Business Ethics & Corporate Governance", "description": "Promote ethics and good governance", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Corporate Governance Experts"},
-        {"name": "Project Management Fundamentals (PMBOK)", "description": "Understand PMBOK principles & project lifecycle", "trainingType": "Classroom", "duration": "3 Days", "trainer": "PMP Certified Trainers"},
-        {"name": "Finance for Non-Finance Managers", "description": "Teach financial basics to non-finance managers", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Finance Professors"},
-        {"name": "Basic Computer & Microsoft Office Skills", "description": "Fundamental computer and MS Office skills", "trainingType": "Classroom", "duration": "3 Days", "trainer": "IT Instructors"},
-        {"name": "Cybersecurity Awareness & Best Practices", "description": "Identify cyber threats & protect company data", "trainingType": "Online", "duration": "1 Day", "trainer": "Cybersecurity Experts"},
-        {"name": "Data Analytics & Visualization for SMEs", "description": "Use data tools to analyze and visualise data", "trainingType": "Hybrid", "duration": "3 Days", "trainer": "Data Scientists"},
-        {"name": "Digital Transformation & Cloud Computing", "description": "Adopt digital technologies & cloud solutions", "trainingType": "Seminar", "duration": "2 Days", "trainer": "IT Consultants"},
-        {"name": "Systems & Network Administration Basics", "description": "Administer networks & systems effectively", "trainingType": "Classroom", "duration": "5 Days", "trainer": "Network Engineers"},
-        {"name": "Website Development & Management", "description": "Build and manage websites for SMEs", "trainingType": "Workshop", "duration": "3 Days", "trainer": "Web Developers"},
-        {"name": "E-Invoicing & Electronic Payment Systems", "description": "Implement e-invoicing and digital payments", "trainingType": "Classroom", "duration": "2 Days", "trainer": "Fintech Experts"},
-        {"name": "AI & Automation Tools for SMEs", "description": "Leverage AI and automation to improve efficiency", "trainingType": "Workshop", "duration": "2 Days", "trainer": "AI Specialists"},
-        {"name": "Software Project Management (Agile & Scrum)", "description": "Manage software projects using Agile methodologies", "trainingType": "Classroom", "duration": "3 Days", "trainer": "Scrum Masters"},
-        {"name": "Data Privacy & GDPR/PDPA Compliance", "description": "Comply with data protection regulations", "trainingType": "Seminar", "duration": "2 Days", "trainer": "Data Privacy Lawyers"},
-        {"name": "Customer Service & Communication Skills", "description": "Develop customer service and communication skills", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Customer Service Trainers"},
-        {"name": "Effective Business Writing & Email Etiquette", "description": "Craft professional emails and business documents", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Writing Coaches"},
-        {"name": "Personal Branding & Professional Image", "description": "Build personal brand and professional image", "trainingType": "Seminar", "duration": "1 Day", "trainer": "Personal Branding Consultants"},
-        {"name": "Presentation Skills & Public Speaking", "description": "Enhance presentation and public speaking skills", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Public Speaking Trainers"},
-        {"name": "Negotiation & Persuasion Techniques", "description": "Develop negotiation and persuasion strategies", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Negotiation Experts"},
-        {"name": "Problem Solving & Decision Making", "description": "Structured problem-solving and decision-making", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Management Trainers"},
-        {"name": "Stress Management & Work-Life Balance", "description": "Manage stress and achieve work-life balance", "trainingType": "Seminar", "duration": "1 Day", "trainer": "Wellness Coaches"},
-        {"name": "Diversity, Equity & Inclusion Awareness", "description": "Promote diversity, equity and inclusion in workplaces", "trainingType": "Workshop", "duration": "1 Day", "trainer": "DEI Consultants"},
-        {"name": "Mindfulness & Mental Health at Work", "description": "Improve mental health awareness and mindfulness", "trainingType": "Seminar", "duration": "1 Day", "trainer": "Mental Health Professionals"},
-        {"name": "Cultural Sensitivity & Global Etiquette", "description": "Respect cultural differences in business", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Cross-Cultural Trainers"},
-        {"name": "Purchasing Procedures & Ethics", "description": "Follow ethical purchasing procedures & policies", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Procurement Trainers"},
-        {"name": "Logistics & Transportation Management", "description": "Manage logistics operations and transport", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Logistics Experts"},
-        {"name": "Inventory Forecasting & Planning", "description": "Forecast demand and plan inventory levels", "trainingType": "Classroom", "duration": "1 Day", "trainer": "Supply Chain Analysts"},
-        {"name": "International Trade Compliance & Incoterms", "description": "Understand incoterms & trade compliance", "trainingType": "Seminar", "duration": "2 Days", "trainer": "Trade Compliance Experts"},
-        {"name": "Warehouse Safety & Management", "description": "Implement safe warehouse practices", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Warehouse Managers"},
-        {"name": "Lean Supply Chain & Waste Reduction", "description": "Streamline supply chain and reduce waste", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Lean Supply Chain Experts"},
-        {"name": "Distribution & Delivery Management", "description": "Efficient distribution and delivery operations", "trainingType": "Classroom", "duration": "1 Day", "trainer": "Distribution Specialists"},
-        {"name": "Packaging & Palletizing Standards", "description": "Standardise packaging and palletising for shipping", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Packaging Specialists"},
-        {"name": "Import & Export Documentation", "description": "Prepare documentation for import & export", "trainingType": "Classroom", "duration": "2 Days", "trainer": "Customs Brokers"},
-        {"name": "Vendor Evaluation & Contract Management", "description": "Assess vendors and manage contracts effectively", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Procurement Advisors"},
-        {"name": "Company Law & Compliance (Companies Act 2016)", "description": "Overview of Companies Act 2016 compliance", "trainingType": "Seminar", "duration": "2 Days", "trainer": "Company Secretaries"},
-        {"name": "Anti-Money Laundering & Counter Financing of Terrorism (AML/CFT)", "description": "Prevent money laundering & terrorism financing", "trainingType": "Seminar", "duration": "1 Day", "trainer": "AML Experts"},
-        {"name": "Anti-Bribery & Corruption Compliance", "description": "Comply with MACC Act and prevent corruption", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Anti-Corruption Officers"},
-        {"name": "Contract Law & Drafting Basics", "description": "Fundamentals of contract law and drafting", "trainingType": "Workshop", "duration": "2 Days", "trainer": "Legal Practitioners"},
-        {"name": "Intellectual Property Rights & Protection", "description": "Protect trademarks, patents and copyrights", "trainingType": "Seminar", "duration": "1 Day", "trainer": "IP Lawyers"},
-        {"name": "Consumer Protection & Product Liability", "description": "Understand consumer rights & liability issues", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Consumer Law Experts"},
-        {"name": "Whistleblower Protection & Ethics", "description": "Encourage whistleblowing and protect whistleblowers", "trainingType": "Seminar", "duration": "1 Day", "trainer": "Ethics Officers"},
-        {"name": "Carbon Reporting & ESG Compliance", "description": "Report carbon footprint & comply with ESG standards", "trainingType": "Workshop", "duration": "2 Days", "trainer": "ESG Consultants"},
-        {"name": "Labour Law & Industrial Relations", "description": "Deep dive into labour law & dispute resolution", "trainingType": "Classroom", "duration": "2 Days", "trainer": "Labour Lawyers"},
-        {"name": "Employment of Foreign Workers & Immigration Law", "description": "Hire and manage foreign workers compliantly", "trainingType": "Workshop", "duration": "1 Day", "trainer": "Immigration Consultants"}
-    ];
-    /*]]>*/
-
-    // Global array to store selected courses
-    let inquiryCart = [];
-
-    // Helper function to trim description
-    function snippet(text, length) {
-        return text.length > length ? text.substring(0, length) + '…' : text;
-    }
-
-    // Update the cart count and summary displayed in the floating cart
-    function updateCartCount() {
-        const cartCountEl = document.getElementById("cartCount");
-        if (cartCountEl) {
-            cartCountEl.textContent = inquiryCart.length;
-        }
-        updateCartSummary();
-    }
-
-    // Render the list of selected courses in the cart summary
-    function updateCartSummary() {
-        const summaryEl = document.getElementById("cartSummary");
-        if (!summaryEl) return;
-        // Clear existing summary
-        summaryEl.innerHTML = "";
-        inquiryCart.forEach(item => {
-            const li = document.createElement("li");
-            li.textContent = item;
-            summaryEl.appendChild(li);
-        });
-    }
-
-    // Render courses
-    function renderCourses() {
-        const container = document.getElementById("coursesContainer");
-        coursesData.forEach(course => {
-            const card = document.createElement("div");
-            card.className = "course-card";
-            const name = document.createElement("h4");
-            name.textContent = course.name;
-            const desc = document.createElement("p");
-            desc.className = "details";
-            desc.textContent = snippet(course.description, 120);
-            const detail = document.createElement("p");
-            detail.className = "details";
-            detail.innerHTML =
-                "<strong>Training Type:</strong> " + course.trainingType + "<br>" +
-                "<strong>Duration:</strong> " + course.duration + "<br>" +
-                "<strong>Trainer:</strong> " + course.trainer;
-            // Add "Add to Inquiry" button
-            const button = document.createElement("button");
-            button.className = "inquire-button";
-            button.textContent = "Add to Inquiry";
-            // Capture the course name to avoid closure issues
-            const courseName = course.name;
-            button.addEventListener("click", () => {
-                // Add course name to cart if not already present
-                if (!inquiryCart.includes(courseName)) {
-                    inquiryCart.push(courseName);
-                    updateCartCount();
-                }
-            });
-            card.appendChild(name);
-            card.appendChild(desc);
-            card.appendChild(detail);
-            card.appendChild(button);
-            container.appendChild(card);
-        });
-    }
-
-    // Send inquiry email with selected courses
-    function sendInquiryEmail() {
-        if (inquiryCart.length === 0) {
-            alert("Your inquiry cart is empty. Please add courses first.");
-            return;
-        }
-        const email = "sales@easylatih.my";
-        const subject = "Course Inquiry from EasyLatih Website";
-        const body = "I am interested in the following courses:%0D%0A%0D%0A" +
-            inquiryCart.map((c, idx) => (idx + 1) + ". " + c).join("%0D%0A") +
-            "%0D%0A%0D%0APlease provide more details. Thank you!";
-        window.location.href = "mailto:" + email + "?subject=" + encodeURIComponent(subject) + "&body=" + body;
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-        renderCourses();
-        updateCartCount();
-    });
-    </script>
-
-    <!-- Navigation toggle script -->
+    <!-- Course Script & Cart JS -->
+    <script src="courses.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
