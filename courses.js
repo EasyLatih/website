@@ -1,13 +1,12 @@
-
 let coursesData = [];
 
 function initCourses() {
   Tabletop.init({
-    key: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTqL2e95bVxD7cJx34xNsGMRnJO8MVaFZQX_Bz-zPpeuCrp2qaYLZxcUWu-ONm1KqsVm-yaiDDSOnrZ/pub?output=tsv',
+    key: 'https://docs.google.com/spreadsheets/d/1M4ldzpUoBHGbZiLbKJ7nsiwCshUFTwWnjG9s8e98Li8/pub?output=csv',
     simpleSheet: true,
-    callback: function(data, tabletop) {
+    callback: function(data) {
       coursesData = data;
-      renderCourses(); // Call your rendering function
+      renderCourses();
     }
   });
 }
