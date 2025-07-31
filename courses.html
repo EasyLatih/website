@@ -1,77 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  .container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 2rem;
-  }
-
-  .course-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .course-card {
-    border: 1px solid #ccc;
-    padding: 1rem;
-    border-radius: 8px;
-    background: #fff;
-  }
-
-  .details {
-    font-size: 0.9rem;
-    color: #333;
-  }
-
-  .inquire-button {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  .inquiry-cart {
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    background: #f8f9fa;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    max-width: 350px;
-    color: #000;
-    z-index: 999;
-  }
-
-  .cart-summary {
-    list-style: none;
-    padding: 0;
-    margin-top: 0.5rem;
-  }
-
-  .cart-summary li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 6px;
-    padding-left: 0.5rem;
-  }
-
-  .cart-summary button {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    color: red;
-    cursor: pointer;
-    padding: 0;
-    margin-left: 8px;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Courses | EasyLatih</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .container { max-width: 1100px; margin: auto; padding: 2rem; }
+    .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .course-card { border: 1px solid #ccc; padding: 1rem; border-radius: 8px; background: #fff; }
+    .details { font-size: 0.9rem; color: #333; }
+    .inquire-button { margin-top: 1rem; padding: 0.5rem 1rem; background: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+    .inquiry-cart { position: fixed; bottom: 1rem; right: 1rem; background: #f8f9fa; padding: 1rem; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .cart-summary { list-style: none; padding-left: 1rem; margin-top: 0.5rem; }
   </style>
 </head>
 <body>
@@ -203,7 +146,7 @@
       }).forEach(course => {
         const card = document.createElement("div");
         card.className = "course-card";
-        card.innerHTML = `
+        card.innerHTML = 
           <h4>${course["Course Title"]}</h4>
           <p class="details">${course["Description"]}</p>
           <p class="details">
@@ -212,7 +155,7 @@
             <strong>Category:</strong> ${course["Category"]}
           </p>
           <button class="inquire-button" onclick="addToCart('${course["Course Title"]}')">Add to Inquiry</button>
-        `;
+        ;
         container.appendChild(card);
       });
     }
@@ -225,7 +168,7 @@
       const baseURL = "https://docs.google.com/forms/d/e/1FAIpQLSc_UkVoIW1bUqMsGFV0zbFlauUYZgfdMewSf-6JL69SB5np7w/viewform?usp=pp_url";
       const fieldID = "entry.896601463";
       const selectedCourses = inquiryCart.join(", ");
-      const finalURL = `${baseURL}&${fieldID}=${encodeURIComponent(selectedCourses)}`;
+      const finalURL = ${baseURL}&${fieldID}=${encodeURIComponent(selectedCourses)};
       window.open(finalURL, "_blank");
       alert("Your selected courses have been sent to the form.");
     }
