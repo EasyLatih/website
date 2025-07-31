@@ -7,10 +7,48 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .container { max-width: 1100px; margin: auto; padding: 2rem; }
+    .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .course-card { border: 1px solid #ccc; padding: 1rem; border-radius: 8px; background: #fff; }
+    .details { font-size: 0.9rem; color: #333; }
+    .inquire-button { margin-top: 1rem; padding: 0.5rem 1rem; background: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+    .inquiry-cart { position: fixed; bottom: 1rem; right: 1rem; background: #f8f9fa; padding: 1rem; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .cart-summary { list-style: none; padding-left: 1rem; margin-top: 0.5rem; }
+  </style>
 </head>
 <body>
-  <!-- header and filters omitted for brevity -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo"><img src="assets/logo.png" alt="EasyLatih logo" /></a>
+      <nav>
+        <ul id="navMenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="room-rental.html">Training Room</a></li>
+          <li><a href="schedule.html">Public Training</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
   <section class="container">
+    <h2 class="section-title">Our Courses</h2>
+    <p>Use the search and category filters below to explore our training programmes.</p>
+
+    <div style="margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 1rem;">
+      <input type="text" id="searchInput" placeholder="Search courses..." style="flex: 1; padding: 0.5rem;" />
+      <select id="categoryFilter" style="padding: 0.5rem;">
+        <option value="">All Categories</option>
+        <option value="Finance">Finance</option>
+        <option value="HR">HR</option>
+        <option value="Safety">Safety</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Leadership">Leadership</option>
+        <option value="IT">IT</option>
+      </select>
+    </div>
+
     <div id="coursesContainer" class="course-grid"></div>
     <div id="inquiryCart" class="inquiry-cart">
       <div>
@@ -20,73 +58,98 @@
       <button onclick="sendInquiryToGoogleForm()">Send Inquiry</button>
     </div>
   </section>
-  <!-- footer omitted for brevity -->
+
+  <footer>
+    <div class="footer-container">
+      <div>
+        <h4>Contact Us</h4>
+        <p>B62, Tingkat 1, Jalan IM 7/1<br />Bandar Indera Mahkota 6, 25200<br />Kuantan, Pahang, Malaysia</p>
+        <p>Email: <a href="mailto:sales@easylatih.my">sales@easylatih.my</a></p>
+        <p>Phone: <a href="tel:+6095604273">+60 9 560 4273</a></p>
+        <p>WhatsApp: <a href="https://wa.me/60109202811" target="_blank">+60 10 920 2811</a></p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="room-rental.html">Training Room</a>
+        <a href="schedule.html">Public Training</a>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <div class="socials">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center" style="margin-top: 2rem;">
+      EasyLatih is a brand under Easy Latih Consultancy (Registration No. 202503030373).<br />
+      &copy; 2025 EasyLatih. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="courses.js"></script>
   <script>
-    const coursesData = [
-      { name: "Accounting Skills with E-Invoicing", description: "Electronic invoicing for accounts assistants.", trainingType: "Classroom", duration: "1 Day", trainer: "LHDN", category: "Finance" },
-      { name: "Payroll & PCB Calculation", description: "How to calculate PCB and manage payroll.", trainingType: "Workshop", duration: "1 Day", trainer: "Payroll Experts", category: "HR" },
-      { name: "Sexual Harassment Awareness", description: "Creating a safe workplace through awareness.", trainingType: "Workshop", duration: "2 Days", trainer: "HR Trainers", category: "HR" },
-      { name: "5S Workplace Organisation", description: "Implement 5S to improve workplace efficiency.", trainingType: "Workshop", duration: "1 Day", trainer: "Kaizen Trainers", category: "Safety" },
-      { name: "Digital Marketing Fundamentals", description: "Essentials of digital marketing strategies.", trainingType: "Online", duration: "3 Days", trainer: "Marketing Agency", category: "Marketing" },
-      { name: "Leadership & Team Building", description: "Build stronger leadership and team dynamics.", trainingType: "Retreat", duration: "2 Days", trainer: "Leadership Coaches", category: "Leadership" },
-      { name: "Data Analytics for SMEs", description: "Learn to use data to drive business decisions.", trainingType: "Hybrid", duration: "3 Days", trainer: "Data Scientists", category: "IT" }
-    ];
-
-    function renderCourses() {
-      const container = document.getElementById("coursesContainer");
-      const searchText = document.getElementById("searchInput")?.value.toLowerCase() || "";
-      const selectedCategory = document.getElementById("categoryFilter")?.value || "";
-      container.innerHTML = "";
-
-      coursesData
-        .filter(course => {
-          const matchSearch = course.name.toLowerCase().includes(searchText) || course.description.toLowerCase().includes(searchText);
-          const matchCategory = selectedCategory === "" || course.category === selectedCategory;
-          return matchSearch && matchCategory;
-        })
-        .forEach(course => {
-          const card = document.createElement("div");
-          card.className = "course-card";
-          card.innerHTML = `
-            <h4>${course.name}</h4>
-            <p class="details">${course.description}</p>
-            <p class="details">
-              <strong>Training Type:</strong> ${course.trainingType}<br />
-              <strong>Duration:</strong> ${course.duration}<br />
-              <strong>Trainer:</strong> ${course.trainer}
-            </p>
-            <button class="inquire-button" onclick="addToCart('${course.name}')">Add to Inquiry</button>
-          `;
-          container.appendChild(card);
-        });
-    }
-
-    function addToCart(courseName) {
-      if (!inquiryCart.includes(courseName)) {
-        inquiryCart.push(courseName);
-        updateCartCount();
-      }
-    }
+    let inquiryCart = JSON.parse(localStorage.getItem('inquiryCart')) || [];
 
     function updateCartCount() {
       document.getElementById("cartCount").textContent = inquiryCart.length;
-      updateCartSummary();
-    }
-
-    function updateCartSummary() {
       const summaryEl = document.getElementById("cartSummary");
       summaryEl.innerHTML = "";
       inquiryCart.forEach((item, index) => {
         const li = document.createElement("li");
-        li.innerHTML = `${item} <span onclick="removeFromCart(${index})" style="color:red; cursor:pointer; font-weight:bold; margin-left:10px;">&times;</span>`;
+        li.textContent = item;
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "×";
+        removeBtn.style.marginLeft = "10px";
+        removeBtn.style.color = "red";
+        removeBtn.onclick = () => { inquiryCart.splice(index, 1); saveCart(); updateCartCount(); };
+        li.appendChild(removeBtn);
         summaryEl.appendChild(li);
       });
+    }
+
+    function saveCart() {
       localStorage.setItem('inquiryCart', JSON.stringify(inquiryCart));
     }
 
-    function removeFromCart(index) {
-      inquiryCart.splice(index, 1);
-      updateCartCount();
+    function addToCart(courseTitle) {
+      if (!inquiryCart.includes(courseTitle)) {
+        inquiryCart.push(courseTitle);
+        saveCart();
+        updateCartCount();
+      }
+    }
+
+    function renderCourses() {
+      const container = document.getElementById("coursesContainer");
+      const searchText = document.getElementById("searchInput").value.toLowerCase();
+      const selectedCategory = document.getElementById("categoryFilter").value;
+
+      container.innerHTML = "";
+      coursesData.filter(course => {
+        const matchSearch = course["Course Title"].toLowerCase().includes(searchText) || course["Description"].toLowerCase().includes(searchText);
+        const matchCategory = selectedCategory === "" || course["Category"] === selectedCategory;
+        return matchSearch && matchCategory;
+      }).forEach(course => {
+        const card = document.createElement("div");
+        card.className = "course-card";
+        card.innerHTML = `
+          <h4>${course["Course Title"]}</h4>
+          <p class="details">${course["Description"]}</p>
+          <p class="details">
+            <strong>Related Law / Act:</strong> ${course["Related Law / Act"]}<br>
+            <strong>Level:</strong> ${course["Level"]}<br>
+            <strong>Category:</strong> ${course["Category"]}
+          </p>
+          <button class="inquire-button" onclick="addToCart('${course["Course Title"]}')">Add to Inquiry</button>
+        `;
+        container.appendChild(card);
+      });
     }
 
     function sendInquiryToGoogleForm() {
@@ -99,16 +162,14 @@
       const selectedCourses = inquiryCart.join(", ");
       const finalURL = `${baseURL}&${fieldID}=${encodeURIComponent(selectedCourses)}`;
       window.open(finalURL, "_blank");
-      alert("Inquiry form opened in a new tab. Please complete and submit your request. Thank you!");
+      alert("Your selected courses have been sent to the form.");
     }
-
-    let inquiryCart = JSON.parse(localStorage.getItem('inquiryCart')) || [];
 
     document.addEventListener("DOMContentLoaded", () => {
       renderCourses();
       updateCartCount();
-      document.getElementById("searchInput")?.addEventListener("input", renderCourses);
-      document.getElementById("categoryFilter")?.addEventListener("change", renderCourses);
+      document.getElementById("searchInput").addEventListener("input", renderCourses);
+      document.getElementById("categoryFilter").addEventListener("change", renderCourses);
     });
   </script>
 </body>
