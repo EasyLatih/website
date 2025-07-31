@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Courses | EasyLatih</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-dP4dK+4RHzvoSdBj8kJLtbU+IYfPJ9gU8zXwjL4KPSj+JdyTxr3eb9L9l8J++6pT14tcP7rjzU4Z5ZChSR+ohw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -88,121 +88,51 @@
             </div>
         </div>
         <div class="text-center" style="margin-top: 2rem;">
-            EasyLatih is a brand under Easy Latih Consultancy (MyCOID: 202503030373).<br>
+            EasyLatih is a brand under Easy Latih Consultancy (Registration No. 202503030373).<br>
             &copy; 2025 EasyLatih. All rights reserved.
         </div>
     </footer>
 
-    <!-- Enhanced JS -->
     <script>
-    const coursesData = [
-    { name: "Accounting Skills with E-Invoicing", description: "Electronic invoicing for accounts assistants.", trainingType: "Classroom", duration: "1 Day", trainer: "LHDN" },
-    { name: "Payroll & PCB Calculation", description: "How to calculate PCB and manage payroll.", trainingType: "Workshop", duration: "1 Day", trainer: "Payroll Experts" },
-    { name: "Sexual Harassment Awareness", description: "Creating a safe workplace through awareness.", trainingType: "Workshop", duration: "2 Days", trainer: "HR Trainers" },
-    { name: "5S Workplace Organisation", description: "Implement 5S to improve workplace efficiency.", trainingType: "Workshop", duration: "1 Day", trainer: "Kaizen Trainers" },
-    { name: "Digital Marketing Fundamentals", description: "Essentials of digital marketing strategies.", trainingType: "Online", duration: "3 Days", trainer: "Marketing Agency" },
-    { name: "Leadership & Team Building", description: "Build stronger leadership and team dynamics.", trainingType: "Retreat", duration: "2 Days", trainer: "Leadership Coaches" },
-    { name: "Data Analytics for SMEs", description: "Learn to use data to drive business decisions.", trainingType: "Hybrid", duration: "3 Days", trainer: "Data Scientists" }
-];
-    coursesData.forEach(course => {
-        if (course.name.toLowerCase().includes("finance")) course.category = "Finance";
-        else if (course.name.toLowerCase().includes("hr")) course.category = "HR";
-        else if (course.name.toLowerCase().includes("safety")) course.category = "Safety";
-        else if (course.name.toLowerCase().includes("marketing")) course.category = "Marketing";
-        else if (course.name.toLowerCase().includes("leadership")) course.category = "Leadership";
-        else if (course.name.toLowerCase().includes("data") || course.name.toLowerCase().includes("digital")) course.category = "IT";
-        else course.category = "Other";
-    });
-
-    let inquiryCart = [];
-
-    function snippet(text, length) {
-        return text.length > length ? text.substring(0, length) + '…' : text;
-    }
+    let inquiryCart = JSON.parse(localStorage.getItem('inquiryCart')) || [];
 
     function updateCartCount() {
-        const cartCountEl = document.getElementById("cartCount");
-        if (cartCountEl) cartCountEl.textContent = inquiryCart.length;
+        document.getElementById("cartCount").textContent = inquiryCart.length;
         updateCartSummary();
     }
 
     function updateCartSummary() {
         const summaryEl = document.getElementById("cartSummary");
-        if (!summaryEl) return;
         summaryEl.innerHTML = "";
-        inquiryCart.forEach(item => {
+        inquiryCart.forEach((item, index) => {
             const li = document.createElement("li");
-            li.textContent = item;
+            li.innerHTML = `${item} <span onclick="removeFromCart(${index})" style="color:red; cursor:pointer; font-weight:bold; margin-left:10px;">&times;</span>`;
             summaryEl.appendChild(li);
         });
+        localStorage.setItem('inquiryCart', JSON.stringify(inquiryCart));
     }
 
-    function renderCourses() {
-        const container = document.getElementById("coursesContainer");
-        const searchText = document.getElementById("searchInput").value.toLowerCase();
-        const selectedCategory = document.getElementById("categoryFilter").value;
-
-        container.innerHTML = "";
-
-        coursesData.filter(course => {
-            const matchSearch = course.name.toLowerCase().includes(searchText) || course.description.toLowerCase().includes(searchText);
-            const matchCategory = selectedCategory === "" || course.category === selectedCategory;
-            return matchSearch && matchCategory;
-        }).forEach(course => {
-            const card = document.createElement("div");
-            card.className = "course-card";
-
-            const name = document.createElement("h4");
-            name.textContent = course.name;
-
-            const desc = document.createElement("p");
-            desc.className = "details";
-            desc.textContent = snippet(course.description, 120);
-
-            const detail = document.createElement("p");
-            detail.className = "details";
-            detail.innerHTML = `<strong>Training Type:</strong> ${course.trainingType}<br><strong>Duration:</strong> ${course.duration}<br><strong>Trainer:</strong> ${course.trainer}`;
-
-            const button = document.createElement("button");
-            button.className = "inquire-button";
-            button.textContent = "Add to Inquiry";
-            const courseName = course.name;
-            button.addEventListener("click", () => {
-                if (!inquiryCart.includes(courseName)) {
-                    inquiryCart.push(courseName);
-                    updateCartCount();
-                }
-            });
-
-            card.appendChild(name);
-            card.appendChild(desc);
-            card.appendChild(detail);
-            card.appendChild(button);
-            container.appendChild(card);
-        });
+    function removeFromCart(index) {
+        inquiryCart.splice(index, 1);
+        updateCartCount();
     }
 
-function sendInquiryToGoogleForm() {
-    if (inquiryCart.length === 0) {
-        alert("Your inquiry cart is empty. Please add courses first.");
-        return;
-    }
-
-    const baseURL = "https://docs.google.com/forms/d/e/1FAIpQLSc_UkVoIW1bUqMsGFV0zbFlauUYZgfdMewSf-6JL69SB5np7w/viewform?usp=pp_url";
-    const fieldID = "entry.896601463"; 
-    const selectedCourses = inquiryCart.join(", ");
-    const finalURL = `${baseURL}&${fieldID}=${encodeURIComponent(selectedCourses)}`;
-
-    window.open(finalURL, "_blank");
+    function sendInquiryToGoogleForm() {
+        if (inquiryCart.length === 0) {
+            alert("Your inquiry cart is empty. Please add courses first.");
+            return;
+        }
+        const baseURL = "https://docs.google.com/forms/d/e/1FAIpQLSc_UkVoIW1bUqMsGFV0zbFlauUYZgfdMewSf-6JL69SB5np7w/viewform?usp=pp_url";
+        const fieldID = "entry.896601463";
+        const selectedCourses = inquiryCart.join(", ");
+        const finalURL = `${baseURL}&${fieldID}=${encodeURIComponent(selectedCourses)}`;
+        window.open(finalURL, "_blank");
+        alert("Inquiry form opened in a new tab. Please complete and submit your request. Thank you!");
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-        renderCourses();
         updateCartCount();
-        document.getElementById("searchInput").addEventListener("input", renderCourses);
-        document.getElementById("categoryFilter").addEventListener("change", renderCourses);
     });
     </script>
-    <script src="script.js"></script>
 </body>
 </html>
