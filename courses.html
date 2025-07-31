@@ -13,9 +13,8 @@
     .course-card { border: 1px solid #ccc; padding: 1rem; border-radius: 8px; background: #fff; }
     .details { font-size: 0.9rem; color: #333; }
     .inquire-button { margin-top: 1rem; padding: 0.5rem 1rem; background: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
-    .inquiry-cart { position: fixed; bottom: 1rem; right: 1rem; background: #f8f9fa; color: #000; padding: 1rem; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-    .cart-summary li {display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
-    .cart-summary button {background: none; border: none; font-size: 1.2rem; color: red; cursor: pointer; padding: 0; margin-left: 8px; }
+    .inquiry-cart { position: fixed; bottom: 1rem; right: 1rem; background: #f8f9fa; padding: 1rem; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .cart-summary { list-style: none; padding-left: 1rem; margin-top: 0.5rem; }
   </style>
 </head>
 <body>
@@ -98,6 +97,7 @@
       &copy; 2025 EasyLatih. All rights reserved.
     </div>
   </footer>
+
   <script src="courses.js"></script>
   <script>
     let inquiryCart = JSON.parse(localStorage.getItem('inquiryCart')) || [];
@@ -147,15 +147,15 @@
         const card = document.createElement("div");
         card.className = "course-card";
         card.innerHTML = `
-  <h4>${course["Course Title"]}</h4>
-  <p class="details">${course["Description"]}</p>
-  <p class="details">
-    <strong>Related Law / Act:</strong> ${course["Related Law / Act"]}<br>
-    <strong>Level:</strong> ${course["Level"]}<br>
-    <strong>Category:</strong> ${course["Category"]}
-  </p>
-  <button class="inquire-button" onclick="addToCart('${course["Course Title"]}')">Add to Inquiry</button>
-`;
+          <h4>${course["Course Title"]}</h4>
+          <p class="details">${course["Description"]}</p>
+          <p class="details">
+            <strong>Related Law / Act:</strong> ${course["Related Law / Act"]}<br>
+            <strong>Level:</strong> ${course["Level"]}<br>
+            <strong>Category:</strong> ${course["Category"]}
+          </p>
+          <button class="inquire-button" onclick="addToCart('${course["Course Title"]}')">Add to Inquiry</button>
+        `;
         container.appendChild(card);
       });
     }
@@ -168,7 +168,7 @@
       const baseURL = "https://docs.google.com/forms/d/e/1FAIpQLSc_UkVoIW1bUqMsGFV0zbFlauUYZgfdMewSf-6JL69SB5np7w/viewform?usp=pp_url";
       const fieldID = "entry.896601463";
       const selectedCourses = inquiryCart.join(", ");
-      const finalURL = ${baseURL}&${fieldID}=${encodeURIComponent(selectedCourses)};
+      const finalURL = `${baseURL}&${fieldID}=${encodeURIComponent(selectedCourses)}`;
       window.open(finalURL, "_blank");
       alert("Your selected courses have been sent to the form.");
     }
