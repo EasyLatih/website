@@ -98,8 +98,27 @@
       &copy; 2025 EasyLatih. All rights reserved.
     </div>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/tabletop@1.5.1/tabletop.min.js"></script>
-  <script src="courses.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tabletop@1.5.1/tabletop.min.js"></script>
+<script>
+  window.coursesData = [];
+
+  window.initCourses = function () {
+    Tabletop.init({
+      key: '1M4ldzpUoBHGbZiLbKJ7nsiwCshUFTwWnjG9s8e98Li8',
+      simpleSheet: true,
+      callback: function(data, tabletop) {
+        window.coursesData = data;
+        if (typeof renderCourses === 'function') {
+          renderCourses();
+        }
+      }
+    });
+  };
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initCourses();
+  });
+</script>
   <script>
     let inquiryCart = JSON.parse(localStorage.getItem('inquiryCart')) || [];
 
