@@ -53,7 +53,7 @@
                 <span>Inquiry Cart: <strong id="cartCount">0</strong></span>
                 <ul id="cartSummary" class="cart-summary"></ul>
             </div>
-            <button onclick="sendInquiryEmail()">Send Inquiry</button>
+            <button onclick=""sendInquiryToGoogleForm()">Send Inquiry</button>
         </div>
     </section>
 
@@ -182,17 +182,18 @@
         });
     }
 
-    function sendInquiryEmail() {
-        if (inquiryCart.length === 0) {
-            alert("Your inquiry cart is empty. Please add courses first.");
-            return;
-        }
-        const email = "sales@easylatih.my";
-        const subject = "Course Inquiry from EasyLatih Website";
-        const body = "I am interested in the following courses:%0D%0A%0D%0A" +
-            inquiryCart.map((c, idx) => (idx + 1) + ". " + c).join("%0D%0A") +
-            "%0D%0A%0D%0APlease provide more details. Thank you!";
-        window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${body}`;
+function sendInquiryToGoogleForm() {
+    if (inquiryCart.length === 0) {
+        alert("Your inquiry cart is empty. Please add courses first.");
+        return;
+    }
+
+    const baseURL = "https://docs.google.com/forms/d/e/1FAIpQLSc_UkVoIW1bUqMsGFV0zbFlauUYZgfdMewSf-6JL69SB5np7w/viewform?usp=pp_url";
+    const fieldID = "entry.896601463"; 
+    const selectedCourses = inquiryCart.join(", ");
+    const finalURL = `${baseURL}&${fieldID}=${encodeURIComponent(selectedCourses)}`;
+
+    window.open(finalURL, "_blank");
     }
 
     document.addEventListener("DOMContentLoaded", () => {
