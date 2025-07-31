@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html : <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -98,27 +98,7 @@
       &copy; 2025 EasyLatih. All rights reserved.
     </div>
   </footer>
-<script src="https://cdn.jsdelivr.net/npm/tabletop@1.5.1/tabletop.min.js"></script>
-<script>
-  window.coursesData = [];
-
-  window.initCourses = function () {
-    Tabletop.init({
-      key: '1M4ldzpUoBHGbZiLbKJ7nsiwCshUFTwWnjG9s8e98Li8',
-      simpleSheet: true,
-      callback: function(data, tabletop) {
-        window.coursesData = data;
-        if (typeof renderCourses === 'function') {
-          renderCourses();
-        }
-      }
-    });
-  };
-
-  document.addEventListener("DOMContentLoaded", function () {
-    initCourses();
-  });
-</script>
+  <script src="courses.js"></script>
   <script>
     let inquiryCart = JSON.parse(localStorage.getItem('inquiryCart')) || [];
 
@@ -166,7 +146,7 @@
       }).forEach(course => {
         const card = document.createElement("div");
         card.className = "course-card";
-        card.innerHTML = `
+        card.innerHTML = 
           <h4>${course["Course Title"]}</h4>
           <p class="details">${course["Description"]}</p>
           <p class="details">
@@ -175,7 +155,7 @@
             <strong>Category:</strong> ${course["Category"]}
           </p>
           <button class="inquire-button" onclick="addToCart('${course["Course Title"]}')">Add to Inquiry</button>
-        `;
+        ;
         container.appendChild(card);
       });
     }
@@ -188,7 +168,7 @@
       const baseURL = "https://docs.google.com/forms/d/e/1FAIpQLSc_UkVoIW1bUqMsGFV0zbFlauUYZgfdMewSf-6JL69SB5np7w/viewform?usp=pp_url";
       const fieldID = "entry.896601463";
       const selectedCourses = inquiryCart.join(", ");
-      const finalURL = `${baseURL}&${fieldID}=${encodeURIComponent(selectedCourses)}`;
+      const finalURL = ${baseURL}&${fieldID}=${encodeURIComponent(selectedCourses)};
       window.open(finalURL, "_blank");
       alert("Your selected courses have been sent to the form.");
     }
