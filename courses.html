@@ -50,8 +50,8 @@
       <select id="levelFilter" style="padding: 0.5rem;">
         <option value="">All Levels</option>
         <option value="Entry-Level">Entry-Level</option>
-        <option value="Mid-Level">Intermediate</option>
-        <option value="Senior">Advanced</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
       </select>
     </div>
 
@@ -146,7 +146,7 @@
       }).forEach(course => {
         const card = document.createElement("div");
         card.className = "course-card";
-        card.innerHTML = 
+        card.innerHTML = `
           <h4>${course["Course Title"]}</h4>
           <p class="details">${course["Description"]}</p>
           <p class="details">
@@ -155,7 +155,7 @@
             <strong>Category:</strong> ${course["Category"]}
           </p>
           <button class="inquire-button" onclick="addToCart('${course["Course Title"]}')">Add to Inquiry</button>
-        ;
+        `;
         container.appendChild(card);
       });
     }
@@ -168,7 +168,7 @@
       const baseURL = "https://docs.google.com/forms/d/e/1FAIpQLSc_UkVoIW1bUqMsGFV0zbFlauUYZgfdMewSf-6JL69SB5np7w/viewform?usp=pp_url";
       const fieldID = "entry.896601463";
       const selectedCourses = inquiryCart.join(", ");
-      const finalURL = ${baseURL}&${fieldID}=${encodeURIComponent(selectedCourses)};
+      const finalURL = `${baseURL}&${fieldID}=${encodeURIComponent(selectedCourses)}`;
       window.open(finalURL, "_blank");
       alert("Your selected courses have been sent to the form.");
     }
