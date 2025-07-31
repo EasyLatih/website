@@ -10,23 +10,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header / Navigation -->
     <header>
-        <div class="nav-container">
-            <a href="index.html" class="logo"><img src="assets/logo.png" alt="EasyLatih logo"></a>
-            <nav>
-                <div class="nav-toggle" id="navToggle">
-                    <span></span><span></span><span></span>
-                </div>
-                <ul id="navMenu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="courses.html">Courses</a></li>
-                    <li><a href="room-rental.html">Training Room</a></li>
-                    <li><a href="schedule.html">Public Training</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <div class="nav-container" style="display: flex; align-items: center; justify-content: space-between;">
+    
+    <!-- Company + HRD Corp Logos -->
+    <div class="logo-group" style="display: flex; align-items: center;">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="EasyLatih logo" style="height: 50px; margin-right: 10px;">
+      </a>
+      <div class="hrdcorp-logos" style="display: flex; align-items: center; gap: 10px;">
+        <img src="assets/Logo Training Provider_Logo Registered Training Provider.png" alt="HRD Corp Registered" style="height: 40px;">
+        <img src="assets/HRD Corp - Claimable Logo.png" alt="HRD Corp Claimable" style="height: 40px;">
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-toggle" id="navToggle">
+        <span></span><span></span><span></span>
+      </div>
+      <ul id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="room-rental.html">Training Room</a></li>
+        <li><a href="schedule.html">Public Training</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
     <!-- Room Rental Section -->
     <section class="container">
