@@ -164,34 +164,44 @@
       }
     }
 
-    function renderCourses() {
-      const container = document.getElementById("coursesContainer");
-      const searchText = document.getElementById("searchInput").value.toLowerCase();
-      const selectedCategory = document.getElementById("categoryFilter").value;
-      const selectedLevel = document.getElementById("levelFilter").value;
+function renderCourses() {
+  const container = document.getElementById("coursesContainer");
+  const searchText = document.getElementById("searchInput").value.toLowerCase();
+  const selectedCategory = document.getElementById("categoryFilter").value;
+  const selectedLevel = document.getElementById("levelFilter").value;
 
-      container.innerHTML = "";
-      coursesData.filter(course => {
-        const matchSearch = course["Course Title"].toLowerCase().includes(searchText) || course["Description"].toLowerCase().includes(searchText);
-        const matchCategory = selectedCategory === "" || course["Category"] === selectedCategory;
-        const matchLevel = selectedLevel === "" || course["Level"] === selectedLevel;
-        return matchSearch && matchCategory && matchLevel;
-      }).forEach(course => {
-        const card = document.createElement("div");
-        card.className = "course-card";
-        card.innerHTML = `
-          <h4>${course["Course Title"]}</h4>
-          <p class="details">${course["Description"]}</p>
-          <p class="details">
-            <strong>Related Law / Act:</strong> ${course["Related Law / Act"]}<br>
-            <strong>Level:</strong> ${course["Level"]}<br>
-            <strong>Category:</strong> ${course["Category"]}
-          </p>
-          <button class="inquire-button" onclick="addToCart('${course["Course Title"]}')">Add to Inquiry</button>
-        `;
-        container.appendChild(card);
-      });
-    }
+  container.innerHTML = "";
+  const filteredCourses = coursesData.filter(course => {
+    const matchSearch = course["Course Title"].toLowerCase().includes(searchText) || course["Description"].toLowerCase().includes(searchText);
+    const matchCategory = selectedCategory === "" || course["Category"] === selectedCategory;
+    const matchLevel = selectedLevel === "" || course["Level"] === selectedLevel;
+    return matchSearch && matchCategory && matchLevel;
+  });
+
+  // ✅ Show/hide the no-results message
+  const noResultsMessage = document.getElementById("noResultsMessage");
+  if (filteredCourses.length === 0) {
+    noResultsMessage.style.display = "block";
+  } else {
+    noResultsMessage.style.display = "none";
+  }
+
+  filteredCourses.forEach(course => {
+    const card = document.createElement("div");
+    card.className = "course-card";
+    card.innerHTML = `
+      <h4>${course["Course Title"]}</h4>
+      <p class="details">${course["Description"]}</p>
+      <p class="details">
+        <strong>Related Law / Act:</strong> ${course["Related Law / Act"]}<br>
+        <strong>Level:</strong> ${course["Level"]}<br>
+        <strong>Category:</strong> ${course["Category"]}
+      </p>
+      <button class="inquire-button" onclick="addToCart('${course["Course Title"]}')">Add to Inquiry</button>
+    `;
+    container.appendChild(card);
+  });
+}
 
     function sendInquiryToGoogleForm() {
       if (inquiryCart.length === 0) {
