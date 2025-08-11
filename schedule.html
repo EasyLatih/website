@@ -8,6 +8,95 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+  /* Layout helpers */
+  .container { max-width: 1100px; margin: auto; padding: 2rem; }
+  .mb-4 { margin-bottom: 1rem; }
+
+  /* Hero responsiveness */
+  .hero {
+    background-size: cover; background-position: center; color: #fff;
+    min-height: 240px; display: grid; place-items: center;
+    text-align: center; padding: 2.5rem 1rem;
+  }
+  .hero .hero-content h1 { margin: 0 0 .5rem; font-size: clamp(1.4rem, 3.5vw, 2.2rem); }
+  .hero .hero-content p { margin: 0; font-size: clamp(.9rem, 2.5vw, 1.05rem); }
+
+  /* Header logos shrink on mobile */
+  @media (max-width: 640px) {
+    .logo-group img[alt="EasyLatih logo"] { height: 40px !important; }
+    .hrdcorp-logos img { height: 32px !important; }
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block; background: #0d6efd; color: #fff; text-decoration: none;
+    padding: .6rem 1rem; border-radius: 6px; font-weight: 600;
+  }
+  .btn:hover { filter: brightness(.95); }
+
+  /* Table base */
+  .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .schedule-table {
+    width: 100%; border-collapse: collapse; min-width: 640px; /* desktop baseline */
+  }
+  .schedule-table th, .schedule-table td {
+    padding: .85rem; border-bottom: 1px solid #e5e7eb; text-align: left;
+  }
+  .schedule-table thead th {
+    font-weight: 700; background: #f7f7f8;
+  }
+
+  /* Mobile: transform table into stacked cards */
+  @media (max-width: 640px) {
+    .schedule-table { min-width: 0; }
+    .schedule-table thead { display: none; }
+    .schedule-table, .schedule-table tbody, .schedule-table tr, .schedule-table td {
+      display: block; width: 100%;
+    }
+    .schedule-table tr {
+      background: #fff; border: 1px solid #eee; border-radius: 10px;
+      padding: .5rem .75rem; margin-bottom: .75rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    }
+    .schedule-table td {
+      border: none; padding: .45rem 0;
+    }
+    .schedule-table td::before {
+      content: attr(data-label);
+      display: block; font-size: .8rem; color: #6b7280; margin-bottom: .15rem;
+      text-transform: none;
+    }
+    /* Make the last cell (Register) breathe */
+    .schedule-table td:last-child { margin-top: .25rem; }
+  }
+         /* --- Sticky Mobile CTA --- */
+  .mobile-cta {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    display: none; /* hidden on desktop */
+    gap: .75rem; padding: .8rem 1rem; 
+    background: #111827; /* dark backdrop */
+    box-shadow: 0 -6px 16px rgba(0,0,0,.15);
+    z-index: 9999;
+  }
+  .mobile-cta .btn {
+    flex: 1; text-align: center; padding: .9rem 1rem; border-radius: 10px;
+    font-weight: 700; text-decoration: none;
+  }
+  .btn-primary { background: #0d6efd; color: #fff; }
+  .btn-outline  { background: #ffffff; color: #111827; border: 1px solid #e5e7eb; }
+
+  /* Hide per-row register buttons only on mobile */
+  .per-row-register { display: inline-block; }
+
+  /* Give page bottom padding so the bar doesn’t cover content */
+  @media (max-width: 640px) {
+    body { padding-bottom: 88px; }
+    .mobile-cta { display: flex; }
+    .per-row-register { display: none; }
+  }
+</style>
+
 </head>
 <body>
  <header>
@@ -40,94 +129,83 @@
   </div>
 </header>
 
-    <!-- Hero Section for Public Training -->
-    <section class="hero" style="background-image: url('assets/public_training.png');">
-        <div class="hero-content">
-            <h1>Public Training Schedule</h1>
-            <p>Join our upcoming public training sessions and sharpen your skills alongside peers from various industries.</p>
-        </div>
-    </section>
+   <section class="container">
+  <h2 class="section-title">Upcoming Sessions</h2>
+  <p class="mb-4">Below is our provisional schedule for the upcoming months. Dates and courses are subject to
+    change. Click the register button next to each course to reserve your spot once registration opens.</p>
 
-    <!-- Schedule Table -->
-    <section class="container">
-        <h2 class="section-title">Upcoming Sessions</h2>
-        <p class="mb-4">Below is our provisional schedule for the upcoming months. Dates and courses are subject to
-           change. Click the register button next to each course to reserve your spot once registration opens.</p>
-        <table class="schedule-table">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Course</th>
-                    <th>Duration</th>
-                    <th>Delivery Method</th>
-                    <th>Register</th>
-                </tr>
-            </thead>
-            <tbody>
-               <tr>
-    <td>27 Aug 2025</td>
-    <td>Basic Accounting and Tax for SMEs</td>
-    <td>1 Day</td>
-    <td>Classroom (Physical)</td>
-    <td>
-        <a href="https://drive.google.com/drive/folders/1dDThaWAhxDzCW9cm82nxRLx6S4RZo-zM?usp=sharing"
-           target="_blank" rel="noopener"
-           style="display:inline-block;margin-bottom:6px;text-decoration:none;font-weight:600;">
-           📄 View Course Brochure (PDF)
-        </a><br>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform?usp=header"
-           target="_blank" class="btn"
-           style="padding:0.5rem 1rem;font-size:0.9rem;">
-           Register
-        </a>
-    </td>
-</tr>
-<tr>
-    <td>28 Aug 2025</td>
-    <td>E-Invoice Implementation : For All Business</td>
-    <td>1 Day</td>
-    <td>Classroom (Physical)</td>
-    <td>
-        <a href="https://drive.google.com/drive/folders/1JJr0PNccrk6u_-GhbxYrrjE95Mt50vgr?usp=sharing"
-           target="_blank" rel="noopener"
-           style="display:inline-block;margin-bottom:6px;text-decoration:none;font-weight:600;">
-           📄 View Course Brochure (PDF)
-        </a><br>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform?usp=header"
-           target="_blank" class="btn"
-           style="padding:0.5rem 1rem;font-size:0.9rem;">
-           Register
-        </a>
-    </td>
-</tr>
-                <tr>
-    <td>28 Aug 2025</td>
-    <td>Occupational First Aid and CPR Introduction to AED Training</td>
-    <td>2 Days</td>
-    <td>Classroom (Physical)</td>
-    <td>
-        <a href="https://drive.google.com/drive/folders/1RdBM_YY03XpnyIquw6LE3OGqGPmrwdKy?usp=drive_link"
-           target="_blank" rel="noopener"
-           style="display:inline-block;margin-bottom:6px;text-decoration:none;font-weight:600;">
-           📄 View Course Brochure (PDF)
-        </a><br>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform?usp=header"
-           target="_blank" class="btn"
-           style="padding:0.5rem 1rem;font-size:0.9rem;">
-           Register
-        </a>
-    </td>
-</tr>
-                <tr>
-                    <td>TBA</td>
-                    <td>More courses coming soon...</td>
-                    <td>–</td>
-                    <td>–</td>
-                    <td><a href="#" class="btn" style="padding:0.5rem 1rem;font-size:0.9rem;">Register</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+  <div class="table-responsive">
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Course</th>
+          <th>Duration</th>
+          <th>Delivery Method</th>
+          <th>Register</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Date">27 Aug 2025</td>
+          <td data-label="Course">Basic Accounting and Tax for SMEs</td>
+          <td data-label="Duration">1 Day</td>
+          <td data-label="Delivery Method">Classroom (Physical)</td>
+          <td data-label="Register">
+            <a href="https://drive.google.com/drive/folders/1dDThaWAhxDzCW9cm82nxRLx6S4RZo-zM?usp=sharing"
+               target="_blank" rel="noopener"
+               style="display:inline-block;margin-bottom:6px;text-decoration:none;font-weight:600;">
+               📄 View Course Brochure (PDF)
+            </a><br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform?usp=header"
+               target="_blank" class="btn per-row-register">Register</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td data-label="Date">28 Aug 2025</td>
+          <td data-label="Course">E-Invoice Implementation : For All Business</td>
+          <td data-label="Duration">1 Day</td>
+          <td data-label="Delivery Method">Classroom (Physical)</td>
+          <td data-label="Register">
+            <a href="https://drive.google.com/drive/folders/1JJr0PNccrk6u_-GhbxYrrjE95Mt50vgr?usp=sharing"
+               target="_blank" rel="noopener"
+               style="display:inline-block;margin-bottom:6px;text-decoration:none;font-weight:600;">
+               📄 View Course Brochure (PDF)
+            </a><br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform?usp=header"
+               target="_blank" class="btn per-row-register">Register</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td data-label="Date">28 Aug 2025</td>
+          <td data-label="Course">Occupational First Aid and CPR Introduction to AED Training</td>
+          <td data-label="Duration">2 Days</td>
+          <td data-label="Delivery Method">Classroom (Physical)</td>
+          <td data-label="Register">
+            <a href="https://drive.google.com/drive/folders/1RdBM_YY03XpnyIquw6LE3OGqGPmrwdKy?usp=drive_link"
+               target="_blank" rel="noopener"
+               style="display:inline-block;margin-bottom:6px;text-decoration:none;font-weight:600;">
+               📄 View Course Brochure (PDF)
+            </a><br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform?usp=header"
+               target="_blank" class="btn per-row-register">Register</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td data-label="Date">TBA</td>
+          <td data-label="Course">More courses coming soon...</td>
+          <td data-label="Duration">–</td>
+          <td data-label="Delivery Method">–</td>
+          <td data-label="Register"><a href="#" class="btn per-row-register">Register</a>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
 
     <!-- Footer -->
     <footer>
