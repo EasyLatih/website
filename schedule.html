@@ -67,34 +67,42 @@
       display: block; font-size: .8rem; color: #6b7280; margin-bottom: .15rem;
       text-transform: none;
     }
+      /* Strong, high-contrast table header */
+.schedule-table thead th {
+  background: #0f172a !important; /* dark slate */
+  color: #ffffff !important;       /* white text */
+  font-weight: 700;
+  border-bottom: 1px solid #0b1220;
+}
+
     /* Make the last cell (Register) breathe */
     .schedule-table td:last-child { margin-top: .25rem; }
   }
-         /* --- Sticky Mobile CTA --- */
-  .mobile-cta {
-    position: fixed; left: 0; right: 0; bottom: 0;
-    display: none; /* hidden on desktop */
-    gap: .75rem; padding: .8rem 1rem; 
-    background: #111827; /* dark backdrop */
-    box-shadow: 0 -6px 16px rgba(0,0,0,.15);
-    z-index: 9999;
-  }
-  .mobile-cta .btn {
-    flex: 1; text-align: center; padding: .9rem 1rem; border-radius: 10px;
-    font-weight: 700; text-decoration: none;
-  }
-  .btn-primary { background: #0d6efd; color: #fff; }
-  .btn-outline  { background: #ffffff; color: #111827; border: 1px solid #e5e7eb; }
+       /* --- Sticky Mobile CTA --- */
+.mobile-cta {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  display: none; /* hidden by default; enabled via media query */
+  gap: .75rem; padding: .8rem 1rem calc(.8rem + env(safe-area-inset-bottom));
+  background: #111827;
+  box-shadow: 0 -6px 16px rgba(0,0,0,.15);
+  z-index: 9999;
+}
+.mobile-cta .btn {
+  flex: 1; text-align: center; padding: .9rem 1rem; border-radius: 10px;
+  font-weight: 700; text-decoration: none;
+}
+.btn-primary { background: #0d6efd; color: #fff; }
+.btn-outline  { background: #ffffff; color: #111827; border: 1px solid #e5e7eb; }
 
-  /* Hide per-row register buttons only on mobile */
-  .per-row-register { display: inline-block; }
+/* Hide per-row register buttons on small screens */
+.per-row-register { display: inline-block; }
 
-  /* Give page bottom padding so the bar doesn’t cover content */
-  @media (max-width: 640px) {
-    body { padding-bottom: 88px; }
-    .mobile-cta { display: flex; }
-    .per-row-register { display: none; }
-  }
+/* Widen breakpoint so it shows on most phones/tablets */
+@media (max-width: 768px) {
+  body { padding-bottom: calc(88px + env(safe-area-inset-bottom)); }
+  .mobile-cta { display: flex; }
+  .per-row-register { display: none; }
+}
 </style>
 
 </head>
@@ -199,7 +207,7 @@
           <td data-label="Course">More courses coming soon...</td>
           <td data-label="Duration">–</td>
           <td data-label="Delivery Method">–</td>
-          <td data-label="Register"><a href="#" class="btn per-row-register">Register</a>
+          <td data-label="Register"><a href="#" class="btn per-row-register">Register</a></td>
         </tr>
       </tbody>
     </table>
@@ -245,5 +253,23 @@
     </footer>
 
     <script src="script.js"></script>
+    <!-- Sticky Register Bar (mobile only) -->
+<div class="mobile-cta" aria-label="Quick actions">
+  <a
+    href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform?usp=header"
+    target="_blank" rel="noopener" class="btn btn-primary"
+    aria-label="Register for public training"
+  >
+    Register Now
+  </a>
+  <a
+    href="https://wa.me/60109202811?text=Hi%20EasyLatih%2C%20I%27d%20like%20to%20register%20for%20a%20public%20training.%20Could%20you%20assist%3F"
+    target="_blank" rel="noopener" class="btn btn-outline"
+    aria-label="Chat with us on WhatsApp"
+  >
+    WhatsApp Us
+  </a>
+</div>
+
 </body>
 </html>
