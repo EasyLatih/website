@@ -1,19 +1,39 @@
-<!-- Tambahkan dalam <head> jika belum: -->
-<style>
-  .table-responsive { overflow-x: auto; }
-  .schedule-table { width: 100%; border-collapse: collapse; min-width: 720px; }
-  .schedule-table th, .schedule-table td { padding: .85rem; border-bottom: 1px solid #e5e7eb; text-align: left; }
-  .schedule-table thead th { background: #0f172a; color: #fff; font-weight: 700; }
-  .filter-bar { margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
-  @media (max-width: 640px) {
-    .schedule-table thead { display: none; }
-    .schedule-table, .schedule-table tbody, .schedule-table tr, .schedule-table td { display: block; width: 100%; }
-    .schedule-table tr { border: 1px solid #eee; border-radius: 10px; margin-bottom: .75rem; padding: .5rem .75rem; box-shadow: 0 1px 4px rgba(0,0,0,.04); }
-    .schedule-table td::before { content: attr(data-label); display: block; font-size: .8rem; color: #6b7280; margin-bottom: .15rem; }
-  }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Public Training Schedule | EasyLatih</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .container { max-width: 1100px; margin: auto; padding: 2rem; }
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .schedule-table { width: 100%; border-collapse: collapse; min-width: 720px; }
+    .schedule-table th, .schedule-table td { padding: .85rem; border-bottom: 1px solid #e5e7eb; text-align: left; }
+    .schedule-table thead th { background: #0f172a; color: #fff; font-weight: 700; }
+    .filter-bar { margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+    .filter-bar label { font-weight: 600; }
+    .filter-bar select { padding: 0.5rem 0.75rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; }
+    @media (max-width: 640px) {
+      .schedule-table { min-width: 0; }
+      .schedule-table thead { display: none; }
+      .schedule-table, .schedule-table tbody, .schedule-table tr, .schedule-table td { display: block; width: 100%; }
+      .schedule-table tr { background: #fff; border: 1px solid #eee; border-radius: 10px; padding: .5rem .75rem; margin-bottom: .75rem; box-shadow: 0 1px 4px rgba(0,0,0,.04); }
+      .schedule-table td { border: none; padding: .45rem 0; }
+      .schedule-table td::before { content: attr(data-label); display: block; font-size: .8rem; color: #6b7280; margin-bottom: .15rem; }
+      .schedule-table td:last-child { margin-top: .25rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- header omitted for brevity -->
+  <section class="container">
+    <h2 class="section-title">Upcoming Sessions</h2>
+    <p>This schedule is loaded from Google Sheets. Each row now includes a link to its Google Drive folder.</p>
 
-<!-- Dalam <body>, gantikan jadual lama dengan: -->
 <div class="filter-bar">
   <label for="venueFilter">Filter by location:</label>
   <select id="venueFilter"><option value="all">All Locations</option></select>
@@ -37,7 +57,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const csvUrl = https://docs.google.com/spreadsheets/d/e/2PACX-1vRfdHRk3MuhF-IUKOdDwU3ahbODmSHRuolZkAPWRhxscEGAX0YMKJA5L49yhieYv4fpBEo97Rm1kiqZ/pub?gid=0&single=true&output=csv; // ganti dengan URL CSV dari Google Sheet
+    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRfdHRk3MuhF-IUKOdDwU3ahbODmSHRuolZkAPWRhxscEGAX0YMKJA5L49yhieYv4fpBEo97Rm1kiqZ/pub?gid=0&single=true&output=csv'; // ganti dengan URL CSV dari Google Sheet
     const tableBody  = document.getElementById('scheduleBody');
     const venueSelect = document.getElementById('venueFilter');
 
@@ -104,3 +124,5 @@
     venueSelect.addEventListener('change', filterRows);
   });
 </script>
+</body>
+</html>
