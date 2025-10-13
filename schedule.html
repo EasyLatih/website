@@ -1,128 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Public Training Schedule | EasyLatih</title>
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .container { max-width: 1100px; margin: auto; padding: 2rem; }
-    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .schedule-table { width: 100%; border-collapse: collapse; min-width: 720px; }
-    .schedule-table th, .schedule-table td { padding: .85rem; border-bottom: 1px solid #e5e7eb; text-align: left; }
-    .schedule-table thead th { background: #0f172a; color: #fff; font-weight: 700; }
-    .filter-bar { margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
-    .filter-bar label { font-weight: 600; }
-    .filter-bar select { padding: 0.5rem 0.75rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; }
-    @media (max-width: 640px) {
-      .schedule-table { min-width: 0; }
-      .schedule-table thead { display: none; }
-      .schedule-table, .schedule-table tbody, .schedule-table tr, .schedule-table td { display: block; width: 100%; }
-      .schedule-table tr { background: #fff; border: 1px solid #eee; border-radius: 10px; padding: .5rem .75rem; margin-bottom: .75rem; box-shadow: 0 1px 4px rgba(0,0,0,.04); }
-      .schedule-table td { border: none; padding: .45rem 0; }
-      .schedule-table td::before { content: attr(data-label); display: block; font-size: .8rem; color: #6b7280; margin-bottom: .15rem; }
-      .schedule-table td:last-child { margin-top: .25rem; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Training Schedule | EasyLatih</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+  /* Layout helpers */
+  .container { max-width: 1100px; margin: auto; padding: 2rem; }
+  .mb-4 { margin-bottom: 1rem; }
+
+  /* Hero responsiveness */
+  .hero {
+    background-size: cover; background-position: center; color: #fff;
+    min-height: 240px; display: grid; place-items: center;
+    text-align: center; padding: 2.5rem 1rem;
+  }
+  .hero .hero-content h1 { margin: 0 0 .5rem; font-size: clamp(1.4rem, 3.5vw, 2.2rem); }
+  .hero .hero-content p { margin: 0; font-size: clamp(.9rem, 2.5vw, 1.05rem); }
+        /* Strong, high-contrast table header */
+.schedule-table thead th {
+  background: #0f172a !important; /* dark slate */
+  color: #ffffff !important;       /* white text */
+  font-weight: 700;
+  border-bottom: 1px solid #0b1220;
+}
+
+  /* Header logos shrink on mobile */
+  @media (max-width: 640px) {
+    .logo-group img[alt="EasyLatih logo"] { height: 40px !important; }
+    .hrdcorp-logos img { height: 32px !important; }
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block; background: #0d6efd; color: #fff; text-decoration: none;
+    padding: .6rem 1rem; border-radius: 6px; font-weight: 600;
+  }
+  .btn:hover { filter: brightness(.95); }
+
+  /* Table base */
+  .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .schedule-table {
+    width: 100%; border-collapse: collapse; min-width: 640px; /* desktop baseline */
+  }
+  .schedule-table th, .schedule-table td {
+    padding: .85rem; border-bottom: 1px solid #e5e7eb; text-align: left;
+  }
+  .schedule-table thead th {
+    font-weight: 700; background: #f7f7f8;
+  }
+
+  /* Mobile: transform table into stacked cards */
+  @media (max-width: 640px) {
+    .schedule-table { min-width: 0; }
+    .schedule-table thead { display: none; }
+    .schedule-table, .schedule-table tbody, .schedule-table tr, .schedule-table td {
+      display: block; width: 100%;
     }
-  </style>
+    .schedule-table tr {
+      background: #fff; border: 1px solid #eee; border-radius: 10px;
+      padding: .5rem .75rem; margin-bottom: .75rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    }
+    .schedule-table td {
+      border: none; padding: .45rem 0;
+    }
+    .schedule-table td::before {
+      content: attr(data-label);
+      display: block; font-size: .8rem; color: #6b7280; margin-bottom: .15rem;
+      text-transform: none;
+    }
+        /* Make the last cell (Register) breathe */
+    .schedule-table td:last-child { margin-top: .25rem; }
+  }
+       /* --- Sticky Mobile CTA --- */
+.mobile-cta {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  display: none; /* hidden by default; enabled via media query */
+  gap: .75rem; padding: .8rem 1rem calc(.8rem + env(safe-area-inset-bottom));
+  background: #111827;
+  box-shadow: 0 -6px 16px rgba(0,0,0,.15);
+  z-index: 9999;
+}
+.mobile-cta .btn {
+  flex: 1; text-align: center; padding: .9rem 1rem; border-radius: 10px;
+  font-weight: 700; text-decoration: none;
+}
+.btn-primary { background: #0d6efd; color: #fff; }
+.btn-outline  { background: #ffffff; color: #111827; border: 1px solid #e5e7eb; }
+
+/* Hide per-row register buttons on small screens */
+.per-row-register { display: inline-block; }
+
+/* Widen breakpoint so it shows on most phones/tablets */
+@media (max-width: 768px) {
+  body { padding-bottom: calc(88px + env(safe-area-inset-bottom)); }
+  .mobile-cta { display: flex; }
+  .per-row-register { display: none; }
+}
+</style>
+
 </head>
 <body>
-  <!-- header omitted for brevity -->
-  <section class="container">
-    <h2 class="section-title">Upcoming Sessions</h2>
-    <p>This schedule is loaded from Google Sheets. Each row now includes a link to its Google Drive folder.</p>
+ <header>
+  <div class="nav-container" style="display: flex; align-items: center; justify-content: space-between;">
+    
+    <!-- Company + HRD Corp Logos -->
+    <div class="logo-group" style="display: flex; align-items: center;">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="EasyLatih logo" style="height: 50px; margin-right: 10px;">
+      </a>
+      <div class="hrdcorp-logos" style="display: flex; align-items: center; gap: 10px;">
+        <img src="assets/Logo Training Provider_Logo Registered Training Provider.png" alt="HRD Corp Registered" style="height: 40px;">
+        <img src="assets/HRD Corp - Claimable Logo.png" alt="HRD Corp Claimable" style="height: 40px;">
+      </div>
+    </div>
 
-<div class="filter-bar">
-  <label for="venueFilter">Filter by location:</label>
-  <select id="venueFilter"><option value="all">All Locations</option></select>
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-toggle" id="navToggle">
+        <span></span><span></span><span></span>
+      </div>
+      <ul id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="room-rental.html">Training Room</a></li>
+        <li><a href="schedule.html">Public Training</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+   <section class="container">
+  <h2 class="section-title">Upcoming Sessions</h2>
+  <p class="mb-4">Below is our provisional schedule for the upcoming months. Dates and courses are subject to
+    change. Click the register button next to each course to reserve your spot once registration opens.</p>
+
+  <div class="table-responsive">
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Course</th>
+          <th>Duration</th>
+          <th>Delivery Method</th>
+          <th>Venue</th>
+          <th>Register</th>
+        </tr>
+      </thead>
+      <tbody>
+          
+        <tr>
+          <td data-label="Date">9 - 10 Sep 2025</td>
+          <td data-label="Course">Occupational First Aid and CPR Introduction to AED Training</td>
+          <td data-label="Duration">2 Days</td>
+          <td data-label="Delivery Method">Classroom (Physical)</td>
+          <td data-label="Venue">Kuantan</td>            
+          <td data-label="Register">
+            <a href="https://drive.google.com/drive/folders/1RdBM_YY03XpnyIquw6LE3OGqGPmrwdKy?usp=drive_link"
+               target="_blank" rel="noopener"
+               style="display:inline-block;margin-bottom:6px;text-decoration:none;font-weight:600;">
+               📄 View Course Details
+            </a><br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform?usp=header"
+               target="_blank" class="btn per-row-register">Register</a>
+          </td>
+        </tr>
+
+                  <tr>
+          <td data-label="Date">24 & 25 Sep 2025</td>
+          <td data-label="Course">Managing Disciplinary Issue & Conducting Domestic Inquiry</td>
+          <td data-label="Duration">2 Days</td>
+          <td data-label="Delivery Method">Classroom (Physical)</td>
+          <td data-label="Venue">Kuantan</td>
+          <td data-label="Register">
+            <a href="https://drive.google.com/drive/folders/1QYD6OqjayDTU3RvTg_L7Wjc7gYVwGocQ?usp=sharing"
+               target="_blank" rel="noopener"
+               style="display:inline-block;margin-bottom:6px;text-decoration:none;font-weight:600;">
+               📄 View Course Details
+            </a><br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform?usp=header"
+               target="_blank" class="btn per-row-register">Register</a>
+          </td>
+        </tr>
+          
+        <tr>
+          <td data-label="Date">29 Sep 2025</td>
+          <td data-label="Course">Basic Accounting and Tax for SMEs</td>
+          <td data-label="Duration">1 Day</td>
+          <td data-label="Delivery Method">Classroom (Physical)</td>
+          <td data-label="Venue">Kuala Terengganu</td>
+          <td data-label="Register">
+            <a href="https://drive.google.com/drive/folders/1txE2jJp32Ykl9K_Z1-xnGIzoV8X91ViQ?usp=sharing"
+               target="_blank" rel="noopener"
+               style="display:inline-block;margin-bottom:6px;text-decoration:none;font-weight:600;">
+               📄 View Course Details
+            </a><br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform?usp=header"
+               target="_blank" class="btn per-row-register">Register</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td data-label="Date">30 Sep 2025</td>
+          <td data-label="Course">E-Invoice Implementation : For All Business</td>
+          <td data-label="Duration">1 Day</td>
+          <td data-label="Delivery Method">Classroom (Physical)</td>
+          <td data-label="Venue">Kuala Terengganu</td>
+          <td data-label="Register">
+            <a href="https://drive.google.com/drive/folders/1yNFzEHmp_fJSRnmj-_5a7tG8QSX7wQtV?usp=sharing"
+               target="_blank" rel="noopener"
+               style="display:inline-block;margin-bottom:6px;text-decoration:none;font-weight:600;">
+               📄 View Course Details
+            </a><br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform?usp=header"
+               target="_blank" class="btn per-row-register">Register</a>
+          </td>
+        </tr>
+
+                  <tr>
+          <td data-label="Date">30 Sep 2025</td>
+          <td data-label="Course">Expansion of Service Tax Scope (SST) - Compliance & Implementation</td>
+          <td data-label="Duration">1 Day</td>
+          <td data-label="Delivery Method">Classroom (Physical)</td>
+          <td data-label="Venue">Kuantan</td>
+          <td data-label="Register">
+            <a href="https://drive.google.com/drive/folders/1wa2KnkaimU6Oog5Hh-TIvXOuaxQBfrXF?usp=sharing"
+               target="_blank" rel="noopener"
+               style="display:inline-block;margin-bottom:6px;text-decoration:none;font-weight:600;">
+               📄 View Course Details
+            </a><br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform?usp=header"
+               target="_blank" class="btn per-row-register">Register</a>
+          </td>
+        </tr>
+
+<tr>
+          <td data-label="Date">8 Oct 2025</td>
+          <td data-label="Course">Basic Accounting and Tax for SMEs</td>
+          <td data-label="Duration">1 Day</td>
+          <td data-label="Delivery Method">Classroom (Physical)</td>
+          <td data-label="Venue">Kota Bharu</td>
+          <td data-label="Register">
+            <a href="https://drive.google.com/drive/folders/1Mmntr_r8rV1T0K4zQvigxC2Fz_nDzGrJ?usp=sharing"
+               target="_blank" rel="noopener"
+               style="display:inline-block;margin-bottom:6px;text-decoration:none;font-weight:600;">
+               📄 View Course Details
+            </a><br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform?usp=header"
+               target="_blank" class="btn per-row-register">Register</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td data-label="Date">9 Oct 2025</td>
+          <td data-label="Course">E-Invoice Implementation : For All Business</td>
+          <td data-label="Duration">1 Day</td>
+          <td data-label="Delivery Method">Classroom (Physical)</td>
+          <td data-label="Venue">Kota Bharu</td>
+          <td data-label="Register">
+            <a href="https://drive.google.com/drive/folders/1oD89Bz0EZvKjtwo3Z4gPMnkX_Ulre9ly?usp=drive_link"
+               target="_blank" rel="noopener"
+               style="display:inline-block;margin-bottom:6px;text-decoration:none;font-weight:600;">
+               📄 View Course Details
+            </a><br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform?usp=header"
+               target="_blank" class="btn per-row-register">Register</a>
+          </td>
+        </tr>
+
+                  <tr>
+          <td data-label="Date">5 & 6 Nov 2025</td>
+          <td data-label="Course">Effective Operation Management for Field Supervisor (Plantations)</td>
+          <td data-label="Duration">2 Days</td>
+          <td data-label="Delivery Method">Classroom (Physical)</td>
+          <td data-label="Venue">Kuantan</td>
+          <td data-label="Register">
+            <a href="https://drive.google.com/drive/folders/1GisK8MKVxjTlkqe8ilAUdcnH_xf5p6oN?usp=drive_link"
+               target="_blank" rel="noopener"
+               style="display:inline-block;margin-bottom:6px;text-decoration:none;font-weight:600;">
+               📄 View Course Details
+            </a><br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform?usp=header"
+               target="_blank" class="btn per-row-register">Register</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td data-label="Date">TBA</td>
+          <td data-label="Course">More courses coming soon...</td>
+          <td data-label="Duration">–</td>
+          <td data-label="Delivery Method">–</td>
+          <td data-label="Venue">-</td>
+          <td data-label="Register"><a href="#" class="btn per-row-register">Register</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h4>Contact Us</h4>
+                <p>B62, Tingkat 1, Jalan IM 7/1<br>
+                   Bandar Indera Mahkota 6, 25200<br>
+                   Kuantan, Pahang, Malaysia</p>
+                <p>Email: <a href="mailto:sales@easylatih.my">sales@easylatih.my</a></p>
+                <p>Phone: <a href="tel:+6095604273">+60 9 560 4273</a></p>
+                <p>WhatsApp: <a href="https://wa.me/60109202811" target="_blank">+60 10 920 2811</a></p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="room-rental.html">Training Room</a>
+                <a href="schedule.html">Public Training</a>
+                <a href="blog.html">Blog</a>
+            </div>
+            <div>
+                <h4>Follow Us</h4>
+                <div class="socials">
+                  <a href="https://www.facebook.com/EasyLatih/"><i class="fab fa-facebook-f"></i></a>
+                  <a href="https://www.instagram.com/easylatih/"><i class="fab fa-instagram"></i></a>
+                  <a href="https://my.linkedin.com/company/easylatih"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="https://www.youtube.com/channel/UCQ2aaTN9fwSkmpjN5cC6O2w"><i class="fab fa-youtube"></i></a>
+                  <a href="https://www.tiktok.com/@easylatih"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center" style="margin-top: 2rem;">
+            EasyLatih is a brand under Easy Latih Consultancy (Registration No. 202503030373).<br>
+            &copy; 2025 EasyLatih. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- Sticky Register Bar (mobile only) -->
+<div class="mobile-cta" aria-label="Quick actions">
+  <a
+    href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform?usp=header"
+    target="_blank" rel="noopener" class="btn btn-primary"
+    aria-label="Register for public training"
+  >
+    Register Now
+  </a>
+  <a
+    href="https://wa.me/60109202811?text=Hi%20EasyLatih%2C%20I%27d%20like%20to%20register%20for%20a%20public%20training.%20Could%20you%20assist%3F"
+    target="_blank" rel="noopener" class="btn btn-outline"
+    aria-label="Chat with us on WhatsApp"
+  >
+    WhatsApp Us
+  </a>
 </div>
-<div class="table-responsive">
-  <table class="schedule-table">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Course</th>
-        <th>Duration</th>
-        <th>Delivery Method</th>
-        <th>Venue</th>
-        <th>Details</th>
-        <th>Register</th>
-      </tr>
-    </thead>
-    <tbody id="scheduleBody"></tbody>
-  </table>
-</div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRfdHRk3MuhF-IUKOdDwU3ahbODmSHRuolZkAPWRhxscEGAX0YMKJA5L49yhieYv4fpBEo97Rm1kiqZ/pub?gid=0&single=true&output=csv'; // ganti dengan URL CSV dari Google Sheet
-    const tableBody  = document.getElementById('scheduleBody');
-    const venueSelect = document.getElementById('venueFilter');
-
-    function parseCSV(csv) {
-      const lines = csv.trim().split(/\\r?\\n/);
-      const rows  = [];
-      for (let i = 1; i < lines.length; i++) {
-        const cols = lines[i].split(',');
-        rows.push({
-          date: cols[0],
-          course: cols[1],
-          duration: cols[2],
-          method: cols[3],
-          venue: cols[4],
-          details: cols[5],
-          register: cols[6]
-        });
-      }
-      return rows;
-    }
-
-    function populateTable(data) {
-      tableBody.innerHTML = '';
-      const venues = new Set();
-      data.forEach(item => venues.add(item.venue));
-      if (venueSelect.options.length === 1) {
-        Array.from(venues).sort().forEach(v => {
-          const opt = document.createElement('option');
-          opt.value = v; opt.textContent = v;
-          venueSelect.appendChild(opt);
-        });
-      }
-      data.forEach(item => {
-        const tr = document.createElement('tr');
-        tr.dataset.venue = item.venue;
-        tr.innerHTML = \`
-          <td data-label="Date">\${item.date}</td>
-          <td data-label="Course">\${item.course}</td>
-          <td data-label="Duration">\${item.duration}</td>
-          <td data-label="Delivery Method">\${item.method}</td>
-          <td data-label="Venue">\${item.venue}</td>
-          <td data-label="Details"><a href="\${item.details}" target="_blank" rel="noopener">Details</a></td>
-          <td data-label="Register"><a href="\${item.register}" target="_blank" class="btn per-row-register">Register</a></td>\`;
-        tableBody.appendChild(tr);
-      });
-    }
-
-    function filterRows() {
-      const selected = venueSelect.value;
-      tableBody.querySelectorAll('tr').forEach(row => {
-        row.style.display = (selected === 'all' || row.dataset.venue === selected) ? '' : 'none';
-      });
-    }
-
-    fetch(csvUrl)
-      .then(res => res.text())
-      .then(csv => {
-        const data = parseCSV(csv);
-        populateTable(data);
-        filterRows();
-      })
-      .catch(err => console.error('Error loading schedule:', err));
-
-    venueSelect.addEventListener('change', filterRows);
-  });
-</script>
 </body>
 </html>
