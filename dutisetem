@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webinar Duti Setem – Easy Latih Consultancy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="assets/favicon.png">
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- 🔹 HEADER sama seperti page lain -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+      <div class="flex items-center space-x-3">
+        <img src="assets/easylatih-logo.png" alt="Easy Latih Logo" class="w-36">
+      </div>
+      <nav class="hidden md:flex space-x-6 font-medium">
+        <a href="index.html" class="hover:text-blue-700">Home</a>
+        <a href="courses.html" class="hover:text-blue-700">Courses</a>
+        <a href="trainingroom.html" class="hover:text-blue-700">Training Room</a>
+        <a href="publictraining.html" class="hover:text-blue-700">Public Training</a>
+        <a href="blog.html" class="hover:text-blue-700">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 🔹 CONTENT -->
+  <main class="max-w-4xl mx-auto p-6 bg-white shadow-md mt-10 rounded-lg">
+    <h1 class="text-2xl md:text-3xl font-bold text-blue-900 mb-3 text-center">
+      Webinar DUTI SETEM:<br>Perubahan Risiko & Pematuhan Isu Majikan
+    </h1>
+    <p class="text-center text-sm text-gray-600 mb-6">
+      Dengan kerjasama LHDNM Negeri Pahang
+    </p>
+
+    <p class="text-justify mb-6">
+      Mulai <strong>1 Januari 2025</strong>, LHDN mewajibkan semua kontrak pekerjaan dicap setem dalam 30 hari dari tarikh tandatangan.
+      Webinar ini membantu majikan & HR memahami implikasi, risiko, dan tindakan pematuhan yang diperlukan.
+    </p>
+
+    <div class="bg-blue-50 p-4 rounded-lg mb-6">
+      <h2 class="font-semibold text-lg text-blue-900 mb-2">📅 Butiran Program</h2>
+      <ul class="list-disc ml-5 text-sm leading-relaxed">
+        <li><strong>Tarikh:</strong> 13 November 2025 (Khamis)</li>
+        <li><strong>Masa:</strong> 10.00 pagi – 1.00 tengah hari</li>
+        <li><strong>Mod:</strong> Online (Google Meet – link selepas daftar)</li>
+        <li><strong>Yuran:</strong> RM50/peserta</li>
+        <li><strong>Bonus:</strong> e-Sijil & rakaman webinar</li>
+        <li><strong>Kuota:</strong> 120 peserta sahaja</li>
+        <li><strong>Status HRD Corp:</strong> Tidak layak tuntutan</li>
+      </ul>
+    </div>
+
+    <h2 class="font-semibold text-lg text-blue-900 mb-3">🎓 Topik Perbincangan</h2>
+    <ol class="list-decimal ml-6 text-sm mb-6 leading-relaxed">
+      <li>Pengenalan Duti Setem di Malaysia</li>
+      <li>Peralihan ke Sistem Taksir Sendiri</li>
+      <li>Perkembangan & Amalan Audit Duti Setem</li>
+      <li>Pindaan Akta 2025 & Isu Semasa</li>
+    </ol>
+
+    <!-- 🔹 BORANG PENDAFTARAN -->
+    <h2 class="font-semibold text-lg text-blue-900 mb-3">📝 Daftar Sekarang</h2>
+    <form id="regForm" class="space-y-4">
+      <input type="text" name="name" placeholder="Nama Penuh" required class="w-full border p-2 rounded">
+      <input type="email" name="email" placeholder="Alamat Emel" required class="w-full border p-2 rounded">
+      <input type="text" name="phone" placeholder="No. Telefon" required class="w-full border p-2 rounded">
+      <input type="text" name="company" placeholder="Nama Syarikat / Organisasi" required class="w-full border p-2 rounded">
+      <div>
+        <label class="block mb-1 font-semibold">Kaedah Bayaran</label>
+        <select name="payment" id="payment" required class="w-full border p-2 rounded">
+          <option value="">-- Pilih Kaedah Bayaran --</option>
+          <option value="ToyyibPay">ToyyibPay (FPX)</option>
+          <option value="Transfer">Bank Transfer Manual</option>
+        </select>
+      </div>
+      <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 rounded transition">
+        Hantar & Daftar
+      </button>
+    </form>
+
+    <div id="msg" class="mt-4 text-center text-sm font-semibold"></div>
+
+    <!-- 🔹 QR CODE TOYYIBPAY -->
+    <div class="text-center mt-10">
+      <h3 class="text-lg font-semibold mb-2 text-blue-900">📱 Bayar melalui QR ToyyibPay</h3>
+      <img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://toyyibpay.com/easylatih-dutisetem"
+           alt="ToyyibPay QR" class="mx-auto border rounded-lg p-2 bg-white shadow-md">
+      <p class="text-sm text-gray-600 mt-2">Imbas QR di atas untuk terus ke halaman pembayaran.</p>
+    </div>
+  </main>
+
+  <!-- 🔹 FOOTER -->
+  <footer class="text-center text-gray-500 text-sm py-6 mt-10">
+    © 2025 Easy Latih Consultancy. All Rights Reserved.
+  </footer>
+
+  <!-- 🔹 SCRIPT -->
+  <script>
+    const form = document.getElementById('regForm');
+    const msg = document.getElementById('msg');
+
+    const TOYYIBPAY_LINK = "https://toyyibpay.com/easylatih-dutisetem"; // gantikan dengan link sebenar
+    const GOOGLE_WEBAPP_URL = "https://script.google.com/macros/s/PASTE_WEBAPP_ID/exec"; // Apps Script untuk log & auto emel
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.innerHTML = "⏳ Memproses pendaftaran anda...";
+
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      try {
+        await fetch(GOOGLE_WEBAPP_URL, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: { "Content-Type": "application/json" }
+        });
+      } catch (err) {
+        console.error("Error log:", err);
+      }
+
+      if (data.payment === "ToyyibPay") {
+        msg.innerHTML = "✅ Pendaftaran berjaya! Anda akan dialihkan ke halaman pembayaran...";
+        setTimeout(() => window.location.href = TOYYIBPAY_LINK, 1500);
+      } else {
+        msg.innerHTML = "✅ Terima kasih!<br>Sila buat bayaran manual ke akaun <b>Easy Latih Consultancy</b>:<br>Maybank 5123456789<br>Hantar slip ke admin@easylatih.my";
+      }
+    });
+  </script>
+</body>
+</html>
