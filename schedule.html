@@ -613,220 +613,1949 @@
   // Each event: { date: 'YYYY-MM-DD', state, program, category, durationDays, image?, detailsUrl?, registerUrl? }
 
   const events2026 = [
-    // =============== JANUARY 2026 ===============
-    // KUALA LUMPUR
-    {
-      date: '2026-01-06',
-      state: 'Kuala Lumpur',
-      program: 'HR Fundamentals & Employment Law',
-      category: 'Human Resource Management',
-      durationDays: 1,
-      image: 'assets/calendar/hr-fundamentals.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
-    {
-      date: '2026-01-13',
-      state: 'Kuala Lumpur',
-      program: 'Malaysian Taxation 2026',
-      category: 'Finance Management',
-      durationDays: 1,
-      image: 'assets/calendar/malaysian-tax-2026.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
-    {
-      date: '2026-01-20',
-      state: 'Kuala Lumpur',
-      program: 'Microsoft Excel (Basic)',
-      category: 'Information Technology',
-      durationDays: 1,
-      image: 'assets/calendar/excel-basic.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
-    {
-      date: '2026-01-27',
-      state: 'Kuala Lumpur',
-      program: 'Strategic Sales & Marketing Planning',
-      category: 'Sales and Marketing',
-      durationDays: 2,
-      image: 'assets/calendar/strategic-sales.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
+ {
+    date: '2026-01-06',
+    state: 'Kuala Lumpur',
+    program: 'HR Fundamentals & Employment Law',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-01-13',
+    state: 'Kuala Lumpur',
+    program: 'Malaysian Taxation 2026',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-01-20',
+    state: 'Kuala Lumpur',
+    program: 'Excel Basic',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-01-27',
+    state: 'Kuala Lumpur',
+    program: 'Strategic Sales & Marketing Planning',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-01-07',
+    state: 'Pahang',
+    program: 'Basic Accounting for Non-Accountant',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-01-14',
+    state: 'Pahang',
+    program: 'KPI & Performance Management',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-01-21',
+    state: 'Pahang',
+    program: 'Pengurusan Stok & Inventory',
+    category: 'Operation',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-01-28',
+    state: 'Pahang',
+    program: 'Customer Relationship & After-Sales',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-01-08',
+    state: 'Terengganu',
+    program: 'ESG Essentials',
+    category: 'ESG',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-01-15',
+    state: 'Terengganu',
+    program: 'Excel Intermediate',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-01-22',
+    state: 'Terengganu',
+    program: 'Domestic Inquiry (2-day)',
+    category: 'Human Resource Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-01-29',
+    state: 'Terengganu',
+    program: 'Effective Customer Service',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-01-09',
+    state: 'Kelantan',
+    program: 'Frontdesk & Receptionist',
+    category: 'Operation',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-01-16',
+    state: 'Kelantan',
+    program: 'HR Admin & Record Mgmt',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-01-23',
+    state: 'Kelantan',
+    program: 'Industrial Relations',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-01-30',
+    state: 'Kelantan',
+    program: 'Digital Marketing (2-day)',
+    category: 'Sales and Marketing',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
 
-    // PAHANG
-    {
-      date: '2026-01-07',
-      state: 'Pahang',
-      program: 'Basic Accounting for Non Accountant',
-      category: 'Finance Management',
-      durationDays: 1,
-      image: 'assets/calendar/basic-accounting.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
-    {
-      date: '2026-01-14',
-      state: 'Pahang',
-      program: 'Performance Management & KPI',
-      category: 'Human Resource Management',
-      durationDays: 2,
-      image: 'assets/calendar/performance-kpi.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
-    {
-      date: '2026-01-21',
-      state: 'Pahang',
-      program: 'Pengurusan Stok dan Inventory',
-      category: 'Operation',
-      durationDays: 1,
-      image: 'assets/calendar/stok-inventory.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
-    {
-      date: '2026-01-28',
-      state: 'Pahang',
-      program: 'Customer Relationship & After-Sales Excellence',
-      category: 'Sales and Marketing',
-      durationDays: 2,
-      image: 'assets/calendar/customer-relationship.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
+  // === FEBRUARY 2026 ===
+  {
+    date: '2026-02-03',
+    state: 'Kuala Lumpur',
+    program: 'Anti-Bribery ISO 37001',
+    category: 'Quality Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-02-10',
+    state: 'Kuala Lumpur',
+    program: 'SST',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-02-17',
+    state: 'Kuala Lumpur',
+    program: 'Excel Pivot Table',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-02-24',
+    state: 'Kuala Lumpur',
+    program: 'Negotiation & Closing Skills',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-02-04',
+    state: 'Pahang',
+    program: 'Salary, Leave & Statutory',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-02-11',
+    state: 'Pahang',
+    program: 'Full Set Accounting (2-day)',
+    category: 'Finance Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-02-18',
+    state: 'Pahang',
+    program: 'Record Management (Ops)',
+    category: 'Operation',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-02-25',
+    state: 'Pahang',
+    program: 'Effective Leadership (2-day)',
+    category: 'Senior Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-02-05',
+    state: 'Terengganu',
+    program: 'QMS ISO 9001 Awareness',
+    category: 'Quality Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-02-12',
+    state: 'Terengganu',
+    program: 'Customer Service Excellence',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-02-19',
+    state: 'Terengganu',
+    program: 'HR Fundamentals (2-day)',
+    category: 'Human Resource Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-02-26',
+    state: 'Terengganu',
+    program: 'Sales Strategy & Pipeline',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-02-06',
+    state: 'Kelantan',
+    program: 'Pengurusan Stok & Inventory',
+    category: 'Operation',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-02-13',
+    state: 'Kelantan',
+    program: 'Analytical Thinking',
+    category: 'Senior Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-02-20',
+    state: 'Kelantan',
+    program: 'Basic Accounting',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-02-27',
+    state: 'Kelantan',
+    program: 'Digital Marketing',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
 
-    // TERENGGANU
-    {
-      date: '2026-01-08',
-      state: 'Terengganu',
-      program: 'Environment Sustainability & Governance',
-      category: 'ESG',
-      durationDays: 2,
-      image: 'assets/calendar/esg.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
-    {
-      date: '2026-01-15',
-      state: 'Terengganu',
-      program: 'Micorosft Excel (Intermediate)',
-      category: 'Information Technology',
-      durationDays: 1,
-      image: 'assets/calendar/excel-intermediate.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
-    {
-      date: '2026-01-22',
-      state: 'Terengganu',
-      program: 'Disiplinary & Domestic Inquiry',
-      category: 'Human Resource Management',
-      durationDays: 2,
-      image: 'assets/calendar/domestic-inquiry.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
-    {
-      date: '2026-01-29',
-      state: 'Terengganu',
-      program: 'Effective Customer Service',
-      category: 'Operation',
-      durationDays: 1,
-      image: 'assets/calendar/customer-service.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
+  // === MARCH 2026 ===
+  {
+    date: '2026-03-03',
+    state: 'Kuala Lumpur',
+    program: 'Industrial Relations',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-03-10',
+    state: 'Kuala Lumpur',
+    program: 'Excel Intermediate',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-03-17',
+    state: 'Kuala Lumpur',
+    program: 'Malaysian Taxation 2026',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-03-24',
+    state: 'Kuala Lumpur',
+    program: 'KPI & Performance Mgmt',
+    category: 'Human Resource Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-03-04',
+    state: 'Pahang',
+    program: 'Frontdesk & Receptionist',
+    category: 'Operation',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-03-11',
+    state: 'Pahang',
+    program: 'HR Admin & Record',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-03-18',
+    state: 'Pahang',
+    program: 'Domestic Inquiry',
+    category: 'Human Resource Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-03-25',
+    state: 'Pahang',
+    program: 'Strategic Sales Planning',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-03-05',
+    state: 'Terengganu',
+    program: 'ESG Essentials',
+    category: 'ESG',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-03-12',
+    state: 'Terengganu',
+    program: 'Excel Basic',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-03-19',
+    state: 'Terengganu',
+    program: 'Industrial Relations',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-03-26',
+    state: 'Terengganu',
+    program: 'NLP for Leaders (2-day condensed preview)',
+    category: 'Senior Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-03-06',
+    state: 'Kelantan',
+    program: 'SST',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-03-13',
+    state: 'Kelantan',
+    program: 'Customer Service',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-03-20',
+    state: 'Kelantan',
+    program: 'QMS ISO 9001',
+    category: 'Quality Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-03-27',
+    state: 'Kelantan',
+    program: 'Communication & Closing Skills',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
 
-    // KELANTAN
-    {
-      date: '2026-01-09',
-      state: 'Kelantan',
-      program: 'Frontdesk and receptionist',
-      category: 'Operation',
-      durationDays: 1,
-      image: 'assets/calendar/frontdesk.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
-    {
-      date: '2026-01-16',
-      state: 'Kelantan',
-      program: 'HR Administration & Record Management',
-      category: 'Human Resource Management',
-      durationDays: 2,
-      image: 'assets/calendar/hr-admin.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
-    {
-      date: '2026-01-23',
-      state: 'Kelantan',
-      program: 'Industrial Relation',
-      category: 'Human Resource Management',
-      durationDays: 1,
-      image: 'assets/calendar/industrial-relation.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
-    {
-      date: '2026-01-30',
-      state: 'Kelantan',
-      program: 'Digital marketing and content strategy',
-      category: 'Sales and Marketing',
-      durationDays: 2,
-      image: 'assets/calendar/digital-marketing.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
+  // === APRIL 2026 ===
+  {
+    date: '2026-04-07',
+    state: 'Kuala Lumpur',
+    program: 'HR Fundamentals',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-04-14',
+    state: 'Kuala Lumpur',
+    program: 'Excel Pivot',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-04-21',
+    state: 'Kuala Lumpur',
+    program: 'Customer Relationship',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-04-28',
+    state: 'Kuala Lumpur',
+    program: 'Anti-Bribery ISO 37001',
+    category: 'Quality Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-04-08',
+    state: 'Pahang',
+    program: 'Basic Accounting',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-04-15',
+    state: 'Pahang',
+    program: 'Domestic Inquiry',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-04-22',
+    state: 'Pahang',
+    program: 'Digital Marketing',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-04-29',
+    state: 'Pahang',
+    program: '5S Implementation',
+    category: 'Quality Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-04-09',
+    state: 'Terengganu',
+    program: 'Performance Management',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-04-16',
+    state: 'Terengganu',
+    program: 'Salary, Leave & Statutory',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-04-23',
+    state: 'Terengganu',
+    program: 'Excel Intermediate',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-04-30',
+    state: 'Terengganu',
+    program: 'HR Admin & Record',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-04-10',
+    state: 'Kelantan',
+    program: 'Sales Strategy',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-04-17',
+    state: 'Kelantan',
+    program: 'Frontdesk & Reception',
+    category: 'Operation',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-04-24',
+    state: 'Kelantan',
+    program: 'Industrial Relations',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-04-30',
+    state: 'Kelantan',
+    program: 'Analytical Thinking',
+    category: 'Senior Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
 
-    // =============== FEBRUARY 2026 (sample subset) ===============
-    {
-      date: '2026-02-03',
-      state: 'Kuala Lumpur',
-      program: 'Anti Bribery ISO 37001 Awareness',
-      category: 'Quality Management',
-      durationDays: 1,
-      image: 'assets/calendar/iso37001.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
-    {
-      date: '2026-02-10',
-      state: 'Kuala Lumpur',
-      program: 'SST',
-      category: 'Finance Management',
-      durationDays: 1,
-      image: 'assets/calendar/sst.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
-    {
-      date: '2026-02-17',
-      state: 'Kuala Lumpur',
-      program: 'Microsoft Excel - Pivot Table For Reporting',
-      category: 'Information Technology',
-      durationDays: 1,
-      image: 'assets/calendar/excel-pivot.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    },
-    {
-      date: '2026-02-24',
-      state: 'Kuala Lumpur',
-      program: 'Coommunication, negotiation and closing skills',
-      category: 'Sales and Marketing',
-      durationDays: 2,
-      image: 'assets/calendar/communication-skills.jpg',
-      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
-      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
-    }
+  // === MAY 2026 ===
+  {
+    date: '2026-05-05',
+    state: 'Kuala Lumpur',
+    program: 'Full Set Accounting (2-day start)',
+    category: 'Finance Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-05-12',
+    state: 'Kuala Lumpur',
+    program: 'HR Admin',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-05-19',
+    state: 'Kuala Lumpur',
+    program: 'Strategic Sales',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-05-26',
+    state: 'Kuala Lumpur',
+    program: 'Excel Intermediate',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-05-06',
+    state: 'Pahang',
+    program: 'KPI & Performance',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-05-13',
+    state: 'Pahang',
+    program: 'ESG Essentials',
+    category: 'ESG',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-05-20',
+    state: 'Pahang',
+    program: 'Customer Service',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-05-27',
+    state: 'Pahang',
+    program: 'QMS ISO 9001',
+    category: 'Quality Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-05-07',
+    state: 'Terengganu',
+    program: 'Taxation 2026',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-05-14',
+    state: 'Terengganu',
+    program: 'Salary & Leave',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-05-21',
+    state: 'Terengganu',
+    program: 'Record Management',
+    category: 'Operation',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-05-28',
+    state: 'Terengganu',
+    program: 'NLP for Leaders (2-day version)',
+    category: 'Senior Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-05-08',
+    state: 'Kelantan',
+    program: 'Pengurusan Stok',
+    category: 'Operation',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-05-15',
+    state: 'Kelantan',
+    program: 'Basic Accounting',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-05-22',
+    state: 'Kelantan',
+    program: 'Domestic Inquiry',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-05-29',
+    state: 'Kelantan',
+    program: 'Excel Basic',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
 
-    // 👉 Add remaining months/states here following same structure
-  ];
+  // === JUNE 2026 ===
+  {
+    date: '2026-06-02',
+    state: 'Kuala Lumpur',
+    program: 'Anti-Bribery',
+    category: 'Quality Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-06-09',
+    state: 'Kuala Lumpur',
+    program: 'Excel Basic',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-06-16',
+    state: 'Kuala Lumpur',
+    program: 'Leadership Skills',
+    category: 'Senior Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-06-23',
+    state: 'Kuala Lumpur',
+    program: 'Customer Service',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-06-03',
+    state: 'Pahang',
+    program: 'HR Fundamentals',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-06-10',
+    state: 'Pahang',
+    program: 'Digital Marketing',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-06-17',
+    state: 'Pahang',
+    program: 'Full Set Accounting',
+    category: 'Finance Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-06-24',
+    state: 'Pahang',
+    program: 'Operations – Record Mgmt',
+    category: 'Operation',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-06-04',
+    state: 'Terengganu',
+    program: 'QMS ISO',
+    category: 'Quality Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-06-11',
+    state: 'Terengganu',
+    program: 'Salary, Leave & Statutory',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-06-18',
+    state: 'Terengganu',
+    program: 'Industrial Relations',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-06-25',
+    state: 'Terengganu',
+    program: 'Sales Strategy',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-06-05',
+    state: 'Kelantan',
+    program: 'Analytical Thinking',
+    category: 'Senior Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-06-12',
+    state: 'Kelantan',
+    program: 'KPI Performance',
+    category: 'Human Resource Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-06-19',
+    state: 'Kelantan',
+    program: 'Excel Intermediate',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-06-26',
+    state: 'Kelantan',
+    program: 'Customer Relationship',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
 
+  // === JULY 2026 ===
+  {
+    date: '2026-07-07',
+    state: 'Kuala Lumpur',
+    program: 'HR Admin & Record Management',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-07-14',
+    state: 'Kuala Lumpur',
+    program: 'Excel Intermediate',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-07-21',
+    state: 'Kuala Lumpur',
+    program: 'Customer Relationship & After-Sales',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-07-28',
+    state: 'Kuala Lumpur',
+    program: 'Anti-Bribery ISO 37001',
+    category: 'Quality Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-07-08',
+    state: 'Pahang',
+    program: 'KPI & Performance Mgmt',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-07-15',
+    state: 'Pahang',
+    program: 'SST',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-07-22',
+    state: 'Pahang',
+    program: 'Sales Strategy & Pipeline',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-07-29',
+    state: 'Pahang',
+    program: 'Frontdesk & Receptionist',
+    category: 'Operation',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-07-09',
+    state: 'Terengganu',
+    program: 'ESG Essentials',
+    category: 'ESG',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-07-16',
+    state: 'Terengganu',
+    program: 'Excel Basic',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-07-23',
+    state: 'Terengganu',
+    program: 'Industrial Relations',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-07-30',
+    state: 'Terengganu',
+    program: 'Full Set Accounting (2-day)',
+    category: 'Finance Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-07-10',
+    state: 'Kelantan',
+    program: 'HR Fundamentals & Employment Law',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-07-17',
+    state: 'Kelantan',
+    program: 'Customer Service',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-07-24',
+    state: 'Kelantan',
+    program: 'Analytical Thinking & Decision Making',
+    category: 'Senior Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-07-31',
+    state: 'Kelantan',
+    program: 'QMS ISO 9001 Awareness',
+    category: 'Quality Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+
+  // === AUGUST 2026 ===
+  {
+    date: '2026-08-04',
+    state: 'Kuala Lumpur',
+    program: 'Malaysian Taxation 2026',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-08-11',
+    state: 'Kuala Lumpur',
+    program: 'Excel Pivot Table',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-08-18',
+    state: 'Kuala Lumpur',
+    program: 'Sales Negotiation & Closing Skills',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-08-25',
+    state: 'Kuala Lumpur',
+    program: 'Effective Leadership Skills',
+    category: 'Senior Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-08-05',
+    state: 'Pahang',
+    program: 'Pengurusan Stok & Inventory',
+    category: 'Operation',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-08-12',
+    state: 'Pahang',
+    program: 'Domestic Inquiry (2-day)',
+    category: 'Human Resource Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-08-19',
+    state: 'Pahang',
+    program: 'QMS ISO 9001',
+    category: 'Quality Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-08-26',
+    state: 'Pahang',
+    program: 'HR Admin & Record',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-08-06',
+    state: 'Terengganu',
+    program: 'Customer Relationship & After-Sales',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-08-13',
+    state: 'Terengganu',
+    program: 'Basic Accounting',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-08-20',
+    state: 'Terengganu',
+    program: 'Strategic Sales & Marketing',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-08-27',
+    state: 'Terengganu',
+    program: 'Excel Intermediate (2-day cycle)',
+    category: 'Information Technology',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-08-07',
+    state: 'Kelantan',
+    program: 'Frontdesk & Receptionist',
+    category: 'Operation',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-08-14',
+    state: 'Kelantan',
+    program: 'Performance Management & KPI',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-08-21',
+    state: 'Kelantan',
+    program: 'Digital Marketing & Content Strategy',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-08-28',
+    state: 'Kelantan',
+    program: 'Anti-Bribery ISO 37001',
+    category: 'Quality Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+
+  // === SEPTEMBER 2026 ===
+  {
+    date: '2026-09-01',
+    state: 'Kuala Lumpur',
+    program: 'HR Fundamentals',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-09-08',
+    state: 'Kuala Lumpur',
+    program: 'Customer Service',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-09-15',
+    state: 'Kuala Lumpur',
+    program: 'Excel Basic',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-09-22',
+    state: 'Kuala Lumpur',
+    program: 'NLP for Leaders (Preview 2-day)',
+    category: 'Senior Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-09-02',
+    state: 'Pahang',
+    program: 'KPI & Performance',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-09-09',
+    state: 'Pahang',
+    program: 'Environmental Sustainability (ESG)',
+    category: 'ESG',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-09-16',
+    state: 'Pahang',
+    program: 'Industrial Relations',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-09-23',
+    state: 'Pahang',
+    program: 'Sales Strategy',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-09-03',
+    state: 'Terengganu',
+    program: 'SST',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-09-10',
+    state: 'Terengganu',
+    program: 'Domestic Inquiry',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-09-17',
+    state: 'Terengganu',
+    program: 'Excel Pivot Table',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-09-24',
+    state: 'Terengganu',
+    program: 'Record Management',
+    category: 'Operation',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-09-04',
+    state: 'Kelantan',
+    program: 'Basic Accounting',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-09-11',
+    state: 'Kelantan',
+    program: 'Customer Relationship',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-09-18',
+    state: 'Kelantan',
+    program: 'QMS ISO 9001',
+    category: 'Quality Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-09-25',
+    state: 'Kelantan',
+    program: 'Analytical Thinking',
+    category: 'Senior Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+
+  // === OCTOBER 2026 ===
+  {
+    date: '2026-10-06',
+    state: 'Kuala Lumpur',
+    program: 'Excel Intermediate',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-10-13',
+    state: 'Kuala Lumpur',
+    program: 'Anti-Bribery ISO 37001',
+    category: 'Quality Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-10-20',
+    state: 'Kuala Lumpur',
+    program: 'Performance Management',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-10-27',
+    state: 'Kuala Lumpur',
+    program: 'Digital Marketing & Content Strategy',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-10-07',
+    state: 'Pahang',
+    program: 'HR Fundamentals',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-10-14',
+    state: 'Pahang',
+    program: 'Excel Basic',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-10-21',
+    state: 'Pahang',
+    program: 'Customer Service',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-10-28',
+    state: 'Pahang',
+    program: 'Full Set Accounting (2-day)',
+    category: 'Finance Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-10-08',
+    state: 'Terengganu',
+    program: 'ESG Essentials',
+    category: 'ESG',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-10-15',
+    state: 'Terengganu',
+    program: 'Salary, Leave & Statutory',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-10-22',
+    state: 'Terengganu',
+    program: 'Strategic Sales & Marketing',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-10-29',
+    state: 'Terengganu',
+    program: 'QMS ISO 9001',
+    category: 'Quality Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-10-09',
+    state: 'Kelantan',
+    program: 'Frontdesk & Receptionist',
+    category: 'Operation',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-10-16',
+    state: 'Kelantan',
+    program: 'Industrial Relations',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-10-23',
+    state: 'Kelantan',
+    program: 'Customer After-Sales',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-10-30',
+    state: 'Kelantan',
+    program: 'Leadership Skills',
+    category: 'Senior Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+
+  // === NOVEMBER 2026 ===
+  {
+    date: '2026-11-03',
+    state: 'Kuala Lumpur',
+    program: 'HR Admin & Record',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-11-10',
+    state: 'Kuala Lumpur',
+    program: 'Taxation 2026',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-11-17',
+    state: 'Kuala Lumpur',
+    program: 'Communication & Closing Skills',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-11-24',
+    state: 'Kuala Lumpur',
+    program: 'KPI Performance (2-day)',
+    category: 'Human Resource Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-11-04',
+    state: 'Pahang',
+    program: 'Domestic Inquiry',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-11-11',
+    state: 'Pahang',
+    program: 'Excel Pivot',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-11-18',
+    state: 'Pahang',
+    program: 'Customer Relationship',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-11-25',
+    state: 'Pahang',
+    program: 'Analytical Thinking',
+    category: 'Senior Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-11-05',
+    state: 'Terengganu',
+    program: 'QMS ISO 9001',
+    category: 'Quality Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-11-12',
+    state: 'Terengganu',
+    program: 'Sales Strategy',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-11-19',
+    state: 'Terengganu',
+    program: 'Digital Marketing (2-day)',
+    category: 'Sales and Marketing',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-11-26',
+    state: 'Terengganu',
+    program: 'Basic Accounting',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-11-06',
+    state: 'Kelantan',
+    program: 'SST',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-11-13',
+    state: 'Kelantan',
+    program: 'HR Fundamentals (2-day)',
+    category: 'Human Resource Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-11-21',
+    state: 'Kelantan',
+    program: 'Operational Record Mgmt',
+    category: 'Operation',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-11-28',
+    state: 'Kelantan',
+    program: 'Excel Intermediate',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+
+  // === DECEMBER 2026 ===
+  {
+    date: '2026-12-01',
+    state: 'Kuala Lumpur',
+    program: 'Industrial Relations',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-12-08',
+    state: 'Kuala Lumpur',
+    program: 'Excel Basic',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-12-15',
+    state: 'Kuala Lumpur',
+    program: 'Employee Leave & Salary Mgmt',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-12-22',
+    state: 'Kuala Lumpur',
+    program: 'Full Set Accounting (2-day)',
+    category: 'Finance Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-12-02',
+    state: 'Pahang',
+    program: 'ESG Essentials',
+    category: 'ESG',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-12-09',
+    state: 'Pahang',
+    program: 'HR Admin',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-12-16',
+    state: 'Pahang',
+    program: 'Customer Service',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-12-23',
+    state: 'Pahang',
+    program: 'Sales Strategy & Pipeline',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-12-03',
+    state: 'Terengganu',
+    program: 'Taxation 2026',
+    category: 'Finance Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-12-10',
+    state: 'Terengganu',
+    program: 'KPI & Performance',
+    category: 'Human Resource Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-12-17',
+    state: 'Terengganu',
+    program: 'Excel Intermediate',
+    category: 'Information Technology',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-12-24',
+    state: 'Terengganu',
+    program: 'Leadership Skills',
+    category: 'Senior Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-12-04',
+    state: 'Kelantan',
+    program: 'Frontdesk & Receptionist',
+    category: 'Operation',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-12-11',
+    state: 'Kelantan',
+    program: 'Analytical Thinking',
+    category: 'Senior Management',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-12-18',
+    state: 'Kelantan',
+    program: 'Domestic Inquiry',
+    category: 'Human Resource Management',
+    durationDays: 2,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  },
+  {
+    date: '2026-12-27',
+    state: 'Kelantan',
+    program: 'Customer Relationship',
+    category: 'Sales and Marketing',
+    durationDays: 1,
+    image: '',
+    detailsUrl: '',
+    registerUrl: ''
+  }
+];
   // --- CATEGORY → COLOR CLASS ------------------------------------------
   function categoryToClass(cat) {
     switch (cat) {
