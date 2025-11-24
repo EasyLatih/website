@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Public Training Schedule | EasyLatih</title>
+  <title>Public Training Calendar 2026 | EasyLatih</title>
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -82,6 +82,355 @@
       .mobile-cta { display: flex; }
       .per-row-register { display: none; }
     }
+
+    /* === CALENDAR VIEW STYLES === */
+    .calendar-section {
+      margin-top: 1.5rem;
+    }
+
+    .calendar-header-text {
+      max-width: 720px;
+    }
+
+    .calendar-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.07);
+      color: #2563eb;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .calendar-pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #2563eb;
+    }
+
+    .calendar-subtitle {
+      margin: 0.25rem 0 0;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+
+    .calendar-filters-card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+      padding: 16px 18px;
+      margin: 16px 0 20px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .calendar-filters-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .calendar-filters-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .calendar-filters-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .calendar-filter-group label {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 3px;
+    }
+
+    .calendar-filter-group select,
+    .calendar-filter-group input {
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      padding: 7px 10px;
+      font-size: 0.9rem;
+      outline: none;
+      background: #f9fafb;
+    }
+
+    .calendar-filter-group select:focus,
+    .calendar-filter-group input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.15);
+      background: #ffffff;
+    }
+
+    .calendar-filter-extra {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .calendar-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .calendar-legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #f3f4f6;
+    }
+
+    .calendar-legend-color {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+    }
+
+    .calendar-reset-btn {
+      border-radius: 999px;
+      padding: 5px 10px;
+      border: 1px dashed #e5e7eb;
+      background: #ffffff;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .calendar-reset-btn:hover {
+      border-color: #2563eb;
+      color: #2563eb;
+    }
+
+    .calendar-months-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 1000px) {
+      .calendar-months-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .calendar-months-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .calendar-month-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 18px;
+      padding: 10px 10px 12px;
+      border: 1px solid rgba(209, 213, 219, 0.7);
+      display: flex;
+      flex-direction: column;
+      max-height: 420px;
+    }
+
+    .calendar-month-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+
+    .calendar-month-name {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .calendar-month-count {
+      font-size: 0.72rem;
+      color: #6b7280;
+    }
+
+    .calendar-month-body {
+      border-radius: 12px;
+      background: #f9fafb;
+      padding: 6px;
+      overflow-y: auto;
+    }
+
+    .calendar-state-block {
+      margin-bottom: 8px;
+      border-radius: 10px;
+      background: #ffffff;
+      padding: 4px 6px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .calendar-state-header {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #6b7280;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .calendar-state-tag {
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+
+    .calendar-sessions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .calendar-session {
+      border-radius: 8px;
+      padding: 4px 6px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      font-size: 0.78rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 6px;
+      row-gap: 2px;
+    }
+
+    .calendar-session-date {
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      font-size: 0.8rem;
+      color: #111827;
+    }
+
+    .calendar-session-title {
+      font-weight: 600;
+    }
+
+    .calendar-session-meta {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      color: #6b7280;
+    }
+
+    .calendar-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .calendar-badge.esg { background: #047857; }
+    .calendar-badge.finance { background: #0f766e; }
+    .calendar-badge.hr { background: #9333ea; }
+    .calendar-badge.it { background: #b45309; }
+    .calendar-badge.ops { background: #0369a1; }
+    .calendar-badge.quality { background: #dc2626; }
+    .calendar-badge.sales { background: #c2410c; }
+    .calendar-badge.senior { background: #4f46e5; }
+    .calendar-badge.safety { background: #15803d; }
+
+    .calendar-badge-outline {
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      padding: 1px 6px;
+      font-size: 0.65rem;
+      color: #6b7280;
+      background: #ffffff;
+    }
+
+    .calendar-empty-state {
+      padding: 16px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .calendar-footer-note {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+      text-align: right;
+    }
+
+    .calendar-session-image-wrap {
+      grid-column: 1 / -1;
+      margin-bottom: 4px;
+    }
+
+    .calendar-session-image {
+      width: 100%;
+      display: block;
+      border-radius: 6px;
+      max-height: 150px;
+      object-fit: cover;
+    }
+
+    .calendar-session-actions {
+      grid-column: 1 / -1;
+      margin-top: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .calendar-btn {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .calendar-btn-primary {
+      background: #0d6efd;
+      color: #ffffff;
+      border-color: #0d6efd;
+    }
+
+    .calendar-btn-outline {
+      background: #ffffff;
+      color: #111827;
+      border-color: #e5e7eb;
+    }
+
+    .calendar-btn-primary:hover {
+      filter: brightness(0.95);
+    }
+
+    .calendar-btn-outline:hover {
+      border-color: #0d6efd;
+      color: #0d6efd;
+    }
   </style>
 </head>
 
@@ -111,136 +460,111 @@
   </div>
 </header>
 
-<section class="container">
-  <h2 class="section-title">Upcoming Sessions</h2>
-  <p class="mb-4">Below is our provisional schedule for the upcoming months. Dates and courses are subject to change.</p>
-
-  <!-- Filter -->
-  <div class="filter-bar mb-4">
-    <label for="venueFilter">Filter by location:</label>
-    <select id="venueFilter">
-      <option value="all">All Locations</option>
-      <option value="Kuantan">Kuantan</option>
-      <option value="Kuala Terengganu">Kuala Terengganu</option>
-      <option value="Kota Bharu">Kota Bharu</option>
-    </select>
+<section class="container calendar-section">
+  <div class="calendar-header-text">
+    <div class="calendar-pill">
+      <span class="calendar-pill-dot"></span>
+      EasyLatih Training Calendar • 2026
+    </div>
+    <h2 class="section-title">Training Calendar 2026</h2>
+    <p class="calendar-subtitle">
+      Planned public training programmes across Kuala Lumpur, Pahang, Terengganu and Kelantan.
+      Filter by month, state and category to explore what’s running.
+    </p>
   </div>
 
-  <!-- Table -->
-  <div class="table-responsive">
-    <table class="schedule-table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Course</th>
-          <th>Duration</th>
-          <th>Delivery Method</th>
-          <th>Venue</th>
-          <th>Register</th>
-        </tr>
-      </thead>
-      <tbody>
+  <!-- 🔍 FILTERS -->
+  <section class="calendar-filters-card">
+    <div class="calendar-filters-grid">
+      <div class="calendar-filter-group">
+        <label for="calendar-filter-month">Month</label>
+        <select id="calendar-filter-month">
+          <option value="all">All months</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+      </div>
 
-        <!-- Example Row -->
-        <tr data-venue="Kuala Terengganu">
-          <td data-label="Date">29 - 30 Oct 2025</td>
-          <td data-label="Course">Managing Disciplinary Issues and Conducting Domestic Inquiry</td>
-          <td data-label="Duration">2 Days</td>
-          <td data-label="Delivery Method">Classroom (Physical)</td>
-          <td data-label="Venue">Kuala Terengganu</td>
-          <td data-label="Register">
-            <a href="https://drive.google.com/drive/folders/1N0JC2Of5Ln1ST9ww23RMaVsqmoeI2hCf?usp=drive_link" target="_blank" style="display:inline-block;margin-bottom:6px;font-weight:600;">📄 View Course Details</a><br>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform" target="_blank" class="btn per-row-register">Register</a>
-          </td>
-        </tr>
+      <div class="calendar-filter-group">
+        <label for="calendar-filter-state">State</label>
+        <select id="calendar-filter-state">
+          <option value="all">All states</option>
+          <option value="Kuala Lumpur">Kuala Lumpur</option>
+          <option value="Pahang">Pahang</option>
+          <option value="Terengganu">Terengganu</option>
+          <option value="Kelantan">Kelantan</option>
+        </select>
+      </div>
 
-        <tr data-venue="Kuantan">
-          <td data-label="Date">30 Oct 2025</td>
-          <td data-label="Course">Expansion of Service Tax Scope 2024</td>
-          <td data-label="Duration">1 Day</td>
-          <td data-label="Delivery Method">Classroom (Physical)</td>
-          <td data-label="Venue">Kuantan</td>
-          <td data-label="Register">
-            <a href="https://drive.google.com/drive/folders/1wa2KnkaimU6Oog5Hh-TIvXOuaxQBfrXF?usp=drive_link" target="_blank" style="display:inline-block;margin-bottom:6px;font-weight:600;">📄 View Course Details</a><br>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform" target="_blank" class="btn per-row-register">Register</a>
-          </td>
-        </tr>
+      <div class="calendar-filter-group">
+        <label for="calendar-filter-category">Category</label>
+        <select id="calendar-filter-category">
+          <option value="all">All categories</option>
+          <option value="ESG">Environment, Sustainability & Governance</option>
+          <option value="Finance Management">Finance & Accounting</option>
+          <option value="Human Resource Management">Human Resource Management</option>
+          <option value="Information Technology">Information Technology</option>
+          <option value="Operation">Operation</option>
+          <option value="Quality Management">Quality Management</option>
+          <option value="Safety & Health Management">Safety & Health Management</option>
+          <option value="Sales and Marketing">Sales & Marketing</option>
+          <option value="Senior Management">Senior Management</option>
+        </select>
+      </div>
 
-        <tr data-venue="Kuantan">
-          <td data-label="Date">04 Nov 2025</td>
-          <td data-label="Course">Basic Accounting and Tax for SMEs</td>
-          <td data-label="Duration">1 Day</td>
-          <td data-label="Delivery Method">Classroom (Physical)</td>
-          <td data-label="Venue">Kuantan</td>
-          <td data-label="Register">
-            <a href="https://drive.google.com/drive/folders/1tpobh2zJ2JyUCNV74ldble0wWZ4tAlNt?usp=drive_link" target="_blank" style="display:inline-block;margin-bottom:6px;font-weight:600;">📄 View Course Details</a><br>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform" target="_blank" class="btn per-row-register">Register</a>
-          </td>
-        </tr>
+      <div class="calendar-filter-group">
+        <label for="calendar-filter-search">Search title</label>
+        <input id="calendar-filter-search" type="text" placeholder="e.g. Excel, HR, Taxation…" />
+      </div>
+    </div>
 
-        <tr data-venue="Kuantan">
-          <td data-label="Date">05 Nov 2025</td>
-          <td data-label="Course">E-Invoice Implementation : For All Business</td>
-          <td data-label="Duration">1 Day</td>
-          <td data-label="Delivery Method">Classroom (Physical)</td>
-          <td data-label="Venue">Kuantan</td>
-          <td data-label="Register">
-            <a href="https://drive.google.com/drive/folders/1yvBxwLksdD9ggtK8pQwbR3d3JnlXAqAK?usp=drive_link" style="display:inline-block;margin-bottom:6px;font-weight:600;">📄 View Course Details</a><br>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform" target="_blank" class="btn per-row-register">Register</a>
-          </td>
-        </tr>
+    <div class="calendar-filter-extra">
+      <div class="calendar-legend">
+        <span class="calendar-legend-item">
+          <span class="calendar-legend-color" style="background:#9333ea"></span>HR
+        </span>
+        <span class="calendar-legend-item">
+          <span class="calendar-legend-color" style="background:#0f766e"></span>Finance
+        </span>
+        <span class="calendar-legend-item">
+          <span class="calendar-legend-color" style="background:#b45309"></span>IT
+        </span>
+        <span class="calendar-legend-item">
+          <span class="calendar-legend-color" style="background:#c2410c"></span>Sales
+        </span>
+        <span class="calendar-legend-item">
+          <span class="calendar-legend-color" style="background:#047857"></span>ESG
+        </span>
+        <span class="calendar-legend-item">
+          <span class="calendar-legend-color" style="background:#4f46e5"></span>Leadership
+        </span>
+      </div>
 
-        <tr data-venue="Kuantan">
-          <td data-label="Date">05 & 06 Nov 2025</td>
-          <td data-label="Course">Effective Operation Management for Field Supervisor (Plantation)</td>
-          <td data-label="Duration">2 Days</td>
-          <td data-label="Delivery Method">Classroom (Physical)</td>
-          <td data-label="Venue">Kuantan</td>
-          <td data-label="Register">
-            <a href="https://drive.google.com/drive/folders/1GisK8MKVxjTlkqe8ilAUdcnH_xf5p6oN?usp=drive_link" style="display:inline-block;margin-bottom:6px;font-weight:600;">📄 View Course Details</a><br>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform" target="_blank" class="btn per-row-register">Register</a>
-          </td>
-        </tr>
+      <button type="button" class="calendar-reset-btn" id="calendar-reset-filters">
+        Reset filters
+      </button>
+    </div>
+  </section>
 
-        <tr data-venue="Kuantan">
-          <td data-label="Date">10 & 11 Nov 2025</td>
-          <td data-label="Course">Occupational First Aid and CPE Introduction to AED Training</td>
-          <td data-label="Duration">2 Days</td>
-          <td data-label="Delivery Method">Classroom (Physical)</td>
-          <td data-label="Venue">Kuantan</td>
-          <td data-label="Register">
-            <a href="https://drive.google.com/drive/folders/1yvBxwLksdD9ggtK8pQwbR3d3JnlXAqAK?usp=drive_link" style="display:inline-block;margin-bottom:6px;font-weight:600;">📄 View Course Details</a><br>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform" target="_blank" class="btn per-row-register">Register</a>
-          </td>
-        </tr>
+  <!-- 📅 MONTH CARDS -->
+  <section id="calendar-months-container">
+    <!-- JS will render month cards here -->
+  </section>
 
-        <tr data-venue="Kota Bharu">
-          <td data-label="Date">25 - 26 Nov 2025</td>
-          <td data-label="Course">Managing Disciplinary Issues and Conducting Domestic Inquiry</td>
-          <td data-label="Duration">2 Days</td>
-          <td data-label="Delivery Method">Classroom (Physical)</td>
-          <td data-label="Venue">Kota Bharu</td>
-          <td data-label="Register">
-            <a href="https://drive.google.com/drive/folders/1N0JC2Of5Ln1ST9ww23RMaVsqmoeI2hCf?usp=drive_link" target="_blank" style="display:inline-block;margin-bottom:6px;font-weight:600;">📄 View Course Details</a><br>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform" target="_blank" class="btn per-row-register">Register</a>
-          </td>
-        </tr>
-
-        <tr data-venue="Kuala Terengganu">
-          <td data-label="Date">18 & 19 Nov 2025</td>
-          <td data-label="Course">Effective Operation Management for Field Supervisor (Plantation)</td>
-          <td data-label="Duration">2 Days</td>
-          <td data-label="Delivery Method">Classroom (Physical)</td>
-          <td data-label="Venue">Kuala Terengganu</td>
-          <td data-label="Register">
-            <a href="https://drive.google.com/drive/folders/1GisK8MKVxjTlkqe8ilAUdcnH_xf5p6oN?usp=drive_link" style="display:inline-block;margin-bottom:6px;font-weight:600;">📄 View Course Details</a><br>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform" target="_blank" class="btn per-row-register">Register</a>
-          </td>
-        </tr>
-
-      </tbody>
-    </table>
-  </div>
+  <p class="calendar-footer-note">
+    This is a planned calendar for 2026. Dates and venues are subject to change.
+    Contact EasyLatih for the latest updates.
+  </p>
 </section>
 
 <!-- Footer -->
@@ -284,50 +608,430 @@
   <a href="https://wa.me/60109202811?text=Hi%20EasyLatih%2C%20I%27d%20like%20to%20register%20for%20a%20public%20training.%20Could%20you%20assist%3F" target="_blank" class="btn btn-outline">WhatsApp Us</a>
 </div>
 
-<!-- ✅ Filter Script -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const select = document.getElementById('venueFilter');
-  const rows = Array.from(document.querySelectorAll('.schedule-table tbody tr'));
+  // --- DATA MODEL --------------------------------------------------------
+  // Each event: { date: 'YYYY-MM-DD', state, program, category, durationDays, image?, detailsUrl?, registerUrl? }
 
-  const noRow = document.createElement('tr');
-  noRow.innerHTML = `
-    <td colspan="6" style="padding:1rem;color:#6b7280;text-align:center;">
-      No sessions found for this location.
-    </td>
-  `;
+  const events2026 = [
+    // =============== JANUARY 2026 ===============
+    // KUALA LUMPUR
+    {
+      date: '2026-01-06',
+      state: 'Kuala Lumpur',
+      program: 'HR Fundamentals & Employment Law',
+      category: 'Human Resource Management',
+      durationDays: 1,
+      image: 'assets/calendar/hr-fundamentals.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
+    {
+      date: '2026-01-13',
+      state: 'Kuala Lumpur',
+      program: 'Malaysian Taxation 2026',
+      category: 'Finance Management',
+      durationDays: 1,
+      image: 'assets/calendar/malaysian-tax-2026.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
+    {
+      date: '2026-01-20',
+      state: 'Kuala Lumpur',
+      program: 'Microsoft Excel (Basic)',
+      category: 'Information Technology',
+      durationDays: 1,
+      image: 'assets/calendar/excel-basic.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
+    {
+      date: '2026-01-27',
+      state: 'Kuala Lumpur',
+      program: 'Strategic Sales & Marketing Planning',
+      category: 'Sales and Marketing',
+      durationDays: 2,
+      image: 'assets/calendar/strategic-sales.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
 
-  const tbody = document.querySelector('.schedule-table tbody');
+    // PAHANG
+    {
+      date: '2026-01-07',
+      state: 'Pahang',
+      program: 'Basic Accounting for Non Accountant',
+      category: 'Finance Management',
+      durationDays: 1,
+      image: 'assets/calendar/basic-accounting.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
+    {
+      date: '2026-01-14',
+      state: 'Pahang',
+      program: 'Performance Management & KPI',
+      category: 'Human Resource Management',
+      durationDays: 2,
+      image: 'assets/calendar/performance-kpi.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
+    {
+      date: '2026-01-21',
+      state: 'Pahang',
+      program: 'Pengurusan Stok dan Inventory',
+      category: 'Operation',
+      durationDays: 1,
+      image: 'assets/calendar/stok-inventory.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
+    {
+      date: '2026-01-28',
+      state: 'Pahang',
+      program: 'Customer Relationship & After-Sales Excellence',
+      category: 'Sales and Marketing',
+      durationDays: 2,
+      image: 'assets/calendar/customer-relationship.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
 
-  function applyFilter() {
-    const val = select.value;
-    let count = 0;
+    // TERENGGANU
+    {
+      date: '2026-01-08',
+      state: 'Terengganu',
+      program: 'Environment Sustainability & Governance',
+      category: 'ESG',
+      durationDays: 2,
+      image: 'assets/calendar/esg.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
+    {
+      date: '2026-01-15',
+      state: 'Terengganu',
+      program: 'Micorosft Excel (Intermediate)',
+      category: 'Information Technology',
+      durationDays: 1,
+      image: 'assets/calendar/excel-intermediate.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
+    {
+      date: '2026-01-22',
+      state: 'Terengganu',
+      program: 'Disiplinary & Domestic Inquiry',
+      category: 'Human Resource Management',
+      durationDays: 2,
+      image: 'assets/calendar/domestic-inquiry.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
+    {
+      date: '2026-01-29',
+      state: 'Terengganu',
+      program: 'Effective Customer Service',
+      category: 'Operation',
+      durationDays: 1,
+      image: 'assets/calendar/customer-service.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
 
-    rows.forEach(tr => {
-      const venue = tr.getAttribute('data-venue');
-      const show = (val === 'all') || (venue === val);
-      tr.style.display = show ? '' : 'none';
-      if (show) count++;
-    });
+    // KELANTAN
+    {
+      date: '2026-01-09',
+      state: 'Kelantan',
+      program: 'Frontdesk and receptionist',
+      category: 'Operation',
+      durationDays: 1,
+      image: 'assets/calendar/frontdesk.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
+    {
+      date: '2026-01-16',
+      state: 'Kelantan',
+      program: 'HR Administration & Record Management',
+      category: 'Human Resource Management',
+      durationDays: 2,
+      image: 'assets/calendar/hr-admin.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
+    {
+      date: '2026-01-23',
+      state: 'Kelantan',
+      program: 'Industrial Relation',
+      category: 'Human Resource Management',
+      durationDays: 1,
+      image: 'assets/calendar/industrial-relation.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
+    {
+      date: '2026-01-30',
+      state: 'Kelantan',
+      program: 'Digital marketing and content strategy',
+      category: 'Sales and Marketing',
+      durationDays: 2,
+      image: 'assets/calendar/digital-marketing.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
 
-    if (count === 0 && !tbody.contains(noRow)) {
-      tbody.appendChild(noRow);
-    } else if (count > 0 && tbody.contains(noRow)) {
-      tbody.removeChild(noRow);
+    // =============== FEBRUARY 2026 (sample subset) ===============
+    {
+      date: '2026-02-03',
+      state: 'Kuala Lumpur',
+      program: 'Anti Bribery ISO 37001 Awareness',
+      category: 'Quality Management',
+      durationDays: 1,
+      image: 'assets/calendar/iso37001.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
+    {
+      date: '2026-02-10',
+      state: 'Kuala Lumpur',
+      program: 'SST',
+      category: 'Finance Management',
+      durationDays: 1,
+      image: 'assets/calendar/sst.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
+    {
+      date: '2026-02-17',
+      state: 'Kuala Lumpur',
+      program: 'Microsoft Excel - Pivot Table For Reporting',
+      category: 'Information Technology',
+      durationDays: 1,
+      image: 'assets/calendar/excel-pivot.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    },
+    {
+      date: '2026-02-24',
+      state: 'Kuala Lumpur',
+      program: 'Coommunication, negotiation and closing skills',
+      category: 'Sales and Marketing',
+      durationDays: 2,
+      image: 'assets/calendar/communication-skills.jpg',
+      detailsUrl: 'https://drive.google.com/drive/folders/XXXXXXXXXXXX',
+      registerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfCYPSgS39pBeikXNPHuxNrp-ZfUcfZnD6C0C45L70fQ2w3gg/viewform'
+    }
+
+    // 👉 Add remaining months/states here following same structure
+  ];
+
+  // --- CATEGORY → COLOR CLASS ------------------------------------------
+  function categoryToClass(cat) {
+    switch (cat) {
+      case 'ESG':
+        return 'esg';
+      case 'Finance Management':
+        return 'finance';
+      case 'Human Resource Management':
+        return 'hr';
+      case 'Information Technology':
+        return 'it';
+      case 'Operation':
+        return 'ops';
+      case 'Quality Management':
+        return 'quality';
+      case 'Safety & Health Management':
+        return 'safety';
+      case 'Sales and Marketing':
+        return 'sales';
+      case 'Senior Management':
+        return 'senior';
+      default:
+        return 'ops';
     }
   }
 
-  // Preselect via URL (?venue=Kuantan)
-  const params = new URLSearchParams(window.location.search);
-  const pre = params.get('venue');
-  if (pre) {
-    const match = Array.from(select.options).find(o => o.value.toLowerCase() === pre.toLowerCase());
-    if (match) select.value = match.value;
+  // --- RENDERING LOGIC --------------------------------------------------
+  const monthsContainer = document.getElementById('calendar-months-container');
+  const monthFilter = document.getElementById('calendar-filter-month');
+  const stateFilter = document.getElementById('calendar-filter-state');
+  const categoryFilter = document.getElementById('calendar-filter-category');
+  const searchFilter = document.getElementById('calendar-filter-search');
+  const resetBtn = document.getElementById('calendar-reset-filters');
+
+  const monthNames = [
+    '',
+    'January', 'February', 'March', 'April',
+    'May', 'June', 'July', 'August',
+    'September', 'October', 'November', 'December'
+  ];
+
+  function getFilteredEvents() {
+    const monthVal = monthFilter.value;
+    const stateVal = stateFilter.value;
+    const categoryVal = categoryFilter.value;
+    const searchVal = searchFilter.value.trim().toLowerCase();
+
+    return events2026.filter(ev => {
+      const d = new Date(ev.date);
+      const evMonth = d.getMonth() + 1;
+
+      if (monthVal !== 'all' && evMonth !== Number(monthVal)) return false;
+      if (stateVal !== 'all' && ev.state !== stateVal) return false;
+      if (categoryVal !== 'all' && ev.category !== categoryVal) return false;
+      if (searchVal && !ev.program.toLowerCase().includes(searchVal)) return false;
+
+      return true;
+    });
   }
 
-  select.addEventListener('change', applyFilter);
-  applyFilter();
-});
+  function renderCalendar() {
+    const events = getFilteredEvents();
+
+    // Group by month → state
+    const map = {};
+    events.forEach(ev => {
+      const d = new Date(ev.date);
+      const m = d.getMonth() + 1;
+      if (!map[m]) map[m] = {};
+      if (!map[m][ev.state]) map[m][ev.state] = [];
+      map[m][ev.state].push(ev);
+    });
+
+    monthsContainer.innerHTML = '';
+
+    const monthsWithEvents = Object.keys(map).sort((a, b) => Number(a) - Number(b));
+
+    if (monthsWithEvents.length === 0) {
+      monthsContainer.innerHTML =
+        '<div class="calendar-empty-state">No programmes found. Try changing the filters.</div>';
+      return;
+    }
+
+    const grid = document.createElement('div');
+    grid.className = 'calendar-months-grid';
+
+    monthsWithEvents.forEach(mKey => {
+      const monthIndex = Number(mKey);
+      const stateEvents = map[mKey];
+
+      const monthCard = document.createElement('article');
+      monthCard.className = 'calendar-month-card';
+
+      const header = document.createElement('div');
+      header.className = 'calendar-month-header';
+      header.innerHTML = `
+        <div class="calendar-month-name">${monthNames[monthIndex]}</div>
+        <div class="calendar-month-count">
+          ${Object.values(stateEvents).reduce((sum, arr) => sum + arr.length, 0)} programme(s)
+        </div>
+      `;
+      monthCard.appendChild(header);
+
+      const body = document.createElement('div');
+      body.className = 'calendar-month-body';
+
+      ['Kuala Lumpur', 'Pahang', 'Terengganu', 'Kelantan'].forEach(state => {
+        const sessions = stateEvents[state];
+        if (!sessions || sessions.length === 0) return;
+
+        sessions.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        const stateBlock = document.createElement('div');
+        stateBlock.className = 'calendar-state-block';
+
+        const stateHeader = document.createElement('div');
+        stateHeader.className = 'calendar-state-header';
+        stateHeader.innerHTML = `
+          <span>${state}</span>
+          <span class="calendar-state-tag">${sessions.length} programme${sessions.length > 1 ? 's' : ''}</span>
+        `;
+        stateBlock.appendChild(stateHeader);
+
+        const list = document.createElement('div');
+        list.className = 'calendar-sessions-list';
+
+        sessions.forEach(ev => {
+          const d = new Date(ev.date);
+          const day = String(d.getDate()).padStart(2, '0');
+          const badgeClass = categoryToClass(ev.category);
+
+          const div = document.createElement('div');
+          div.className = 'calendar-session';
+
+          // Optional poster image
+          const imgHtml = ev.image
+            ? `
+              <div class="calendar-session-image-wrap">
+                <img src="${ev.image}" alt="${ev.program} poster" class="calendar-session-image">
+              </div>
+            `
+            : '';
+
+          // Optional buttons
+          const detailsBtn = ev.detailsUrl
+            ? `<a href="${ev.detailsUrl}" target="_blank" rel="noopener noreferrer"
+                  class="calendar-btn calendar-btn-outline">📄 View Course Details</a>`
+            : '';
+
+          const registerBtn = ev.registerUrl
+            ? `<a href="${ev.registerUrl}" target="_blank" rel="noopener noreferrer"
+                  class="calendar-btn calendar-btn-primary">Register</a>`
+            : '';
+
+          const actionsHtml = (detailsBtn || registerBtn)
+            ? `<div class="calendar-session-actions">
+                 ${detailsBtn}
+                 ${registerBtn}
+               </div>`
+            : '';
+
+          div.innerHTML = `
+            ${imgHtml}
+            <div class="calendar-session-date">${day}</div>
+            <div class="calendar-session-title">${ev.program}</div>
+            <div class="calendar-session-meta">
+              <span class="calendar-badge ${badgeClass}">
+                ${ev.category}
+              </span>
+              <span class="calendar-badge-outline">
+                ${ev.durationDays > 1 ? ev.durationDays + '-day' : '1-day'} • 2026
+              </span>
+            </div>
+            ${actionsHtml}
+          `;
+
+          list.appendChild(div);
+        });
+
+        stateBlock.appendChild(list);
+        body.appendChild(stateBlock);
+      });
+
+      monthCard.appendChild(body);
+      grid.appendChild(monthCard);
+    });
+
+    monthsContainer.appendChild(grid);
+  }
+
+  monthFilter.addEventListener('change', renderCalendar);
+  stateFilter.addEventListener('change', renderCalendar);
+  categoryFilter.addEventListener('change', renderCalendar);
+  searchFilter.addEventListener('input', renderCalendar);
+
+  resetBtn.addEventListener('click', () => {
+    monthFilter.value = 'all';
+    stateFilter.value = 'all';
+    categoryFilter.value = 'all';
+    searchFilter.value = '';
+    renderCalendar();
+  });
+
+  // Initial render
+  renderCalendar();
 </script>
 
 </body>
