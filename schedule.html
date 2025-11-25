@@ -627,36 +627,67 @@
 
 <script>
   // --- DATA MODEL --------------------------------------------------------
-  // Each event: { date: 'YYYY-MM-DD', state, program, category, durationDays, image?, detailsUrl?, registerUrl? }
-
+  // Data dari fail JS yang dijana daripada Excel
   const events2026 = training2026;
-  // --- CATEGORY → COLOR CLASS ------------------------------------------
-  function function categoryToClass(cat) {
-  switch (cat) {
-    case 'Accounting & Finance':
-      return 'finance';
-    case 'Administration & Operations':
-      return 'admin';
-    case 'Communication & Soft Skills':
-      return 'softskills';
-    case 'Compliance & Quality':
-      return 'quality';
-    case 'Customer Service':
-      return 'customer';
-    case 'Entrepreneurship & Business Growth':
-      return 'entrepreneurship';
-    case 'Human Resource Management':
-      return 'hr';
-    case 'Information Technology & Digital Skills':
-      return 'it';
-    case 'Leadership & Management':
-      return 'leadership';
-    case 'Sales & Marketing':
-      return 'sales';
-    default:
-      return 'admin';
+
+  // --- CATEGORY → COLOR CLASS (untuk warna pill) ------------------------
+  function categoryToClass(cat) {
+    switch (cat) {
+      case 'Accounting & Finance':
+        return 'finance';
+      case 'Administration & Operations':
+        return 'admin';
+      case 'Communication & Soft Skills':
+        return 'softskills';
+      case 'Compliance & Quality':
+        return 'quality';
+      case 'Customer Service':
+        return 'customer';
+      case 'Entrepreneurship & Business Growth':
+        return 'entrepreneurship';
+      case 'Human Resource Management':
+        return 'hr';
+      case 'Information Technology & Digital Skills':
+        return 'it';
+      case 'Leadership & Management':
+        return 'leadership';
+      case 'Sales & Marketing':
+        return 'sales';
+      default:
+        return 'admin';
+    }
   }
-}
+
+  // --- PADANAN FILTER CATEGORY ↔ CATEGORY EXCEL -------------------------
+  function matchesCategory(filterVal, eventCategory) {
+    if (filterVal === 'Finance Management') {
+      return eventCategory === 'Accounting & Finance';
+    }
+    if (filterVal === 'Human Resource Management') {
+      return eventCategory === 'Human Resource Management'
+          || eventCategory === 'Communication & Soft Skills';
+    }
+    if (filterVal === 'Information Technology') {
+      return eventCategory === 'Information Technology & Digital Skills';
+    }
+    if (filterVal === 'Operation') {
+      return eventCategory === 'Administration & Operations'
+          || eventCategory === 'Customer Service'
+          || eventCategory === 'Entrepreneurship & Business Growth';
+    }
+    if (filterVal === 'Quality Management') {
+      return eventCategory === 'Compliance & Quality';
+    }
+    if (filterVal === 'Sales and Marketing') {
+      return eventCategory === 'Sales & Marketing'
+          || eventCategory === 'Customer Service';
+    }
+    if (filterVal === 'Senior Management') {
+      return eventCategory === 'Leadership & Management'
+          || eventCategory === 'Entrepreneurship & Business Growth';
+    }
+    // Kalau awak ada category ESG / Safety khas dalam Excel nanti, kita boleh tambah sini
+    return true;
   }
 
   // --- RENDERING LOGIC --------------------------------------------------
@@ -686,7 +717,10 @@
 
       if (monthVal !== 'all' && evMonth !== Number(monthVal)) return false;
       if (stateVal !== 'all' && ev.state !== stateVal) return false;
-      if (categoryVal !== 'all' && ev.category !== categoryVal) return false;
+
+      // Guna padanan category yg betul
+      if (categoryVal !== 'all' && !matchesCategory(categoryVal, ev.category)) return false;
+
       if (searchVal && !ev.program.toLowerCase().includes(searchVal)) return false;
 
       return true;
@@ -767,7 +801,6 @@
           const div = document.createElement('div');
           div.className = 'calendar-session';
 
-          // Optional poster image
           const imgHtml = ev.image
             ? `
               <div class="calendar-session-image-wrap">
@@ -776,7 +809,6 @@
             `
             : '';
 
-          // Optional buttons
           const detailsBtn = ev.detailsUrl
             ? `<a href="${ev.detailsUrl}" target="_blank" rel="noopener noreferrer"
                   class="calendar-btn calendar-btn-outline">📄 View Course Details</a>`
@@ -840,5 +872,4 @@
   renderCalendar();
 </script>
 
-</body>
 </html>
