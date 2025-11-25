@@ -433,6 +433,47 @@
     }
   </style>
 </head>
+<!-- 1. Load data (training2026) -->
+<script src="assets/calendar/easylatih_2026_calendar.js"></script>
+
+<!-- 2. Render calendar -->
+<script>
+  // Ubah ikut id container yang kita buat tadi
+  const container = document.getElementById('calendar-grid');
+
+  // Safety check
+  if (typeof training2026 === 'undefined') {
+    container.innerHTML = '<p>Calendar data not loaded. Please check JS file path.</p>';
+  } else {
+    // Simple card layout – boleh cantikkan kemudian
+    container.innerHTML = '';
+
+    training2026.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'calendar-card';
+
+      card.innerHTML = `
+        <div class="calendar-card-inner">
+          <div class="calendar-date">
+            <strong>${item.date}</strong>
+          </div>
+          <div class="calendar-body">
+            <h3>${item.program}</h3>
+            <p><strong>State:</strong> ${item.state}</p>
+            <p><strong>Category:</strong> ${item.category}</p>
+            <p><strong>Duration:</strong> ${item.durationDays} day(s)</p>
+            <div class="calendar-actions">
+              <a href="${item.detailsUrl}" target="_blank">View Course Details</a> |
+              <a href="${item.registerUrl}" target="_blank">Register</a>
+            </div>
+          </div>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+  }
+</script>
 
 <body>
 <header>
@@ -471,6 +512,7 @@
       Planned public training programmes across Kuala Lumpur, Pahang, Terengganu and Kelantan.
       Filter by month, state and category to explore what’s running.
     </p>
+    <div id="calendar-grid"></div>
   </div>
 
   <!-- 🔍 FILTERS -->
