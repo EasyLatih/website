@@ -508,18 +508,32 @@
 
       <div class="calendar-filter-group">
         <label for="calendar-filter-category">Category</label>
-        <select id="calendar-filter-category">
-          <option value="all">All categories</option>
-          <option value="ESG">Environment, Sustainability & Governance</option>
-          <option value="Finance Management">Finance & Accounting</option>
-          <option value="Human Resource Management">Human Resource Management</option>
-          <option value="Information Technology">Information Technology</option>
-          <option value="Operation">Operation</option>
-          <option value="Quality Management">Quality Management</option>
-          <option value="Safety & Health Management">Safety & Health Management</option>
-          <option value="Sales and Marketing">Sales & Marketing</option>
-          <option value="Senior Management">Senior Management</option>
-        </select>
+       <select id="calendar-filter-category">
+  <option value="all">All categories</option>
+
+  <!-- MAIN CATEGORIES FROM YOUR PROGRAM LIST -->
+  <option value="Human Resource Management">Human Resource Management</option>
+  <option value="Administration & Operations">Administration & Operations</option>
+  <option value="Accounting & Finance">Accounting & Finance</option>
+  <option value="Sales & Marketing">Sales & Marketing</option>
+  <option value="Communication & Soft Skills">Communication & Soft Skills</option>
+  <option value="Compliance & Quality">Compliance & Quality</option>
+  <option value="Information Technology & Digital Skills">Information Technology & Digital Skills</option>
+  <option value="Customer Service">Customer Service</option>
+  <option value="Leadership & Management">Leadership & Management</option>
+  <option value="Entrepreneurship & Business Growth">Entrepreneurship & Business Growth</option>
+
+  <!-- OPTIONAL: keep these if you still use older labels anywhere -->
+  <option value="ESG">ESG (Environment, Sustainability & Governance)</option>
+  <option value="Operation">Operation (Legacy)</option>
+  <option value="Finance Management">Finance Management (Legacy)</option>
+  <option value="Information Technology">Information Technology (Legacy)</option>
+  <option value="Quality Management">Quality Management (Legacy)</option>
+  <option value="Safety & Health Management">Safety & Health Management (Legacy)</option>
+  <option value="Sales and Marketing">Sales and Marketing (Legacy)</option>
+  <option value="Senior Management">Senior Management (Legacy)</option>
+</select>
+
       </div>
 
       <div class="calendar-filter-group">
@@ -528,27 +542,39 @@
       </div>
     </div>
 
-    <div class="calendar-filter-extra">
-      <div class="calendar-legend">
-        <span class="calendar-legend-item">
-          <span class="calendar-legend-color" style="background:#9333ea"></span>HR
-        </span>
-        <span class="calendar-legend-item">
-          <span class="calendar-legend-color" style="background:#0f766e"></span>Finance
-        </span>
-        <span class="calendar-legend-item">
-          <span class="calendar-legend-color" style="background:#b45309"></span>IT
-        </span>
-        <span class="calendar-legend-item">
-          <span class="calendar-legend-color" style="background:#c2410c"></span>Sales
-        </span>
-        <span class="calendar-legend-item">
-          <span class="calendar-legend-color" style="background:#047857"></span>ESG
-        </span>
-        <span class="calendar-legend-item">
-          <span class="calendar-legend-color" style="background:#4f46e5"></span>Leadership
-        </span>
-      </div>
+   <div class="calendar-legend">
+  <span class="calendar-legend-item">
+    <span class="calendar-legend-color" style="background:#9333ea"></span>Human Resource
+  </span>
+  <span class="calendar-legend-item">
+    <span class="calendar-legend-color" style="background:#0369a1"></span>Admin & Operations
+  </span>
+  <span class="calendar-legend-item">
+    <span class="calendar-legend-color" style="background:#0f766e"></span>Accounting & Finance
+  </span>
+  <span class="calendar-legend-item">
+    <span class="calendar-legend-color" style="background:#b45309"></span>IT & Digital Skills
+  </span>
+  <span class="calendar-legend-item">
+    <span class="calendar-legend-color" style="background:#c2410c"></span>Sales & Marketing
+  </span>
+  <span class="calendar-legend-item">
+    <span class="calendar-legend-color" style="background:#0ea5e9"></span>Communication & Soft Skills
+  </span>
+  <span class="calendar-legend-item">
+    <span class="calendar-legend-color" style="background:#dc2626"></span>Compliance & Quality
+  </span>
+  <span class="calendar-legend-item">
+    <span class="calendar-legend-color" style="background:#16a34a"></span>Customer Service
+  </span>
+  <span class="calendar-legend-item">
+    <span class="calendar-legend-color" style="background:#4f46e5"></span>Leadership & Management
+  </span>
+  <span class="calendar-legend-item">
+    <span class="calendar-legend-color" style="background:#f97316"></span>Entrepreneurship & Growth
+  </span>
+</div>
+
 
       <button type="button" class="calendar-reset-btn" id="calendar-reset-filters">
         Reset filters
@@ -2556,31 +2582,54 @@
     registerUrl: ''
   }
 ];
-  // --- CATEGORY → COLOR CLASS ------------------------------------------
-  function categoryToClass(cat) {
+  <script>
+  // ... your events2026 array is here ...
+
+  // Map full category names to CSS badge classes
+  function categoryToBadgeClass(cat) {
     switch (cat) {
-      case 'ESG':
-        return 'esg';
-      case 'Finance Management':
-        return 'finance';
       case 'Human Resource Management':
         return 'hr';
+      case 'Administration & Operations':
+        return 'ops';
+      case 'Accounting & Finance':
+        return 'finance';
+      case 'Sales & Marketing':
+        return 'sales';
+      case 'Communication & Soft Skills':
+        return 'soft';
+      case 'Compliance & Quality':
+        return 'quality';
+      case 'Information Technology & Digital Skills':
+        return 'it';
+      case 'Customer Service':
+        return 'customer';
+      case 'Leadership & Management':
+        return 'senior';
+      case 'Entrepreneurship & Business Growth':
+        return 'entrep';
+
+      // Legacy support if you still have old labels:
+      case 'Finance Management':
+        return 'finance';
       case 'Information Technology':
         return 'it';
-      case 'Operation':
-        return 'ops';
-      case 'Quality Management':
-        return 'quality';
-      case 'Safety & Health Management':
-        return 'safety';
       case 'Sales and Marketing':
         return 'sales';
+      case 'Quality Management':
+        return 'quality';
       case 'Senior Management':
         return 'senior';
-      default:
+      case 'Operation':
         return 'ops';
+      case 'ESG':
+        return 'esg';
+      default:
+        return 'hr'; // fallback
     }
   }
+</script>
+
 
   // --- RENDERING LOGIC --------------------------------------------------
   const monthsContainer = document.getElementById('calendar-months-container');
