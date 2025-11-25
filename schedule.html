@@ -619,30 +619,71 @@
   // --- CATEGORY → COLOR CLASS ------------------------------------------
   function categoryToClass(cat) {
     switch (cat) {
-      case 'ESG':
+      case 'Environment, Sustainability & Governance':
         return 'esg';
-      case 'Finance Management':
+
+      case 'Accounting & Finance':
+      case 'Finance & Accounting':
         return 'finance';
+
       case 'Human Resource Management':
         return 'hr';
+
+      case 'Information Technology & Digital Skills':
       case 'Information Technology':
         return 'it';
+
+      case 'Administration & Operations':
       case 'Operation':
         return 'ops';
+
+      case 'Compliance & Quality':
       case 'Quality Management':
         return 'quality';
+
       case 'Safety & Health Management':
         return 'safety';
+
+      case 'Sales & Marketing':
       case 'Sales and Marketing':
+      case 'Customer Service':
         return 'sales';
+
+      case 'Communication & Soft Skills':
+        return 'hr';
+
+      case 'Leadership & Management':
       case 'Senior Management':
+      case 'Entrepreneurship & Business Growth':
         return 'senior';
+
       default:
         return 'ops';
     }
   }
 
-  // --- RENDERING LOGIC --------------------------------------------------
+  
+  function matchesCategory(evCategory, filterVal) {
+    if (!filterVal || filterVal === 'all') return true;
+
+    const map = {
+      'ESG': ['Environment, Sustainability & Governance'],
+      'Finance Management': ['Accounting & Finance', 'Finance & Accounting'],
+      'Human Resource Management': ['Human Resource Management'],
+      'Information Technology': ['Information Technology & Digital Skills', 'Information Technology'],
+      'Operation': ['Administration & Operations', 'Operation'],
+      'Quality Management': ['Compliance & Quality', 'Quality Management'],
+      'Safety & Health Management': ['Safety & Health Management'],
+      'Sales and Marketing': ['Sales & Marketing', 'Sales and Marketing', 'Customer Service', 'Communication & Soft Skills'],
+      'Senior Management': ['Leadership & Management', 'Senior Management', 'Entrepreneurship & Business Growth']
+    };
+
+    const allowed = map[filterVal];
+    if (!allowed) return true;
+    return allowed.includes(evCategory);
+  }
+
+// --- RENDERING LOGIC --------------------------------------------------
   const monthsContainer = document.getElementById('calendar-months-container');
   const monthFilter = document.getElementById('calendar-filter-month');
   const stateFilter = document.getElementById('calendar-filter-state');
@@ -669,7 +710,7 @@
 
       if (monthVal !== 'all' && evMonth !== Number(monthVal)) return false;
       if (stateVal !== 'all' && ev.state !== stateVal) return false;
-      if (categoryVal !== 'all' && ev.category !== categoryVal) return false;
+      if (categoryVal !== 'all' && !matchesCategory(ev.category, categoryVal)) return false;
       if (searchVal && !ev.program.toLowerCase().includes(searchVal)) return false;
 
       return true;
