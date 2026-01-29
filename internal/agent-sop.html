@@ -5,41 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agent SOP | EasyLatih</title>
 
-  <!-- ✅ FIX: absolute paths -->
+  <!-- ✅ absolute paths (works inside /internal/) -->
   <link rel="icon" type="image/png" href="/assets/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/style.css" />
 
-  <!-- Semi-private (Option 2) -->
+  <!-- Semi-private -->
   <meta name="robots" content="noindex, nofollow" />
 
   <style>
     .container { max-width: 1100px; margin: auto; padding: 2rem; }
 
+    /* SOP UI */
     .sop-wrap { margin-top: 1rem; }
     .sop-card {
       border: 1px solid #e6e8ef;
       background: #fff;
       border-radius: 12px;
-      padding: 1.25rem;
+      padding: 1.6rem;
       margin-bottom: 1rem;
     }
-    .sop-muted { color: #555; font-size: 0.95rem; }
+    .sop-muted { color: #555; font-size: 0.95rem; line-height: 1.65; }
     .sop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
     .sop-btn {
       width: 100%;
       text-align: left;
       border: 1px solid #ccc;
       background: #fff;
-      padding: 1rem;
+      padding: 1.1rem;
       border-radius: 10px;
       cursor: pointer;
       font-family: inherit;
     }
     .sop-btn:hover { box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
 
-    .sop-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+    .sop-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.9rem; }
     .sop-pill {
       border: 1px solid #ccc;
       background: #fff;
@@ -56,30 +57,41 @@
       background: #fff7ed;
       border: 1px solid #fed7aa;
       border-radius: 10px;
-      padding: 0.9rem;
-      margin: 0.75rem 0;
+      padding: 1.05rem;
+      margin: 0.95rem 0;
+      line-height: 1.7;
     }
     .sop-ok {
       background: #ecfdf5;
       border: 1px solid #a7f3d0;
       border-radius: 10px;
-      padding: 0.9rem;
-      margin: 0.75rem 0;
+      padding: 1.05rem;
+      margin: 0.95rem 0;
+      line-height: 1.7;
     }
 
-    .faq-item { border: 1px solid #ccc; border-radius: 10px; overflow: hidden; margin: 0.6rem 0; }
+    /* Clean spacing */
+    .sop-card p { line-height: 1.75; margin: 0.6rem 0; }
+    .sop-card h2 { margin: 0 0 0.8rem; }
+    .sop-card h3 { margin: 1.3rem 0 0.6rem; }
+    .sop-card ol, .sop-card ul { padding-left: 1.3rem; margin: 0.6rem 0; }
+    .sop-card li { margin: 0.55rem 0; line-height: 1.7; }
+    .sop-card li ul { margin-top: 0.45rem; }
+
+    /* FAQ accordion */
+    .faq-item { border: 1px solid #ccc; border-radius: 10px; overflow: hidden; margin: 0.75rem 0; }
     .faq-q {
       width: 100%;
       text-align: left;
       background: #fff;
       border: 0;
-      padding: 0.9rem 1rem;
+      padding: 1rem 1.05rem;
       cursor: pointer;
       font-family: inherit;
       font-size: 1rem;
     }
     .faq-q:hover { background: #f8fafc; }
-    .faq-a { display: none; padding: 0 1rem 1rem; color: #222; }
+    .faq-a { display: none; padding: 0 1.05rem 1.05rem; color: #222; line-height: 1.75; }
     .faq-item.open .faq-a { display: block; }
 
     .sop-card a { font-weight: 600; }
@@ -92,11 +104,9 @@
     <!-- Company + HRD Corp Logos -->
     <div class="logo-group" style="display: flex; align-items: center;">
       <a href="/index.html" class="logo">
-        <!-- ✅ FIX -->
         <img src="/assets/logo.png" alt="EasyLatih logo" style="height: 50px; margin-right: 10px;">
       </a>
       <div class="hrdcorp-logos" style="display: flex; align-items: center; gap: 10px;">
-        <!-- ✅ FIX -->
         <img src="/assets/Logo Training Provider_Logo Registered Training Provider.png" alt="HRD Corp Registered" style="height: 40px;">
         <img src="/assets/HRD Corp - Claimable Logo.png" alt="HRD Corp Claimable" style="height: 40px;">
       </div>
@@ -127,6 +137,7 @@
 
   <div class="sop-wrap">
 
+    <!-- TOP NAV -->
     <div class="sop-card">
       <strong>Navigasi:</strong>
       <div class="sop-nav">
@@ -137,6 +148,7 @@
       </div>
     </div>
 
+    <!-- MENU -->
     <div id="menu" class="sop-card">
       <h2>Mula di sini</h2>
       <div class="sop-grid">
@@ -264,7 +276,7 @@
       </ul>
 
       <div class="sop-ok">
-        Insentif dikira berdasarkan rekod prospek yang lengkap dan sah di Google Form/Sheet.
+        Insentif dikira berdasarkan rekod prospek yang lengkap dan sah di Google Form/Sheet, tertakluk kepada semakan rekod dan pengesahan pengurusan.
       </div>
 
       <h3>Rekod & Semakan</h3>
@@ -296,6 +308,81 @@
       <p class="sop-muted">Klik soalan untuk lihat jawapan.</p>
 
       <div class="faq-item">
+        <button class="faq-q" type="button">Apa itu HRD Corp?</button>
+        <div class="faq-a">
+          <p>
+            <strong>HRD Corp</strong> (Human Resource Development Corporation) ialah agensi di Malaysia yang mengurus
+            sistem levi latihan dan geran latihan. Syarikat yang layak boleh memohon geran untuk menyertai latihan
+            di penyedia latihan berdaftar seperti <strong>Easy Latih Consultancy</strong>.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button">Syarikat mana yang perlu bayar Levi HRD Corp?</button>
+        <div class="faq-a">
+          <p>
+            Secara umum, syarikat yang mempunyai <strong>10 pekerja warganegara Malaysia dan ke atas</strong> adalah
+            tertakluk kepada keperluan levi (bergantung kepada kategori/aktiviti syarikat dan ketetapan semasa HRD Corp).
+            Jika syarikat tidak pasti status, ejen perlu minta wakil syarikat semak status caruman/akaun HRD Corp.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button">Bagaimana aliran syarikat claim geran HRD Corp untuk training dengan EasyLatih?</button>
+        <div class="faq-a">
+          <p><strong>Flow ringkas (Claimable Course):</strong></p>
+          <ol>
+            <li>
+              <strong>Pendaftaran minat / tempahan slot</strong><br>
+              Syarikat daftar untuk join program dengan EasyLatih.
+            </li>
+            <li>
+              <strong>Dokumen sokongan dari EasyLatih</strong><br>
+              EasyLatih akan sediakan dokumen berkaitan untuk permohonan geran, termasuk:
+              <ul>
+                <li>Quotation / brochure (yuran)</li>
+                <li>Trainer profile</li>
+                <li>Course content / outline</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Permohonan geran HRD Corp</strong><br>
+              Wakil syarikat memohon geran bagi kursus <em>claimable</em>. Pada peringkat ini, ejen akan
+              <strong>forward guideline</strong> permohonan kepada wakil syarikat.
+              <div class="sop-note">
+                Kebiasaannya keputusan boleh diperoleh dalam <strong>±24 jam</strong>. Jika permohonan tidak lulus /
+                ada isu, wakil syarikat perlu <strong>maklumkan admin</strong> untuk tindakan lanjut.
+              </div>
+            </li>
+            <li>
+              <strong>Kehadiran latihan</strong><br>
+              Syarikat hadir latihan mengikut jadual. (Untuk kes claim, bayaran yuran akan diurus melalui proses tuntutan.)
+            </li>
+            <li>
+              <strong>Dokumen tuntutan (JD1)</strong><br>
+              EasyLatih akan sediakan <strong>Borang JD1</strong> untuk ditandatangani dan dicop oleh syarikat bagi tujuan
+              tuntutan yuran kepada HRD Corp.
+            </li>
+            <li>
+              <strong>Tuntutan elaun pelatih (sekiranya layak)</strong><br>
+              Selepas tuntutan diluluskan, syarikat boleh menuntut elaun pelatih tertakluk kepada polisi jarak:
+              <ul>
+                <li><strong>RM250 / peserta</strong> jika lokasi latihan <strong>&lt; 100km sehala</strong> dari alamat syarikat</li>
+                <li><strong>RM500 / peserta</strong> jika lokasi latihan <strong>≥ 100km sehala</strong></li>
+                <li>Tambahan <strong>RM500</strong> untuk <strong>1 hari tambahan perjalanan</strong> bagi program <strong>1 hari dan ke atas</strong></li>
+              </ul>
+              <p class="sop-muted">
+                Definisi durasi latihan: <strong>1 hari = 7 jam latihan</strong>, <strong>separuh hari = 4 jam</strong>.
+                Bagi program separuh hari, elaun dibayar <strong>separuh kadar</strong> (tertakluk kepada terma semasa).
+              </p>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="faq-item">
         <button class="faq-q" type="button">Boleh isi Google Form pendaftaran jika belum ada bukti bayaran / no HRD?</button>
         <div class="faq-a">
           <p><strong>Tidak.</strong> Pengisian hanya dibenarkan selepas lengkap Borang COP & SIGN serta (Bukti Bayaran atau No. Permohonan HRD Corp).</p>
@@ -324,6 +411,9 @@
         <a href="PASTE_LINK_GOOGLE_FORM_SOALAN_EJEN" target="_blank" rel="noopener noreferrer">
           Klik untuk tanya admin
         </a>
+        <p class="sop-muted" style="margin-top:0.5rem;">
+          Admin akan jawab melalui saluran rasmi, dan jawapan yang sesuai akan dimasukkan ke FAQ sebagai rujukan.
+        </p>
       </div>
 
       <div class="sop-nav">
@@ -389,7 +479,7 @@
     btn.closest(".faq-item").classList.toggle("open");
   });
 
-  /* Optional: Mobile nav toggle (kalau style.css anda guna navToggle) */
+  /* Mobile nav toggle (if style.css uses .active) */
   document.addEventListener("DOMContentLoaded", () => {
     const navToggle = document.getElementById("navToggle");
     const navMenu = document.getElementById("navMenu");
