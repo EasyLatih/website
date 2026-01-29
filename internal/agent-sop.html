@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agent SOP | EasyLatih</title>
-  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <!-- ✅ FIX: absolute paths -->
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/style.css" />
 
   <!-- Semi-private (Option 2) -->
   <meta name="robots" content="noindex, nofollow" />
 
   <style>
-    /* Match site container feel */
     .container { max-width: 1100px; margin: auto; padding: 2rem; }
 
-    /* SOP UI (scoped to avoid clashes) */
     .sop-wrap { margin-top: 1rem; }
     .sop-card {
       border: 1px solid #e6e8ef;
@@ -67,7 +67,6 @@
       margin: 0.75rem 0;
     }
 
-    /* FAQ accordion */
     .faq-item { border: 1px solid #ccc; border-radius: 10px; overflow: hidden; margin: 0.6rem 0; }
     .faq-q {
       width: 100%;
@@ -83,13 +82,6 @@
     .faq-a { display: none; padding: 0 1rem 1rem; color: #222; }
     .faq-item.open .faq-a { display: block; }
 
-    /* Small typography alignment */
-    .sop-card h2 { margin-top: 0; }
-    .sop-card h3 { margin-bottom: 0.4rem; }
-    .sop-card ol, .sop-card ul { padding-left: 1.2rem; }
-    .sop-card li { margin: 0.35rem 0; }
-
-    /* Links */
     .sop-card a { font-weight: 600; }
   </style>
 </head>
@@ -99,12 +91,14 @@
   <div class="nav-container" style="display: flex; align-items: center; justify-content: space-between;">
     <!-- Company + HRD Corp Logos -->
     <div class="logo-group" style="display: flex; align-items: center;">
-      <a href="index.html" class="logo">
-        <img src="assets/logo.png" alt="EasyLatih logo" style="height: 50px; margin-right: 10px;">
+      <a href="/index.html" class="logo">
+        <!-- ✅ FIX -->
+        <img src="/assets/logo.png" alt="EasyLatih logo" style="height: 50px; margin-right: 10px;">
       </a>
       <div class="hrdcorp-logos" style="display: flex; align-items: center; gap: 10px;">
-        <img src="assets/Logo Training Provider_Logo Registered Training Provider.png" alt="HRD Corp Registered" style="height: 40px;">
-        <img src="assets/HRD Corp - Claimable Logo.png" alt="HRD Corp Claimable" style="height: 40px;">
+        <!-- ✅ FIX -->
+        <img src="/assets/Logo Training Provider_Logo Registered Training Provider.png" alt="HRD Corp Registered" style="height: 40px;">
+        <img src="/assets/HRD Corp - Claimable Logo.png" alt="HRD Corp Claimable" style="height: 40px;">
       </div>
     </div>
 
@@ -114,11 +108,11 @@
         <span></span><span></span><span></span>
       </div>
       <ul id="navMenu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="courses.html">Courses</a></li>
-        <li><a href="room-rental.html">Training Room</a></li>
-        <li><a href="schedule.html">Public Training</a></li>
-        <li><a href="blog.html">Blog</a></li>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/courses.html">Courses</a></li>
+        <li><a href="/room-rental.html">Training Room</a></li>
+        <li><a href="/schedule.html">Public Training</a></li>
+        <li><a href="/blog.html">Blog</a></li>
       </ul>
     </nav>
   </div>
@@ -133,7 +127,6 @@
 
   <div class="sop-wrap">
 
-    <!-- TOP NAV -->
     <div class="sop-card">
       <strong>Navigasi:</strong>
       <div class="sop-nav">
@@ -144,7 +137,6 @@
       </div>
     </div>
 
-    <!-- MENU -->
     <div id="menu" class="sop-card">
       <h2>Mula di sini</h2>
       <div class="sop-grid">
@@ -231,7 +223,7 @@
         <strong>Prinsip Tadbir Urus:</strong><br>
         Setiap prospek yang direkodkan adalah di bawah tanggungjawab ejen yang membuat perekodan.
         Ejen lain tidak dibenarkan menghubungi atau mengurus prospek yang sama sepanjang tempoh kempen,
-        tertakluk kepada pengecualian di bawah.
+        tertakluk kepada pengecualian yang diluluskan pengurusan.
       </div>
 
       <h3>Skop Maklumat Prospek (Wajib Lengkap)</h3>
@@ -259,7 +251,7 @@
 
       <h3>Pengecualian Ownership (Versi Korporat)</h3>
       <div class="sop-note">
-        Walau bagaimanapun, sekiranya prospek secara jelas menyatakan hasrat untuk berhubung dengan ejen tertentu,
+        Sekiranya prospek secara jelas menyatakan hasrat untuk berhubung dengan ejen tertentu,
         pihak <strong>Easy Latih</strong> berhak mempertimbangkan dan membenarkan pertukaran ejen bagi prospek tersebut.
         Sebarang pertukaran adalah tertakluk kepada <strong>pengesahan dan kelulusan pengurusan Easy Latih</strong>,
         demi menjaga profesionalisme, keadilan dan kepentingan semua pihak.
@@ -270,6 +262,7 @@
         <li><strong>RM1</strong> – Prospek kategori <strong>Pencarum Levy HRD Corp</strong></li>
         <li><strong>RM0.50</strong> – Prospek kategori <strong>Tidak Carum Levy HRD Corp</strong></li>
       </ul>
+
       <div class="sop-ok">
         Insentif dikira berdasarkan rekod prospek yang lengkap dan sah di Google Form/Sheet.
       </div>
@@ -331,9 +324,6 @@
         <a href="PASTE_LINK_GOOGLE_FORM_SOALAN_EJEN" target="_blank" rel="noopener noreferrer">
           Klik untuk tanya admin
         </a>
-        <p class="sop-muted" style="margin-top:0.5rem;">
-          Admin akan jawab melalui saluran rasmi, dan jawapan yang sesuai akan dimasukkan ke FAQ sebagai rujukan.
-        </p>
       </div>
 
       <div class="sop-nav">
@@ -355,11 +345,11 @@
     </div>
     <div>
       <h4>Quick Links</h4>
-      <a href="index.html">Home</a>
-      <a href="courses.html">Courses</a>
-      <a href="room-rental.html">Training Room</a>
-      <a href="schedule.html">Public Training</a>
-      <a href="blog.html">Blog</a>
+      <a href="/index.html">Home</a>
+      <a href="/courses.html">Courses</a>
+      <a href="/room-rental.html">Training Room</a>
+      <a href="/schedule.html">Public Training</a>
+      <a href="/blog.html">Blog</a>
     </div>
     <div>
       <h4>Follow Us</h4>
@@ -379,7 +369,6 @@
 </footer>
 
 <script>
-  // Sections
   const sections = ["menu","registration","prospecting","faq"];
 
   function go(id){
@@ -389,17 +378,24 @@
     history.replaceState(null, "", "#" + id);
   }
 
-  // Load hash if present
   document.addEventListener("DOMContentLoaded", () => {
     const hash = (location.hash || "").replace("#", "");
     if(hash && sections.includes(hash)) go(hash);
   });
 
-  // FAQ accordion
   document.addEventListener("click", (e) => {
     const btn = e.target.closest(".faq-q");
     if(!btn) return;
     btn.closest(".faq-item").classList.toggle("open");
+  });
+
+  /* Optional: Mobile nav toggle (kalau style.css anda guna navToggle) */
+  document.addEventListener("DOMContentLoaded", () => {
+    const navToggle = document.getElementById("navToggle");
+    const navMenu = document.getElementById("navMenu");
+    if(navToggle && navMenu){
+      navToggle.addEventListener("click", () => navMenu.classList.toggle("active"));
+    }
   });
 </script>
 
