@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- OPTION 2: semi-private -->
+  <meta name="robots" content="noindex, nofollow" />
+  <title>SOP Ejen | Pendaftaran + Invoice/HRD</title>
+
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; margin:0; background:#f6f7fb; color:#111;}
+    .wrap{max-width:980px; margin:0 auto; padding:22px;}
+    .card{background:#fff; border-radius:16px; padding:18px; box-shadow:0 8px 30px rgba(0,0,0,.06); margin-bottom:14px;}
+    h1{font-size:22px; margin:0 0 6px;}
+    h2{font-size:18px; margin:0 0 10px;}
+    p{margin:8px 0; line-height:1.55;}
+    .muted{color:#555; font-size:13px;}
+    .grid{display:grid; gap:12px; grid-template-columns:repeat(2, minmax(0,1fr));}
+    @media(max-width:720px){.grid{grid-template-columns:1fr;}}
+    .btn{width:100%; text-align:left; border:1px solid #e6e8ef; background:#fff; padding:14px; border-radius:14px; cursor:pointer; font-size:15px;}
+    .btn:hover{border-color:#cfd5e6; box-shadow:0 6px 18px rgba(0,0,0,.05);}
+    .pill{display:inline-block; border:1px solid #e6e8ef; background:#fff; padding:8px 12px; border-radius:999px; cursor:pointer; font-size:13px;}
+    .nav{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
+    .hidden{display:none;}
+    .note{background:#fff7ed; border:1px solid #fed7aa; border-radius:14px; padding:12px;}
+    .ok{background:#ecfdf5; border:1px solid #a7f3d0; border-radius:14px; padding:12px;}
+    a{color:inherit;}
+    ol{padding-left:18px;}
+    li{margin:6px 0;}
+    code{background:#f1f5f9; padding:2px 6px; border-radius:8px;}
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="card">
+    <h1>SOP Ejen: Pendaftaran Peserta + Invoice/HRD</h1>
+    <p class="muted">
+      Cara guna: Klik menu → ikut langkah → tekan <code>Next</code>.  
+      (Semi-private: halaman ini <strong>noindex</strong> & tak dipaut dari menu utama.)
+    </p>
+    <div class="nav">
+      <span class="pill" onclick="go('menu')">🏠 Menu</span>
+      <span class="pill" onclick="go('s1')">✅ Step 1</span>
+      <span class="pill" onclick="go('s2')">✅ Step 2</span>
+      <span class="pill" onclick="go('s3')">✅ Step 3</span>
+      <span class="pill" onclick="go('s4')">✅ Step 4</span>
+      <span class="pill" onclick="go('s5')">✅ Step 5</span>
+    </div>
+  </div>
+
+  <!-- MENU -->
+  <div id="menu" class="card">
+    <h2>Mula di sini</h2>
+    <div class="grid">
+      <button class="btn" onclick="go('s1')">🧾 Saya ada syarikat berminat nak join program<br><span class="muted">Pre-fill borang + COP & SIGN</span></button>
+      <button class="btn" onclick="go('s2')">📩 Saya nak maklumkan admin untuk invoice / HRD<br><span class="muted">Hantar info syarikat</span></button>
+      <button class="btn" onclick="go('s3')">📎 Saya nak semak dokumen dah lengkap atau belum<br><span class="muted">(1) + (2A/2B) dulu</span></button>
+      <button class="btn" onclick="go('s4')">📝 Saya nak isi Google Form<br><span class="muted">Wajib ikut format</span></button>
+      <button class="btn" onclick="go('s5')">✅ Saya dah submit, apa next?<br><span class="muted">Admin proses pengesahan</span></button>
+    </div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div id="s1" class="card hidden">
+    <h2>✅ STEP 1: Syarikat berminat nak join program</h2>
+    <ol>
+      <li>Ejen <strong>pre-filled dahulu Borang Pendaftaran (hardcopy)</strong> (isi maklumat program & peserta yang ada).</li>
+      <li>Serahkan borang kepada syarikat untuk <strong>COP & SIGN</strong>.</li>
+    </ol>
+    <div class="ok">
+      <strong>Link Borang Pendaftaran (hardcopy):</strong><br>
+      <a href="https://drive.google.com/file/d/1qoLFwDOrP8RkiP6DyiHnYx906TUHNMRx/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
+        Klik untuk buka borang
+      </a>
+    </div>
+    <div class="nav">
+      <span class="pill" onclick="go('menu')">⬅️ Menu</span>
+      <span class="pill" onclick="go('s2')">Next ➡️ Step 2</span>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div id="s2" class="card hidden">
+    <h2>✅ STEP 2: Maklumkan EasyLatih untuk Invoice / HRD</h2>
+    <ol>
+      <li>Selepas syarikat sahkan berminat, ejen <strong>maklumkan admin EasyLatih</strong> maklumat syarikat untuk:</li>
+      <li>✅ Keluarkan <strong>Invoice</strong>, atau ✅ Forward <strong>step-by-step permohonan geran HRD Corp</strong> (jika claim)</li>
+    </ol>
+    <div class="nav">
+      <span class="pill" onclick="go('s1')">⬅️ Back</span>
+      <span class="pill" onclick="go('s3')">Next ➡️ Step 3</span>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div id="s3" class="card hidden">
+    <h2>✅ STEP 3: Dapatkan dokumen sokongan (WAJIB lengkap dulu)</h2>
+    <p><strong>Ejen perlu pastikan sudah terima daripada syarikat:</strong></p>
+    <ol>
+      <li>(1) Borang Pendaftaran siap <strong>COP & SIGN</strong></li>
+      <li>DAN salah satu:<br>
+        (2A) <strong>Bukti Pembayaran</strong> atau (2B) <strong>No. Permohonan Geran HRD Corp</strong>
+      </li>
+    </ol>
+    <div class="note">
+      ⚠️ <strong>Nota penting:</strong> Hanya selepas lengkap <strong>(1) + (2A/2B)</strong> barulah ejen isi Google Form.
+    </div>
+    <div class="nav">
+      <span class="pill" onclick="go('s2')">⬅️ Back</span>
+      <span class="pill" onclick="go('s4')">Next ➡️ Step 4</span>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div id="s4" class="card hidden">
+    <h2>✅ STEP 4: Isi Google Form (WAJIB ikut format)</h2>
+    <div class="ok">
+      <strong>Link Google Form:</strong><br>
+      <a href="https://forms.gle/Z9LhcJcBq9eTipwX6" target="_blank" rel="noopener noreferrer">
+        Klik untuk isi Google Form
+      </a>
+    </div>
+
+    <p><strong>Format WAJIB:</strong></p>
+    <ol>
+      <li>Semua nama & details isi dalam <strong>ALL CAPS</strong> (huruf besar)</li>
+      <li>IC/ROC/apa-apa nombor: <strong>jangan letak dash “-”</strong><br>
+        Contoh: ✅ 900101011234 (betul) ❌ 900101-01-1234
+      </li>
+      <li>Phone number mesti mula dengan <strong>6</strong><br>
+        Contoh: ✅ 601157549317
+      </li>
+    </ol>
+
+    <div class="nav">
+      <span class="pill" onclick="go('s3')">⬅️ Back</span>
+      <span class="pill" onclick="go('s5')">Next ➡️ Step 5</span>
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div id="s5" class="card hidden">
+    <h2>✅ STEP 5: Selepas submit</h2>
+    <p>Lepas submit Google Form, admin Easy Latih akan proses:</p>
+    <ol>
+      <li>Pengesahan pendaftaran</li>
+      <li>Invoice / resit</li>
+      <li>Semakan HRD Corp (jika claim)</li>
+    </ol>
+    <div class="note">
+      Kalau ada isu / tak pasti dokumen mana belum lengkap, <strong>PM admin dulu</strong>.
+    </div>
+    <div class="nav">
+      <span class="pill" onclick="go('menu')">🏠 Kembali ke Menu</span>
+      <span class="pill" onclick="go('s4')">⬅️ Back</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const sections = ["menu","s1","s2","s3","s4","s5"];
+  function go(id){
+    sections.forEach(s => document.getElementById(s).classList.add("hidden"));
+    document.getElementById(id).classList.remove("hidden");
+    window.scrollTo({top:0, behavior:"smooth"});
+    // optional: update URL hash for direct linking
+    history.replaceState(null, "", "#" + id);
+  }
+
+  // If open with hash (#s3) jump to that section
+  window.addEventListener("load", () => {
+    const hash = (location.hash || "").replace("#","");
+    if(hash && sections.includes(hash)) go(hash);
+  });
+</script>
+
+</body>
+</html>
