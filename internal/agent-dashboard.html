@@ -108,13 +108,57 @@ th,td{
 <h3>Non Levy</h3>
 <h1 id="nonLevy">0</h1>
 </div>
-
+</div>
 <div class="card">
   <h3>📞 Follow Up Hari Ini</h3>
   <div id="followUpTodayBox">
     Tiada follow up hari ini.
-  </div>
+  </div> 
+</div>
+<div class="card">
 
+<h3>📊 Conversion Funnel</h3>
+
+<table>
+
+<tr>
+<td>New Lead</td>
+<td id="funnelNewLead">0</td>
+</tr>
+
+<tr>
+<td>Contacted</td>
+<td id="funnelContacted">0</td>
+</tr>
+
+<tr>
+<td>Interested</td>
+<td id="funnelInterested">0</td>
+</tr>
+
+<tr>
+<td>Quotation Sent</td>
+<td id="funnelQuotation">0</td>
+</tr>
+
+<tr>
+<td>HRD Application</td>
+<td id="funnelHrd">0</td>
+</tr>
+
+<tr>
+<td>Registered</td>
+<td id="funnelRegistered">0</td>
+</tr>
+
+<tr>
+<td>Not Interested</td>
+<td id="funnelNotInterested">0</td>
+</tr>
+
+</table>
+
+</div>
 </div>
 
 <div class="card">
@@ -251,6 +295,55 @@ data.levy;
 document.getElementById("nonLevy")
 .innerHTML =
 data.nonLevy;
+
+let followHtml = "";
+
+if(data.followUpsToday.length > 0){
+
+  data.followUpsToday.forEach(p => {
+
+    followHtml += `
+      <div style="padding:10px;border-bottom:1px solid #eee;">
+        <strong>${p.company}</strong><br>
+        ${p.contact}<br>
+        ${p.phone}<br>
+        Status: ${p.status}
+      </div>
+    `;
+
+  });
+
+}else{
+
+  followHtml =
+  "Tiada follow up hari ini.";
+
+}
+
+document.getElementById(
+  "followUpTodayBox"
+).innerHTML = followHtml;
+
+document.getElementById("funnelNewLead").innerHTML =
+data.funnel["NEW LEAD"];
+
+document.getElementById("funnelContacted").innerHTML =
+data.funnel["CONTACTED"];
+
+document.getElementById("funnelInterested").innerHTML =
+data.funnel["INTERESTED"];
+
+document.getElementById("funnelQuotation").innerHTML =
+data.funnel["QUOTATION SENT"];
+
+document.getElementById("funnelHrd").innerHTML =
+data.funnel["HRD APPLICATION"];
+
+document.getElementById("funnelRegistered").innerHTML =
+data.funnel["REGISTERED"];
+
+document.getElementById("funnelNotInterested").innerHTML =
+data.funnel["NOT INTERESTED"];
 
 let html = "";
 
