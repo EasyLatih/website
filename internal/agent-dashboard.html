@@ -87,7 +87,10 @@ th,td{
 
 <div id="dashboard" class="hidden">
 
-<h2 id="welcome"></h2>
+<div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
+  <h2 id="welcome"></h2>
+  <button onclick="logout()">Logout</button>
+</div>
 
 <div class="kpi">
 
@@ -230,7 +233,10 @@ document.getElementById("prospectTable")
 .innerHTML = html;
 
 }
-
+function logout(){
+  localStorage.clear();
+  location.reload();
+}
 window.onload = () => {
 
 if(localStorage.getItem("agentId")){
