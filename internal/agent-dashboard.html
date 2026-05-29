@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>EasyLatih Agent Dashboard</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f7fa;
+    margin:0;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:15px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-bottom:10px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+button{
+    background:#0d3b66;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.kpi{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+}
+
+.kpi-card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+    text-align:left;
+}
+
+.hidden{
+    display:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="loginBox" class="card">
+
+<h2>EasyLatih Agent Login</h2>
+
+<input id="agentId" placeholder="Agent ID">
+
+<input id="password" type="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+</div>
+
+<div id="dashboard" class="hidden">
+
+<h2 id="welcome"></h2>
+
+<div class="kpi">
+
+<div class="kpi-card">
+<h3>Total Prospects</h3>
+<h1 id="totalProspects">0</h1>
+</div>
+
+<div class="kpi-card">
+<h3>HRD Levy</h3>
+<h1 id="levy">0</h1>
+</div>
+
+<div class="kpi-card">
+<h3>Non Levy</h3>
+<h1 id="nonLevy">0</h1>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>My Prospects</h3>
+
+<table>
+
+<thead>
+<tr>
+<th>Company</th>
+<th>Contact</th>
+<th>Phone</th>
+<th>State</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody id="prospectTable">
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script>
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbyX3OgRmpJTxaMITi2TPaOIz2LE6czbG9WUes0s_4dD5AVDl0xim8gZx0YINN1Qn9TG/exec";
+
+async function login(){
+
+const agentId =
+document.getElementById("agentId").value;
+
+const password =
+document.getElementById("password").value;
+
+const response =
+await fetch(
+`${API_URL}?action=login&agentId=${agentId}&password=${password}`
+);
+
+const data =
+await response.json();
+
+if(!data.success){
+alert("Invalid Login");
+return;
+}
+
+localStorage.setItem(
+"agentId",
+data.agentId
+);
+
+localStorage.setItem(
+"agentName",
+data.name
+);
+
+loadDashboard();
+
+}
+
+async function loadDashboard(){
+
+const agentId =
+localStorage.getItem("agentId");
+
+const name =
+localStorage.getItem("agentName");
+
+document.getElementById("welcome").innerHTML =
+"Welcome, " + name;
+
+document.getElementById("loginBox")
+.classList.add("hidden");
+
+document.getElementById("dashboard")
+.classList.remove("hidden");
+
+const response =
+await fetch(
+`${API_URL}?action=getDashboard&agentId=${agentId}`
+);
+
+const data =
+await response.json();
+
+document.getElementById("totalProspects")
+.innerHTML =
+data.totalProspects;
+
+document.getElementById("levy")
+.innerHTML =
+data.levy;
+
+document.getElementById("nonLevy")
+.innerHTML =
+data.nonLevy;
+
+let html = "";
+
+data.prospects.forEach(p => {
+
+html += `
+<tr>
+<td>${p.company}</td>
+<td>${p.contact}</td>
+<td>${p.phone}</td>
+<td>${p.state}</td>
+<td>${p.status}</td>
+</tr>
+`;
+
+});
+
+document.getElementById("prospectTable")
+.innerHTML = html;
+
+}
+
+window.onload = () => {
+
+if(localStorage.getItem("agentId")){
+loadDashboard();
+}
+
+};
+
+</script>
+
+</body>
+</html>
