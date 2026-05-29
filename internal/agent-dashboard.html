@@ -115,6 +115,14 @@ th,td{
 
 <h3>My Prospects</h3>
 
+<input
+  type="text"
+  id="searchProspect"
+  placeholder="Search Company..."
+  onkeyup="searchProspects()"
+  style="margin-bottom:15px;"
+>
+
 <table>
 
 <thead>
@@ -236,6 +244,37 @@ document.getElementById("prospectTable")
 function logout(){
   localStorage.clear();
   location.reload();
+}
+function searchProspects(){
+
+  let input =
+    document.getElementById("searchProspect");
+
+  let filter =
+    input.value.toUpperCase();
+
+  let table =
+    document.getElementById("prospectTable");
+
+  let rows =
+    table.getElementsByTagName("tr");
+
+  for(let i=0;i<rows.length;i++){
+
+    let company =
+      rows[i].getElementsByTagName("td")[0];
+
+    if(company){
+
+      let txt =
+        company.textContent || company.innerText;
+
+      rows[i].style.display =
+        txt.toUpperCase().indexOf(filter) > -1
+        ? ""
+        : "none";
+    }
+  }
 }
 window.onload = () => {
 
