@@ -257,6 +257,17 @@
         <h3>Non Levy</h3>
         <h1 id="nonLevy">0</h1>
       </div>
+      <div class="kpi-card">
+  <h3>New Companies Today</h3>
+  <h1 id="newCompaniesToday">0/10</h1>
+  <small>Target: 10</small>
+</div>
+
+<div class="kpi-card">
+  <h3>Follow Up Done</h3>
+  <h1 id="followUpDoneToday">0/10</h1>
+  <small>Target: 10</small>
+</div>
     </div>
 
     <br>
@@ -265,7 +276,6 @@
       <h3>📞 Follow Up Hari Ini</h3>
       <div class="sop-card">
   <h3>🎯 Suggested Follow Up Today</h3>
-
   <div id="suggestedFollowUps">
     Loading...
   </div>
@@ -428,7 +438,7 @@ document.getElementById("followUpDoneToday").innerHTML =
   document.getElementById("followUpTodayBox").innerHTML = followHtml;
   let suggestedHtml = "";
 
-data.suggestedFollowUps.forEach(p => {
+(data.suggestedFollowUps || []).forEach(p => {
 
   suggestedHtml += `
     <div class="prospect-card">
@@ -495,7 +505,7 @@ document.getElementById(
 
   let html = "";
 
-  data.prospects.forEach(p => {
+  (data.prospects || []).forEach(p => {
     html += `
       <div class="prospect-card">
         <div class="status-badge">${p.status || "NEW LEAD"}</div>
@@ -602,40 +612,25 @@ async function updateStatus(rowNumber, status){
   }
 }
 async function saveCallLog(rowNumber){
+  const remark = document.getElementById(`remark_${rowNumber}`).value;
+  const nextDate = document.getElementById(`next_${rowNumber}`).value;
 
-  const remark =
-    document.getElementById(
-      `remark_${rowNumber}`
-    ).value;
+  const params = new URLSearchParams({
+    action: "updateCallLog",
+    rowNumber: rowNumber,
+    callRemark: remark,
+    nextFollowUpDate: nextDate,
+    callType: "FOLLOW UP"
+  });
 
-  const nextDate =
-    document.getElementById(
-      `next_${rowNumber}`
-    ).value;
-
-  const response =
-    await fetch(
-      `${API_URL}?action=updateCallLog
-      &rowNumber=${rowNumber}
-      &callRemark=${encodeURIComponent(remark)}
-      &nextFollowUpDate=${nextDate}
-      &callType=FOLLOW UP`
-      .replace(/\s+/g,'')
-    );
-
-  const data =
-    await response.json();
+  const response = await fetch(`${API_URL}?${params.toString()}`);
+  const data = await response.json();
 
   if(data.success){
-
     alert("Call Log Saved");
-
     loadDashboard();
-
-  } else {
-
+  }else{
     alert("Update Failed");
-
   }
 }
 window.onload = () => {
