@@ -1,425 +1,479 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agent Dashboard | EasyLatih</title>
 
-<title>EasyLatih Agent Dashboard</title>
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <meta name="robots" content="noindex, nofollow" />
 
-<style>
+  <style>
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#f8fafc;
+      margin:0;
+    }
 
-body{
-    font-family:Arial,sans-serif;
-    background:#f5f7fa;
-    margin:0;
-    padding:20px;
-}
+    .container{
+      max-width:1100px;
+      margin:auto;
+      padding:2rem;
+    }
 
-.card{
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    margin-bottom:15px;
-    box-shadow:0 2px 8px rgba(0,0,0,.1);
-}
+    .sop-card{
+      border:1px solid #e6e8ef;
+      background:#fff;
+      border-radius:12px;
+      padding:1.6rem;
+      margin-bottom:1rem;
+    }
 
-input{
-    width:100%;
-    padding:12px;
-    margin-bottom:10px;
-    border:1px solid #ccc;
-    border-radius:8px;
-}
+    .sop-muted{
+      color:#555;
+      font-size:.95rem;
+      line-height:1.65;
+    }
 
-button{
-    background:#0d3b66;
-    color:white;
-    border:none;
-    padding:12px 20px;
-    border-radius:8px;
-    cursor:pointer;
-}
+    .sop-nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.5rem;
+      margin-top:.9rem;
+    }
 
-.kpi{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:15px;
-}
+    .sop-pill{
+      border:1px solid #ccc;
+      background:#fff;
+      padding:.45rem .75rem;
+      border-radius:999px;
+      cursor:pointer;
+      font-size:.9rem;
+      font-family:inherit;
+    }
 
-.kpi-card{
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    text-align:center;
-}
+    .hidden{display:none;}
 
-table{
-    width:100%;
-    border-collapse:collapse;
-}
+    input,select,textarea{
+      width:100%;
+      padding:.75rem;
+      border:1px solid #ccc;
+      border-radius:8px;
+      font-family:inherit;
+      margin-bottom:.75rem;
+      box-sizing:border-box;
+    }
 
-th,td{
-    padding:10px;
-    border-bottom:1px solid #ddd;
-    text-align:left;
-}
+    button{
+      background:#0d3b66;
+      color:#fff;
+      border:none;
+      padding:.75rem 1rem;
+      border-radius:8px;
+      cursor:pointer;
+      font-family:inherit;
+      font-weight:600;
+    }
 
-.hidden{
-    display:none;
-}
+    .kpi{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:1rem;
+    }
 
-</style>
+    .kpi-card{
+      border:1px solid #e6e8ef;
+      background:#fff;
+      border-radius:12px;
+      padding:1.25rem;
+      text-align:center;
+    }
+
+    .kpi-card h1{
+      color:#0d3b66;
+      margin:.35rem 0;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:1rem;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+    }
+
+    td,th{
+      padding:.75rem;
+      border-bottom:1px solid #eee;
+      text-align:left;
+    }
+
+    .prospect-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:1rem;
+    }
+
+    .prospect-card{
+      border:1px solid #e6e8ef;
+      border-radius:12px;
+      padding:1rem;
+      background:#fff;
+    }
+
+    .prospect-company{
+      font-size:1.1rem;
+      font-weight:700;
+      color:#0d3b66;
+      margin-bottom:.5rem;
+    }
+
+    .prospect-info{
+      margin:.35rem 0;
+      color:#555;
+      font-size:.95rem;
+    }
+
+    .status-badge{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:600;
+      background:#eef2ff;
+      margin-bottom:10px;
+    }
+
+    .prospect-actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+
+    .action-btn{
+      color:white;
+      padding:8px 12px;
+      border-radius:8px;
+      text-decoration:none;
+      font-size:14px;
+    }
+
+    .whatsapp-btn{background:#25D366;}
+    .call-btn{background:#0d3b66;}
+    .email-btn{background:#f59e0b;}
+
+    @media(max-width:600px){
+      .container{padding:1rem;}
+      .sop-card{padding:1rem;}
+      .sop-nav{flex-direction:column;}
+      .sop-pill,button{width:100%;text-align:center;}
+      h2{font-size:1.35rem;}
+    }
+  </style>
 </head>
 
 <body>
 
-<div id="loginBox" class="card">
+<header>
+  <div class="nav-container" style="display:flex;align-items:center;justify-content:space-between;">
+    <div class="logo-group" style="display:flex;align-items:center;">
+      <a href="/index.html" class="logo">
+        <img src="/assets/logo.png" alt="EasyLatih logo" style="height:50px;margin-right:10px;">
+      </a>
+      <div class="hrdcorp-logos" style="display:flex;align-items:center;gap:10px;">
+        <img src="/assets/Logo Training Provider_Logo Registered Training Provider.png" alt="HRD Corp Registered" style="height:40px;">
+        <img src="/assets/HRD Corp - Claimable Logo.png" alt="HRD Corp Claimable" style="height:40px;">
+      </div>
+    </div>
 
-<h2>EasyLatih Agent Login</h2>
+    <nav>
+      <div class="nav-toggle" id="navToggle">
+        <span></span><span></span><span></span>
+      </div>
+      <ul id="navMenu">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/courses.html">Courses</a></li>
+        <li><a href="/room-rental.html">Training Room</a></li>
+        <li><a href="/schedule.html">Public Training</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-<input id="agentId" placeholder="Agent ID">
+<section class="container">
 
-<input id="password" type="password" placeholder="Password">
+  <div id="loginBox" class="sop-card">
+    <h2>EasyLatih Agent Login</h2>
+    <p class="sop-muted">Login untuk akses dashboard ejen.</p>
 
-<button onclick="login()">Login</button>
+    <input id="agentId" placeholder="Agent ID">
+    <input id="password" type="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
 
-</div>
+  <div id="dashboard" class="hidden">
 
-<div id="dashboard" class="hidden">
+    <div class="sop-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+        <div>
+          <h2 id="welcome"></h2>
+          <p class="sop-muted">EasyLatih Agent CRM Dashboard</p>
+        </div>
+        <button onclick="logout()">Logout</button>
+      </div>
 
-<div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
-  <h2 id="welcome"></h2>
-  <button onclick="logout()">Logout</button>
-</div>
+      <div class="sop-nav">
+        <span class="sop-pill">📊 Dashboard</span>
+        <span class="sop-pill">➕ Add Prospect</span>
+        <span class="sop-pill">📞 Follow Up</span>
+        <span class="sop-pill">👥 My Prospects</span>
+      </div>
+    </div>
 
-<div class="kpi">
+    <div class="kpi">
+      <div class="kpi-card">
+        <h3>Total Prospects</h3>
+        <h1 id="totalProspects">0</h1>
+      </div>
+      <div class="kpi-card">
+        <h3>HRD Levy</h3>
+        <h1 id="levy">0</h1>
+      </div>
+      <div class="kpi-card">
+        <h3>Non Levy</h3>
+        <h1 id="nonLevy">0</h1>
+      </div>
+    </div>
 
-<div class="kpi-card">
-<h3>Total Prospects</h3>
-<h1 id="totalProspects">0</h1>
-</div>
+    <br>
 
-<div class="kpi-card">
-<h3>HRD Levy</h3>
-<h1 id="levy">0</h1>
-</div>
+    <div class="sop-card">
+      <h3>📞 Follow Up Hari Ini</h3>
+      <div id="followUpTodayBox">Tiada follow up hari ini.</div>
+    </div>
 
-<div class="kpi-card">
-<h3>Non Levy</h3>
-<h1 id="nonLevy">0</h1>
-</div>
-</div>
-<div class="card">
-  <h3>📞 Follow Up Hari Ini</h3>
-  <div id="followUpTodayBox">
-    Tiada follow up hari ini.
-  </div> 
-</div>
-<div class="card">
+    <div class="sop-card">
+      <h3>📊 Conversion Funnel</h3>
+      <table>
+        <tr><td>New Lead</td><td id="funnelNewLead">0</td></tr>
+        <tr><td>Contacted</td><td id="funnelContacted">0</td></tr>
+        <tr><td>Interested</td><td id="funnelInterested">0</td></tr>
+        <tr><td>Quotation Sent</td><td id="funnelQuotation">0</td></tr>
+        <tr><td>HRD Application</td><td id="funnelHrd">0</td></tr>
+        <tr><td>Registered</td><td id="funnelRegistered">0</td></tr>
+        <tr><td>Not Interested</td><td id="funnelNotInterested">0</td></tr>
+      </table>
+    </div>
 
-<h3>📊 Conversion Funnel</h3>
+    <div class="sop-card">
+      <h3>📄 Quotation Tracker</h3>
+      <div class="kpi">
+        <div class="kpi-card"><h3>Sent</h3><h1 id="quotationSent">0</h1></div>
+        <div class="kpi-card"><h3>Accepted</h3><h1 id="quotationAccepted">0</h1></div>
+        <div class="kpi-card"><h3>Rejected</h3><h1 id="quotationRejected">0</h1></div>
+        <div class="kpi-card"><h3>Potential Sales</h3><h1 id="potentialSales">RM0</h1></div>
+        <div class="kpi-card"><h3>Confirmed Sales</h3><h1 id="confirmedSales">RM0</h1></div>
+      </div>
+    </div>
 
-<table>
+    <div class="sop-card">
+      <h3>➕ Add Prospect</h3>
 
-<tr>
-<td>New Lead</td>
-<td id="funnelNewLead">0</td>
-</tr>
+      <div class="form-grid">
+        <input id="company" placeholder="Company Name">
+        <input id="contact" placeholder="Contact Person">
+        <input id="position" placeholder="Position">
+        <input id="phone" placeholder="Phone 1">
+        <input id="phone2" placeholder="Phone 2">
+        <input id="email" placeholder="Email">
+        <input id="state" placeholder="State">
+        <input id="district" placeholder="District">
+        <input id="training" placeholder="Training Interested">
 
-<tr>
-<td>Contacted</td>
-<td id="funnelContacted">0</td>
-</tr>
+        <select id="levySelect">
+          <option value="YA">HRD Levy</option>
+          <option value="TIDAK">Non Levy</option>
+        </select>
 
-<tr>
-<td>Interested</td>
-<td id="funnelInterested">0</td>
-</tr>
+        <input id="followUpDate" type="date">
+        <input id="remarks" placeholder="Remarks">
+      </div>
 
-<tr>
-<td>Quotation Sent</td>
-<td id="funnelQuotation">0</td>
-</tr>
+      <button onclick="addProspect()">Save Prospect</button>
+    </div>
 
-<tr>
-<td>HRD Application</td>
-<td id="funnelHrd">0</td>
-</tr>
+    <div class="sop-card">
+      <h3>👥 My Prospects</h3>
 
-<tr>
-<td>Registered</td>
-<td id="funnelRegistered">0</td>
-</tr>
+      <input
+        type="text"
+        id="searchProspect"
+        placeholder="Search company, contact, phone or email..."
+        onkeyup="searchProspects()"
+      >
 
-<tr>
-<td>Not Interested</td>
-<td id="funnelNotInterested">0</td>
-</tr>
+      <div id="prospectTable" class="prospect-grid"></div>
+    </div>
 
-</table>
+  </div>
+</section>
 
-</div>
-</div>
-
-<div class="card">
-<div class="card">
-
-<h3>➕ Add Prospect</h3>
-
-<input id="company" placeholder="Company Name">
-<input id="contact" placeholder="Contact Person">
-<input id="position" placeholder="Position">
-<input id="phone" placeholder="Phone 1">
-<input id="phone2" placeholder="Phone 2">
-<input id="email" placeholder="Email">
-<input id="state" placeholder="State">
-<input id="district" placeholder="District">
-<input id="training" placeholder="Training Interested">
-
-<select id="levy">
-  <option value="YA">HRD Levy</option>
-  <option value="TIDAK">Non Levy</option>
-</select>
-
-<input id="followUpDate" type="date">
-<input id="remarks" placeholder="Remarks">
-
-<br><br>
-
-<button onclick="addProspect()">Save Prospect</button>
-
-</div>
-<h3>My Prospects</h3>
-
-<input
-  type="text"
-  id="searchProspect"
-  placeholder="Search Company..."
-  onkeyup="searchProspects()"
-  style="margin-bottom:15px;"
->
-
-<table>
-
-<thead>
-<tr>
-<th>Company</th>
-<th>Contact</th>
-<th>Phone</th>
-<th>State</th>
-<th>Status</th>
-</tr>
-</thead>
-
-<tbody id="prospectTable">
-</tbody>
-
-</table>
-
-</div>
-
-</div>
+<footer>
+  <div class="footer-container">
+    <div>
+      <h4>Contact Us</h4>
+      <p>B62, Tingkat 1, Jalan IM 7/1<br />Bandar Indera Mahkota 6, 25200<br />Kuantan, Pahang, Malaysia</p>
+      <p>Email: <a href="mailto:sales@easylatih.my">sales@easylatih.my</a></p>
+      <p>Phone: <a href="tel:+6095604273">+60 9 560 4273</a></p>
+      <p>WhatsApp: <a href="https://wa.me/60109202811" target="_blank">+60 10 920 2811</a></p>
+    </div>
+  </div>
+  <div class="text-center" style="margin-top:2rem;">
+    EasyLatih is a brand under Easy Latih Consultancy (Registration No. 202503030373).<br />
+    &copy; 2025 EasyLatih. All rights reserved.
+  </div>
+</footer>
 
 <script>
-
 const API_URL =
 "https://script.google.com/macros/s/AKfycby5Tl6A7Vip6GdkNsMstjl6026EvH6boWU9de-11DO6EaSR4XJTogXdY7ZDIxyJS6Go/exec";
 
 async function login(){
+  const agentId = document.getElementById("agentId").value;
+  const password = document.getElementById("password").value;
 
-const agentId =
-document.getElementById("agentId").value;
+  const response = await fetch(`${API_URL}?action=login&agentId=${encodeURIComponent(agentId)}&password=${encodeURIComponent(password)}`);
+  const data = await response.json();
 
-const password =
-document.getElementById("password").value;
+  if(!data.success){
+    alert("Invalid Login");
+    return;
+  }
 
-const response =
-await fetch(
-`${API_URL}?action=login&agentId=${agentId}&password=${password}`
-);
+  localStorage.setItem("agentId", data.agentId);
+  localStorage.setItem("agentName", data.name);
 
-const data =
-await response.json();
-
-if(!data.success){
-alert("Invalid Login");
-return;
-}
-
-localStorage.setItem(
-"agentId",
-data.agentId
-);
-
-localStorage.setItem(
-"agentName",
-data.name
-);
-
-loadDashboard();
-
+  loadDashboard();
 }
 
 async function loadDashboard(){
+  const agentId = localStorage.getItem("agentId");
+  const name = localStorage.getItem("agentName");
 
-const agentId =
-localStorage.getItem("agentId");
+  document.getElementById("welcome").innerHTML = "Welcome, " + name;
+  document.getElementById("loginBox").classList.add("hidden");
+  document.getElementById("dashboard").classList.remove("hidden");
 
-const name =
-localStorage.getItem("agentName");
+  const response = await fetch(`${API_URL}?action=getDashboard&agentId=${encodeURIComponent(agentId)}`);
+  const data = await response.json();
 
-document.getElementById("welcome").innerHTML =
-"Welcome, " + name;
+  document.getElementById("totalProspects").innerHTML = data.totalProspects || 0;
+  document.getElementById("levy").innerHTML = data.levy || 0;
+  document.getElementById("nonLevy").innerHTML = data.nonLevy || 0;
 
-document.getElementById("loginBox")
-.classList.add("hidden");
+  let followHtml = "";
 
-document.getElementById("dashboard")
-.classList.remove("hidden");
+  if(data.followUpsToday && data.followUpsToday.length > 0){
+    data.followUpsToday.forEach(p => {
+      followHtml += `
+        <div style="padding:10px;border-bottom:1px solid #eee;">
+          <strong>${p.company || "-"}</strong><br>
+          👤 ${p.contact || "-"}<br>
+          📞 <a href="https://wa.me/${p.phone}" target="_blank">${p.phone || "-"}</a><br>
+          ✉️ ${p.email || "-"}<br>
+          Status: ${p.status || "-"}
+        </div>
+      `;
+    });
+  }else{
+    followHtml = "Tiada follow up hari ini.";
+  }
 
-const response =
-await fetch(
-`${API_URL}?action=getDashboard&agentId=${agentId}`
-);
+  document.getElementById("followUpTodayBox").innerHTML = followHtml;
 
-const data =
-await response.json();
+  document.getElementById("funnelNewLead").innerHTML = data.funnel?.["NEW LEAD"] || 0;
+  document.getElementById("funnelContacted").innerHTML = data.funnel?.["CONTACTED"] || 0;
+  document.getElementById("funnelInterested").innerHTML = data.funnel?.["INTERESTED"] || 0;
+  document.getElementById("funnelQuotation").innerHTML = data.funnel?.["QUOTATION SENT"] || 0;
+  document.getElementById("funnelHrd").innerHTML = data.funnel?.["HRD APPLICATION"] || 0;
+  document.getElementById("funnelRegistered").innerHTML = data.funnel?.["REGISTERED"] || 0;
+  document.getElementById("funnelNotInterested").innerHTML = data.funnel?.["NOT INTERESTED"] || 0;
 
-document.getElementById("totalProspects")
-.innerHTML =
-data.totalProspects;
+  document.getElementById("quotationSent").innerHTML = data.quotationSent || 0;
+  document.getElementById("quotationAccepted").innerHTML = data.quotationAccepted || 0;
+  document.getElementById("quotationRejected").innerHTML = data.quotationRejected || 0;
+  document.getElementById("potentialSales").innerHTML = "RM" + Number(data.potentialSales || 0).toLocaleString();
+  document.getElementById("confirmedSales").innerHTML = "RM" + Number(data.confirmedSales || 0).toLocaleString();
 
-document.getElementById("levy")
-.innerHTML =
-data.levy;
+  let html = "";
 
-document.getElementById("nonLevy")
-.innerHTML =
-data.nonLevy;
+  data.prospects.forEach(p => {
+    html += `
+      <div class="prospect-card">
+        <div class="status-badge">${p.status || "NEW LEAD"}</div>
 
-let followHtml = "";
+        <div class="prospect-company">${p.company || "-"}</div>
 
-if(data.followUpsToday.length > 0){
+        <div class="prospect-info">👤 ${p.contact || "-"}</div>
+        <div class="prospect-info">📞 ${p.phone || "-"}</div>
+        <div class="prospect-info">✉️ ${p.email || "-"}</div>
+        <div class="prospect-info">📍 ${p.state || "-"}</div>
+        <div class="prospect-info">📅 Follow Up: ${p.followUpDate || "-"}</div>
+        <div class="prospect-info">📝 ${p.remarks || "-"}</div>
+        <div class="prospect-info">📄 Quotation: ${p.quotationStatus || "NOT SENT"}</div>
+        <div class="prospect-info">💰 Amount: RM${Number(p.quotationAmount || 0).toLocaleString()}</div>
 
-  data.followUpsToday.forEach(p => {
+        <div class="prospect-actions">
+          <a href="https://wa.me/${p.phone}" target="_blank" class="action-btn whatsapp-btn">💬 WhatsApp</a>
+          <a href="tel:${p.phone}" class="action-btn call-btn">📞 Call</a>
+          <a href="mailto:${p.email}" class="action-btn email-btn">✉️ Email</a>
+        </div>
 
-    followHtml += `
-      <div style="padding:10px;border-bottom:1px solid #eee;">
-        <strong>${p.company}</strong><br>
-        ${p.contact}<br>
-        ${p.phone}<br>
-        Status: ${p.status}
+        <div style="margin-top:1rem;">
+          <select onchange="updateStatus(${p.rowNumber}, this.value)">
+            <option value="NEW LEAD" ${p.status=="NEW LEAD"?"selected":""}>NEW LEAD</option>
+            <option value="CONTACTED" ${p.status=="CONTACTED"?"selected":""}>CONTACTED</option>
+            <option value="INTERESTED" ${p.status=="INTERESTED"?"selected":""}>INTERESTED</option>
+            <option value="QUOTATION SENT" ${p.status=="QUOTATION SENT"?"selected":""}>QUOTATION SENT</option>
+            <option value="HRD APPLICATION" ${p.status=="HRD APPLICATION"?"selected":""}>HRD APPLICATION</option>
+            <option value="REGISTERED" ${p.status=="REGISTERED"?"selected":""}>REGISTERED</option>
+            <option value="NOT INTERESTED" ${p.status=="NOT INTERESTED"?"selected":""}>NOT INTERESTED</option>
+          </select>
+        </div>
       </div>
     `;
-
   });
 
-}else{
-
-  followHtml =
-  "Tiada follow up hari ini.";
-
+  document.getElementById("prospectTable").innerHTML = html;
 }
 
-document.getElementById(
-  "followUpTodayBox"
-).innerHTML = followHtml;
-
-document.getElementById("funnelNewLead").innerHTML =
-data.funnel["NEW LEAD"];
-
-document.getElementById("funnelContacted").innerHTML =
-data.funnel["CONTACTED"];
-
-document.getElementById("funnelInterested").innerHTML =
-data.funnel["INTERESTED"];
-
-document.getElementById("funnelQuotation").innerHTML =
-data.funnel["QUOTATION SENT"];
-
-document.getElementById("funnelHrd").innerHTML =
-data.funnel["HRD APPLICATION"];
-
-document.getElementById("funnelRegistered").innerHTML =
-data.funnel["REGISTERED"];
-
-document.getElementById("funnelNotInterested").innerHTML =
-data.funnel["NOT INTERESTED"];
-
-let html = "";
-
-data.prospects.forEach(p => {
-
-html += `
-<tr>
-<td>${p.company}</td>
-<td>${p.contact}</td>
-<td>${p.phone}</td>
-<td>${p.state}</td>
-
-<td>
-<select onchange="updateStatus(${p.rowNumber}, this.value)">
-<option value="NEW LEAD" ${p.status=="NEW LEAD"?"selected":""}>NEW LEAD</option>
-<option value="CONTACTED" ${p.status=="CONTACTED"?"selected":""}>CONTACTED</option>
-<option value="INTERESTED" ${p.status=="INTERESTED"?"selected":""}>INTERESTED</option>
-<option value="QUOTATION SENT" ${p.status=="QUOTATION SENT"?"selected":""}>QUOTATION SENT</option>
-<option value="HRD APPLICATION" ${p.status=="HRD APPLICATION"?"selected":""}>HRD APPLICATION</option>
-<option value="REGISTERED" ${p.status=="REGISTERED"?"selected":""}>REGISTERED</option>
-<option value="NOT INTERESTED" ${p.status=="NOT INTERESTED"?"selected":""}>NOT INTERESTED</option>
-</select>
-</td>
-
-</tr>
-`;
-
-});
-
-document.getElementById("prospectTable")
-.innerHTML = html;
-
-}
 function logout(){
   localStorage.clear();
   location.reload();
 }
+
 function searchProspects(){
+  const filter = document.getElementById("searchProspect").value.toUpperCase();
+  const cards = document.getElementsByClassName("prospect-card");
 
-  let input =
-    document.getElementById("searchProspect");
-
-  let filter =
-    input.value.toUpperCase();
-
-  let table =
-    document.getElementById("prospectTable");
-
-  let rows =
-    table.getElementsByTagName("tr");
-
-  for(let i=0;i<rows.length;i++){
-
-    let company =
-      rows[i].getElementsByTagName("td")[0];
-
-    if(company){
-
-      let txt =
-        company.textContent || company.innerText;
-
-      rows[i].style.display =
-        txt.toUpperCase().indexOf(filter) > -1
-        ? ""
-        : "none";
-    }
+  for(let i = 0; i < cards.length; i++){
+    const text = cards[i].innerText.toUpperCase();
+    cards[i].style.display = text.indexOf(filter) > -1 ? "" : "none";
   }
 }
-async function addProspect(){
 
+async function addProspect(){
   const params = new URLSearchParams({
     action: "addProspect",
     agentId: localStorage.getItem("agentId"),
     agentName: localStorage.getItem("agentName"),
-
     company: document.getElementById("company").value,
     contact: document.getElementById("contact").value,
     position: document.getElementById("position").value,
@@ -428,7 +482,7 @@ async function addProspect(){
     email: document.getElementById("email").value,
     state: document.getElementById("state").value,
     district: document.getElementById("district").value,
-    levy: document.getElementById("levy").value,
+    levy: document.getElementById("levySelect").value,
     training: document.getElementById("training").value,
     followUpDate: document.getElementById("followUpDate").value,
     remarks: document.getElementById("remarks").value
@@ -443,13 +497,13 @@ async function addProspect(){
     ["company","contact","position","phone","phone2","email","state","district","training","followUpDate","remarks"]
       .forEach(id => document.getElementById(id).value = "");
 
-    document.getElementById("levy").value = "YA";
-
+    document.getElementById("levySelect").value = "YA";
     loadDashboard();
   }else{
     alert("Error Saving: " + (data.message || data.error || "Unknown error"));
   }
 }
+
 async function updateStatus(rowNumber, status){
   const params = new URLSearchParams({
     action: "updateStatus",
@@ -461,19 +515,24 @@ async function updateStatus(rowNumber, status){
   const data = await response.json();
 
   if(data.success){
-    console.log("Status Updated");
+    loadDashboard();
   }else{
     alert("Update Failed");
   }
 }
-    window.onload = () => {
 
-if(localStorage.getItem("agentId")){
-loadDashboard();
-}
+window.onload = () => {
+  if(localStorage.getItem("agentId")){
+    loadDashboard();
+  }
 
+  const navToggle = document.getElementById("navToggle");
+  const navMenu = document.getElementById("navMenu");
+
+  if(navToggle && navMenu){
+    navToggle.addEventListener("click", () => navMenu.classList.toggle("active"));
+  }
 };
-
 </script>
 
 </body>
