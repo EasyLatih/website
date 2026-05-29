@@ -263,6 +263,13 @@
 
     <div id="followUpSection" class="sop-card">
       <h3>📞 Follow Up Hari Ini</h3>
+      <div class="sop-card">
+  <h3>🎯 Suggested Follow Up Today</h3>
+
+  <div id="suggestedFollowUps">
+    Loading...
+  </div>
+</div>
       <div id="followUpTodayBox">Tiada follow up hari ini.</div>
     </div>
 
@@ -394,6 +401,11 @@ async function loadDashboard(){
   document.getElementById("totalProspects").innerHTML = data.totalProspects || 0;
   document.getElementById("levy").innerHTML = data.levy || 0;
   document.getElementById("nonLevy").innerHTML = data.nonLevy || 0;
+  document.getElementById("newCompaniesToday").innerHTML =
+  data.newCompaniesToday + "/10";
+
+document.getElementById("followUpDoneToday").innerHTML =
+  data.followUpDoneToday + "/10";
 
   let followHtml = "";
 
@@ -414,6 +426,58 @@ async function loadDashboard(){
   }
 
   document.getElementById("followUpTodayBox").innerHTML = followHtml;
+  let suggestedHtml = "";
+
+data.suggestedFollowUps.forEach(p => {
+
+  suggestedHtml += `
+    <div class="prospect-card">
+
+      <div class="prospect-company">
+        ${p.company}
+      </div>
+
+      <div class="prospect-info">
+        👤 ${p.contact || "-"}
+      </div>
+
+      <div class="prospect-info">
+        📞 ${p.phone || "-"}
+      </div>
+
+      <div class="prospect-info">
+        Last Call:
+        ${p.lastCallDate || "Never"}
+      </div>
+
+      <div class="prospect-info">
+        Next Follow Up:
+        ${p.nextFollowUpDate || "-"}
+      </div>
+
+      <textarea
+        id="remark_${p.rowNumber}"
+        placeholder="Call Remark"
+      ></textarea>
+
+      <input
+        type="date"
+        id="next_${p.rowNumber}"
+      >
+
+      <button
+        onclick="saveCallLog(${p.rowNumber})">
+        Save Call Update
+      </button>
+
+    </div>
+  `;
+
+});
+
+document.getElementById(
+  "suggestedFollowUps"
+).innerHTML = suggestedHtml;
 
   document.getElementById("funnelNewLead").innerHTML = data.funnel?.["NEW LEAD"] || 0;
   document.getElementById("funnelContacted").innerHTML = data.funnel?.["CONTACTED"] || 0;
@@ -537,7 +601,43 @@ async function updateStatus(rowNumber, status){
     alert("Update Failed");
   }
 }
+async function saveCallLog(rowNumber){
 
+  const remark =
+    document.getElementById(
+      `remark_${rowNumber}`
+    ).value;
+
+  const nextDate =
+    document.getElementById(
+      `next_${rowNumber}`
+    ).value;
+
+  const response =
+    await fetch(
+      `${API_URL}?action=updateCallLog
+      &rowNumber=${rowNumber}
+      &callRemark=${encodeURIComponent(remark)}
+      &nextFollowUpDate=${nextDate}
+      &callType=FOLLOW UP`
+      .replace(/\s+/g,'')
+    );
+
+  const data =
+    await response.json();
+
+  if(data.success){
+
+    alert("Call Log Saved");
+
+    loadDashboard();
+
+  } else {
+
+    alert("Update Failed");
+
+  }
+}
 window.onload = () => {
   if(localStorage.getItem("agentId")){
     loadDashboard();
