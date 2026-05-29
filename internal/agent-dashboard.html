@@ -112,7 +112,32 @@ th,td{
 </div>
 
 <div class="card">
+<div class="card">
 
+<h3>Add Prospect</h3>
+
+<input id="company" placeholder="Company Name">
+
+<input id="contact" placeholder="Contact Person">
+
+<input id="phone" placeholder="Phone">
+
+<input id="email" placeholder="Email">
+
+<input id="state" placeholder="State">
+
+<select id="levy">
+  <option value="YA">HRD Levy</option>
+  <option value="TIDAK">Non Levy</option>
+</select>
+
+<br><br>
+
+<button onclick="addProspect()">
+Save Prospect
+</button>
+
+</div>
 <h3>My Prospects</h3>
 
 <input
@@ -276,7 +301,62 @@ function searchProspects(){
     }
   }
 }
-window.onload = () => {
+async function addProspect(){
+
+const agentId =
+localStorage.getItem("agentId");
+
+const agentName =
+localStorage.getItem("agentName");
+
+const company =
+document.getElementById("company").value;
+
+const contact =
+document.getElementById("contact").value;
+
+const phone =
+document.getElementById("phone").value;
+
+const email =
+document.getElementById("email").value;
+
+const state =
+document.getElementById("state").value;
+
+const levy =
+document.getElementById("levy").value;
+
+const response =
+await fetch(
+`${API_URL}?action=addProspect
+&agentId=${encodeURIComponent(agentId)}
+&agentName=${encodeURIComponent(agentName)}
+&company=${encodeURIComponent(company)}
+&contact=${encodeURIComponent(contact)}
+&phone=${encodeURIComponent(phone)}
+&email=${encodeURIComponent(email)}
+&state=${encodeURIComponent(state)}
+&levy=${encodeURIComponent(levy)}`
+);
+
+const data =
+await response.json();
+
+if(data.success){
+
+alert("Prospect Saved");
+
+loadDashboard();
+
+}else{
+
+alert("Error Saving");
+
+}
+
+}
+    window.onload = () => {
 
 if(localStorage.getItem("agentId")){
 loadDashboard();
