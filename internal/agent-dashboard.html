@@ -256,7 +256,19 @@ html += `
 <td>${p.contact}</td>
 <td>${p.phone}</td>
 <td>${p.state}</td>
-<td>${p.status}</td>
+
+<td>
+<select onchange="updateStatus(${p.rowNumber}, this.value)">
+<option value="NEW LEAD" ${p.status=="NEW LEAD"?"selected":""}>NEW LEAD</option>
+<option value="CONTACTED" ${p.status=="CONTACTED"?"selected":""}>CONTACTED</option>
+<option value="INTERESTED" ${p.status=="INTERESTED"?"selected":""}>INTERESTED</option>
+<option value="QUOTATION SENT" ${p.status=="QUOTATION SENT"?"selected":""}>QUOTATION SENT</option>
+<option value="HRD APPLICATION" ${p.status=="HRD APPLICATION"?"selected":""}>HRD APPLICATION</option>
+<option value="REGISTERED" ${p.status=="REGISTERED"?"selected":""}>REGISTERED</option>
+<option value="NOT INTERESTED" ${p.status=="NOT INTERESTED"?"selected":""}>NOT INTERESTED</option>
+</select>
+</td>
+
 </tr>
 `;
 
@@ -331,6 +343,23 @@ async function addProspect(){
     loadDashboard();
   }else{
     alert("Error Saving: " + (data.message || data.error || "Unknown error"));
+  }
+}
+
+async function updateStatus(rowNumber, status){
+  const params = new URLSearchParams({
+    action: "updateStatus",
+    rowNumber: rowNumber,
+    status: status
+  });
+
+  const response = await fetch(`${API_URL}?${params.toString()}`);
+  const data = await response.json();
+
+  if(data.success){
+    console.log("Status Updated");
+  }else{
+    alert("Update Failed");
   }
 }
     window.onload = () => {
