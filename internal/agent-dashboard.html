@@ -164,28 +164,29 @@ th,td{
 <div class="card">
 <div class="card">
 
-<h3>Add Prospect</h3>
+<h3>➕ Add Prospect</h3>
 
 <input id="company" placeholder="Company Name">
-
 <input id="contact" placeholder="Contact Person">
-
-<input id="phone" placeholder="Phone">
-
+<input id="position" placeholder="Position">
+<input id="phone" placeholder="Phone 1">
+<input id="phone2" placeholder="Phone 2">
 <input id="email" placeholder="Email">
-
 <input id="state" placeholder="State">
+<input id="district" placeholder="District">
+<input id="training" placeholder="Training Interested">
 
 <select id="levy">
   <option value="YA">HRD Levy</option>
   <option value="TIDAK">Non Levy</option>
 </select>
 
+<input id="followUpDate" type="date">
+<input id="remarks" placeholder="Remarks">
+
 <br><br>
 
-<button onclick="addProspect()">
-Save Prospect
-</button>
+<button onclick="addProspect()">Save Prospect</button>
 
 </div>
 <h3>My Prospects</h3>
@@ -418,33 +419,37 @@ async function addProspect(){
     action: "addProspect",
     agentId: localStorage.getItem("agentId"),
     agentName: localStorage.getItem("agentName"),
+
     company: document.getElementById("company").value,
     contact: document.getElementById("contact").value,
+    position: document.getElementById("position").value,
     phone: document.getElementById("phone").value,
+    phone2: document.getElementById("phone2").value,
     email: document.getElementById("email").value,
     state: document.getElementById("state").value,
-    levy: document.getElementById("levy").value
+    district: document.getElementById("district").value,
+    levy: document.getElementById("levy").value,
+    training: document.getElementById("training").value,
+    followUpDate: document.getElementById("followUpDate").value,
+    remarks: document.getElementById("remarks").value
   });
 
   const response = await fetch(`${API_URL}?${params.toString()}`);
   const data = await response.json();
 
-  console.log(data);
-
   if(data.success){
     alert("Prospect Saved");
-    document.getElementById("company").value = "";
-    document.getElementById("contact").value = "";
-    document.getElementById("phone").value = "";
-    document.getElementById("email").value = "";
-    document.getElementById("state").value = "";
+
+    ["company","contact","position","phone","phone2","email","state","district","training","followUpDate","remarks"]
+      .forEach(id => document.getElementById(id).value = "");
+
     document.getElementById("levy").value = "YA";
+
     loadDashboard();
   }else{
     alert("Error Saving: " + (data.message || data.error || "Unknown error"));
   }
 }
-
 async function updateStatus(rowNumber, status){
   const params = new URLSearchParams({
     action: "updateStatus",
