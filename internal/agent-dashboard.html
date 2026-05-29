@@ -231,6 +231,11 @@
       border-left:5px solid #f59e0b;
     }
 
+    .overdue-card{
+      border-color:#fecaca;
+      background:#fff7f7;
+    }
+
     .button-row{
       display:flex;
       gap:.5rem;
@@ -333,6 +338,17 @@
     </div>
 
     <div class="sop-card">
+      <h3>🔴 Overdue Follow Up</h3>
+      <p class="sop-muted">
+        Senarai syarikat yang sudah melepasi tarikh follow up.
+      </p>
+
+      <div id="overdueFollowUps" class="prospect-grid">
+        Tiada overdue follow up.
+      </div>
+    </div>
+
+    <div class="sop-card">
       <h3>📊 Conversion Funnel</h3>
       <table>
         <tr><td>New Lead</td><td id="funnelNewLead">0</td></tr>
@@ -355,16 +371,18 @@
         <div class="kpi-card"><h3>Confirmed Sales</h3><h1 id="confirmedSales">RM0</h1></div>
       </div>
     </div>
-<div class="sop-card">
-  <h3>📄 Quotation Follow Up</h3>
-  <p class="sop-muted">
-    Quotation yang telah dihantar lebih 3 hari dan perlu di-follow up.
-  </p>
 
-  <div id="quotationFollowUps" class="prospect-grid">
-    Tiada quotation perlu follow up.
-  </div>
-</div>
+    <div class="sop-card">
+      <h3>📄 Quotation Follow Up</h3>
+      <p class="sop-muted">
+        Quotation yang telah dihantar lebih 3 hari dan perlu di-follow up.
+      </p>
+
+      <div id="quotationFollowUps" class="prospect-grid">
+        Tiada quotation perlu follow up.
+      </div>
+    </div>
+
     <div id="addProspectSection" class="sop-card">
       <h3>➕ Add Prospect</h3>
       <p class="sop-muted">Semak duplicate dahulu sebelum save prospect baru.</p>
@@ -548,6 +566,7 @@ async function loadDashboard(){
 
   renderAutoFollowUpQueue(data.suggestedFollowUps || []);
   renderFollowUpDueToday(data.followUpsToday || []);
+  renderOverdueFollowUps(data.overdueFollowUps || []);
   renderFunnel(data.funnel || {});
   renderQuotation(data);
   renderProspects(data.prospects || []);
@@ -609,6 +628,35 @@ function renderFollowUpDueToday(list){
   document.getElementById("followUpTodayBox").innerHTML = `<div class="prospect-grid">${html}</div>`;
 }
 
+function renderOverdueFollowUps(list){
+  let html = "";
+
+  if(list.length === 0){
+    html = "Tiada overdue follow up.";
+  }
+
+  list.forEach(p => {
+    html += `
+      <div class="prospect-card overdue-card">
+        <div class="status-badge" style="background:#fee2e2;">
+          OVERDUE ${p.daysOverdue || 0} DAYS
+        </div>
+
+        <div class="prospect-company">${p.company || "-"}</div>
+        <div class="prospect-info">👤 ${p.contact || "-"}</div>
+        <div class="prospect-info">📞 ${p.phone || "-"}</div>
+        <div class="prospect-info">✉️ ${p.email || "-"}</div>
+        <div class="prospect-info">📅 Due Date: ${p.nextFollowUpDate || "-"}</div>
+        <div class="prospect-info">Status: ${p.status || "-"}</div>
+
+        ${actionButtons(p)}
+      </div>
+    `;
+  });
+
+  document.getElementById("overdueFollowUps").innerHTML = html;
+}
+
 function renderFunnel(funnel){
   setText("funnelNewLead", funnel["NEW LEAD"] || 0);
   setText("funnelContacted", funnel["CONTACTED"] || 0);
@@ -625,33 +673,29 @@ function renderQuotation(data){
   setText("quotationRejected", data.quotationRejected || 0);
   setText("potentialSales", "RM" + Number(data.potentialSales || 0).toLocaleString());
   setText("confirmedSales", "RM" + Number(data.confirmedSales || 0).toLocaleString());
-  let quotationFollowHtml = "";
 
-(data.quotationFollowUps || []).forEach(q => {
-  quotationFollowHtml += `
-    <div class="prospect-card">
-      <div class="status-badge">QUOTATION SENT</div>
+  let html = "";
 
-      <div class="prospect-company">${q.company || "-"}</div>
+  (data.quotationFollowUps || []).forEach(q => {
+    html += `
+      <div class="prospect-card">
+        <div class="status-badge">QUOTATION SENT</div>
 
-      <div class="prospect-info">👤 ${q.contact || "-"}</div>
-      <div class="prospect-info">📞 ${q.phone || "-"}</div>
-      <div class="prospect-info">✉️ ${q.email || "-"}</div>
-      <div class="prospect-info">📅 Sent Date: ${q.quotationDate || "-"}</div>
-      <div class="prospect-info">⏰ Outstanding: ${q.daysOutstanding || 0} days</div>
-      <div class="prospect-info">💰 Amount: RM${Number(q.quotationAmount || 0).toLocaleString()}</div>
+        <div class="prospect-company">${q.company || "-"}</div>
+        <div class="prospect-info">👤 ${q.contact || "-"}</div>
+        <div class="prospect-info">📞 ${q.phone || "-"}</div>
+        <div class="prospect-info">✉️ ${q.email || "-"}</div>
+        <div class="prospect-info">📅 Sent Date: ${q.quotationDate || "-"}</div>
+        <div class="prospect-info">⏰ Outstanding: ${q.daysOutstanding || 0} days</div>
+        <div class="prospect-info">💰 Amount: RM${Number(q.quotationAmount || 0).toLocaleString()}</div>
 
-      <div class="prospect-actions">
-        <a href="https://wa.me/${q.phone}" target="_blank" class="action-btn whatsapp-btn">💬 WhatsApp</a>
-        <a href="tel:${q.phone}" class="action-btn call-btn">📞 Call</a>
-        <a href="mailto:${q.email}" class="action-btn email-btn">✉️ Email</a>
+        ${actionButtons(q)}
       </div>
-    </div>
-  `;
-});
+    `;
+  });
 
-document.getElementById("quotationFollowUps").innerHTML =
-  quotationFollowHtml || "Tiada quotation perlu follow up.";
+  document.getElementById("quotationFollowUps").innerHTML =
+    html || "Tiada quotation perlu follow up.";
 }
 
 function renderProspects(list){
