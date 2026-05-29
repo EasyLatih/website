@@ -303,58 +303,29 @@ function searchProspects(){
 }
 async function addProspect(){
 
-const agentId =
-localStorage.getItem("agentId");
+  const params = new URLSearchParams({
+    action: "addProspect",
+    agentId: localStorage.getItem("agentId"),
+    agentName: localStorage.getItem("agentName"),
+    company: document.getElementById("company").value,
+    contact: document.getElementById("contact").value,
+    phone: document.getElementById("phone").value,
+    email: document.getElementById("email").value,
+    state: document.getElementById("state").value,
+    levy: document.getElementById("levy").value
+  });
 
-const agentName =
-localStorage.getItem("agentName");
+  const response = await fetch(`${API_URL}?${params.toString()}`);
+  const data = await response.json();
 
-const company =
-document.getElementById("company").value;
+  console.log(data);
 
-const contact =
-document.getElementById("contact").value;
-
-const phone =
-document.getElementById("phone").value;
-
-const email =
-document.getElementById("email").value;
-
-const state =
-document.getElementById("state").value;
-
-const levy =
-document.getElementById("levy").value;
-
-const response =
-await fetch(
-`${API_URL}?action=addProspect
-&agentId=${encodeURIComponent(agentId)}
-&agentName=${encodeURIComponent(agentName)}
-&company=${encodeURIComponent(company)}
-&contact=${encodeURIComponent(contact)}
-&phone=${encodeURIComponent(phone)}
-&email=${encodeURIComponent(email)}
-&state=${encodeURIComponent(state)}
-&levy=${encodeURIComponent(levy)}`
-);
-
-const data =
-await response.json();
-
-if(data.success){
-
-alert("Prospect Saved");
-
-loadDashboard();
-
-}else{
-
-alert("Error Saving");
-
-}
-
+  if(data.success){
+    alert("Prospect Saved");
+    loadDashboard();
+  }else{
+    alert("Error Saving: " + (data.message || data.error || "Unknown error"));
+  }
 }
     window.onload = () => {
 
