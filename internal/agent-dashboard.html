@@ -172,7 +172,7 @@ Save Prospect
 <script>
 
 const API_URL =
-"https://script.google.com/macros/s/AKfycbw_IDoUJ3arvm-TOMbeb_-UxIwSCqgOcCDi1nkgXwH9Ph0L-HW0jMEz_lx4DHTjNn3x//exec";
+"https://script.google.com/macros/s/AKfycbw_IDoUJ3arvm-TOMbeb_-UxIwSCqgOcCDi1nkgXwH9Ph0L-HW0jMEz_lx4DHTjNn3x/exec";
 
 async function login(){
 
@@ -322,6 +322,12 @@ async function addProspect(){
 
   if(data.success){
     alert("Prospect Saved");
+    document.getElementById("company").value = "";
+    document.getElementById("contact").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("state").value = "";
+    document.getElementById("levy").value = "YA";
     loadDashboard();
   }else{
     alert("Error Saving: " + (data.message || data.error || "Unknown error"));
