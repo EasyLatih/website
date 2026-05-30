@@ -318,10 +318,9 @@ tr:hover{
       <table>
         <thead>
           <tr>
-            <th>Rank</th>
-            <th>Agent ID</th>
-            <th>Agent Name</th>
             <th>Total Prospects</th>
+            <th>New Today</th>
+            <th>Follow Up Today</th>
             <th>HRD Levy</th>
             <th>Non Levy</th>
             <th>Levy %</th>
@@ -423,6 +422,8 @@ function renderAgentTable(list){
         <td>${a.agentId || "-"}</td>
         <td>${a.agentName || "-"}</td>
         <td><strong>${prospects}</strong></td>
+        <td><strong>${a.newToday || 0}</strong></td>
+        <td><strong>${a.followUpToday || 0}</strong></td>
         <td>${levy}</td>
         <td>${nonLevy}</td>
         <td>${levyPercent}%</td>
