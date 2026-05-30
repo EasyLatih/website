@@ -56,34 +56,7 @@
       line-height:1.65;
     }
 
-    .sop-nav{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.5rem;
-      margin-top:.9rem;
-      position:sticky;
-      top:10px;
-      z-index:100;
-      background:white;
-      padding:10px;
-      border-radius:12px;
-      box-shadow:0 2px 10px rgba(0,0,0,.08);
-    }
-
-    .sop-pill{
-      border:1px solid #ccc;
-      background:#fff;
-      color:#111;
-      padding:.55rem .85rem;
-      border-radius:999px;
-      cursor:pointer;
-      font-size:.9rem;
-      font-family:inherit;
-      text-decoration:none;
-      display:inline-block;
-    }
-
-    .hidden{display:none;}
+    .hidden{display:none !important;}
 
     input,select,textarea{
       width:100%;
@@ -126,6 +99,15 @@
     .success-box{
       background:#dcfce7;
       border:1px solid #86efac;
+      padding:12px;
+      border-radius:10px;
+      margin-bottom:1rem;
+      line-height:1.6;
+    }
+
+    .warning-box{
+      background:#fff7ed;
+      border:1px solid #fed7aa;
       padding:12px;
       border-radius:10px;
       margin-bottom:1rem;
@@ -226,6 +208,7 @@
     .whatsapp-btn{background:#25D366;}
     .call-btn{background:#0d3b66;}
     .email-btn{background:#f59e0b;}
+    .folder-btn{background:#0d3b66;}
 
     .queue-card{
       border-left:5px solid #f59e0b;
@@ -236,21 +219,62 @@
       background:#fff7f7;
     }
 
-    .button-row{
-      display:flex;
-      gap:.5rem;
-      flex-wrap:wrap;
-      margin-top:.5rem;
+    .tab-menu{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+      gap:.75rem;
+      margin-top:1rem;
+    }
+
+    .tab-btn{
+      background:#fff;
+      border:1px solid #d1d5db;
+      color:#111;
+      border-radius:12px;
+      padding:1rem;
+      text-align:center;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .tab-btn.active{
+      background:#0d3b66;
+      color:#fff;
+      border-color:#0d3b66;
+    }
+
+    .tab-content{
+      display:none;
+    }
+
+    .tab-content.active{
+      display:block;
+    }
+
+    .resource-filter{
+      display:grid;
+      grid-template-columns:2fr 1fr 1fr;
+      gap:1rem;
+      margin-bottom:1rem;
+    }
+
+    .match-card{
+      padding:10px;
+      border:1px solid #ddd;
+      border-radius:8px;
+      margin-bottom:8px;
+      background:#fff;
     }
 
     @media(max-width:600px){
       .container{padding:1rem;}
       .sop-card{padding:1rem;}
-      .sop-nav{flex-direction:column;}
-      .sop-pill,button{width:100%;text-align:center;}
+      .tab-menu{grid-template-columns:1fr;}
+      .tab-btn,button{width:100%;text-align:center;}
       h2{font-size:1.35rem;}
       .prospect-grid{grid-template-columns:1fr;}
       .portal-header-inner{align-items:flex-start;}
+      .resource-filter{grid-template-columns:1fr;}
     }
   </style>
 </head>
@@ -289,142 +313,173 @@
         <button onclick="logout()">Logout</button>
       </div>
 
-      <div class="sop-nav">
-        <span class="sop-pill" onclick="scrollToSection('dashboardSection')">📊 Dashboard</span>
-        <span class="sop-pill" onclick="scrollToSection('followUpSection')">🔥 Auto Follow Up Queue</span>
-        <span class="sop-pill" onclick="scrollToSection('addProspectSection')">➕ Add Prospect</span>
-        <span class="sop-pill" onclick="scrollToSection('prospectSection')">👥 My Prospects</span>
+      <div class="tab-menu">
+        <button class="tab-btn active" onclick="showTab('dashboardTab', this)">📊 Dashboard</button>
+        <button class="tab-btn" onclick="showTab('prospectsTab', this)">👥 Prospects</button>
+        <button class="tab-btn" onclick="showTab('followupTab', this)">📞 Follow Up</button>
+        <button class="tab-btn" onclick="showTab('resourcesTab', this)">📚 Resources</button>
       </div>
     </div>
 
-    <div id="dashboardSection" class="kpi">
-      <div class="kpi-card">
-        <h3>Total Prospects</h3>
-        <h1 id="totalProspects">0</h1>
-      </div>
-      <div class="kpi-card">
-        <h3>HRD Levy</h3>
-        <h1 id="levy">0</h1>
-      </div>
-      <div class="kpi-card">
-        <h3>Non Levy</h3>
-        <h1 id="nonLevy">0</h1>
-      </div>
-      <div class="kpi-card">
-        <h3>New Companies Today</h3>
-        <h1 id="newCompaniesToday">0/10</h1>
-        <small>Target: 10</small>
-      </div>
-      <div class="kpi-card">
-        <h3>Follow Up Done</h3>
-        <h1 id="followUpDoneToday">0/10</h1>
-        <small>Target: 10</small>
-      </div>
-    </div>
-
-    <br>
-
-    <div id="followUpSection" class="sop-card">
-      <h3>🔥 Auto Follow Up Queue</h3>
-      <p class="sop-muted">
-        Sistem cadangkan sehingga 10 syarikat untuk follow up berdasarkan Next Follow Up Date dan Last Call Date.
-      </p>
-      <div id="suggestedFollowUps">Loading...</div>
-    </div>
-
-    <div class="sop-card">
-      <h3>📞 Follow Up Due Today</h3>
-      <div id="followUpTodayBox">Tiada follow up hari ini.</div>
-    </div>
-
-    <div class="sop-card">
-      <h3>🔴 Overdue Follow Up</h3>
-      <p class="sop-muted">
-        Senarai syarikat yang sudah melepasi tarikh follow up.
-      </p>
-
-      <div id="overdueFollowUps" class="prospect-grid">
-        Tiada overdue follow up.
-      </div>
-    </div>
-
-    <div class="sop-card">
-      <h3>📊 Conversion Funnel</h3>
-      <table>
-        <tr><td>New Lead</td><td id="funnelNewLead">0</td></tr>
-        <tr><td>Contacted</td><td id="funnelContacted">0</td></tr>
-        <tr><td>Interested</td><td id="funnelInterested">0</td></tr>
-        <tr><td>Quotation Sent</td><td id="funnelQuotation">0</td></tr>
-        <tr><td>HRD Application</td><td id="funnelHrd">0</td></tr>
-        <tr><td>Registered</td><td id="funnelRegistered">0</td></tr>
-        <tr><td>Not Interested</td><td id="funnelNotInterested">0</td></tr>
-      </table>
-    </div>
-
-    <div class="sop-card">
-      <h3>📄 Quotation Tracker</h3>
+    <!-- TAB 1: DASHBOARD -->
+    <div id="dashboardTab" class="tab-content active">
       <div class="kpi">
-        <div class="kpi-card"><h3>Sent</h3><h1 id="quotationSent">0</h1></div>
-        <div class="kpi-card"><h3>Accepted</h3><h1 id="quotationAccepted">0</h1></div>
-        <div class="kpi-card"><h3>Rejected</h3><h1 id="quotationRejected">0</h1></div>
-        <div class="kpi-card"><h3>Potential Sales</h3><h1 id="potentialSales">RM0</h1></div>
-        <div class="kpi-card"><h3>Confirmed Sales</h3><h1 id="confirmedSales">RM0</h1></div>
-      </div>
-    </div>
-
-    <div class="sop-card">
-      <h3>📄 Quotation Follow Up</h3>
-      <p class="sop-muted">
-        Quotation yang telah dihantar lebih 3 hari dan perlu di-follow up.
-      </p>
-
-      <div id="quotationFollowUps" class="prospect-grid">
-        Tiada quotation perlu follow up.
-      </div>
-    </div>
-
-    <div id="addProspectSection" class="sop-card">
-      <h3>➕ Add Prospect</h3>
-      <p class="sop-muted">Semak duplicate dahulu sebelum save prospect baru.</p>
-
-      <div class="form-grid">
-        <div>
-          <input id="company" placeholder="Company Name">
-          <button type="button" onclick="checkProspect()">Check Duplicate</button>
-          <div id="checkResult" style="margin-top:.75rem;"></div>
+        <div class="kpi-card">
+          <h3>Total Prospects</h3>
+          <h1 id="totalProspects">0</h1>
         </div>
-        <input id="contact" placeholder="Contact Person">
-        <input id="position" placeholder="Position">
-        <input id="phone" placeholder="Phone 1">
-        <input id="phone2" placeholder="Phone 2">
-        <input id="email" placeholder="Email">
-        <input id="state" placeholder="State">
-        <input id="district" placeholder="District">
-        <input id="training" placeholder="Training Interested">
-
-        <select id="levySelect">
-          <option value="YA">HRD Levy</option>
-          <option value="TIDAK">Non Levy</option>
-        </select>
-
-        <input id="followUpDate" type="date">
-        <input id="remarks" placeholder="Remarks">
+        <div class="kpi-card">
+          <h3>HRD Levy</h3>
+          <h1 id="levy">0</h1>
+        </div>
+        <div class="kpi-card">
+          <h3>Non Levy</h3>
+          <h1 id="nonLevy">0</h1>
+        </div>
+        <div class="kpi-card">
+          <h3>New Companies Today</h3>
+          <h1 id="newCompaniesToday">0/10</h1>
+          <small>Target: 10</small>
+        </div>
+        <div class="kpi-card">
+          <h3>Follow Up Done</h3>
+          <h1 id="followUpDoneToday">0/10</h1>
+          <small>Target: 10</small>
+        </div>
       </div>
 
-      <button onclick="addProspect()">Save Prospect</button>
+      <br>
+
+      <div class="sop-card">
+        <h3>📊 Conversion Funnel</h3>
+        <table>
+          <tr><td>New Lead</td><td id="funnelNewLead">0</td></tr>
+          <tr><td>Contacted</td><td id="funnelContacted">0</td></tr>
+          <tr><td>Interested</td><td id="funnelInterested">0</td></tr>
+          <tr><td>Quotation Sent</td><td id="funnelQuotation">0</td></tr>
+          <tr><td>HRD Application</td><td id="funnelHrd">0</td></tr>
+          <tr><td>Registered</td><td id="funnelRegistered">0</td></tr>
+          <tr><td>Not Interested</td><td id="funnelNotInterested">0</td></tr>
+        </table>
+      </div>
+
+      <div class="sop-card">
+        <h3>📄 Quotation Tracker</h3>
+        <div class="kpi">
+          <div class="kpi-card"><h3>Sent</h3><h1 id="quotationSent">0</h1></div>
+          <div class="kpi-card"><h3>Accepted</h3><h1 id="quotationAccepted">0</h1></div>
+          <div class="kpi-card"><h3>Rejected</h3><h1 id="quotationRejected">0</h1></div>
+          <div class="kpi-card"><h3>Potential Sales</h3><h1 id="potentialSales">RM0</h1></div>
+          <div class="kpi-card"><h3>Confirmed Sales</h3><h1 id="confirmedSales">RM0</h1></div>
+        </div>
+      </div>
     </div>
 
-    <div id="prospectSection" class="sop-card">
-      <h3>👥 My Prospects</h3>
+    <!-- TAB 2: PROSPECTS -->
+    <div id="prospectsTab" class="tab-content">
+      <div id="addProspectSection" class="sop-card">
+        <h3>➕ Add Prospect</h3>
+        <p class="sop-muted">Semak duplicate dahulu sebelum save prospect baru. Jika sistem jumpa possible duplicate, ia hanya memberi warning. Anda masih boleh save jika yakin syarikat itu berbeza.</p>
 
-      <input
-        type="text"
-        id="searchProspect"
-        placeholder="Search company, contact, phone or email..."
-        onkeyup="searchProspects()"
-      >
+        <div class="form-grid">
+          <div>
+            <input id="company" placeholder="Company Name">
+            <button type="button" onclick="checkProspect()">Check Duplicate</button>
+            <div id="checkResult" style="margin-top:.75rem;"></div>
+          </div>
+          <input id="contact" placeholder="Contact Person">
+          <input id="position" placeholder="Position">
+          <input id="phone" placeholder="Phone 1">
+          <input id="phone2" placeholder="Phone 2">
+          <input id="email" placeholder="Email">
+          <input id="state" placeholder="State">
+          <input id="district" placeholder="District">
+          <input id="training" placeholder="Training Interested">
 
-      <div id="prospectTable" class="prospect-grid"></div>
+          <select id="levySelect">
+            <option value="YA">HRD Levy</option>
+            <option value="TIDAK">Non Levy</option>
+          </select>
+
+          <input id="followUpDate" type="date">
+          <input id="remarks" placeholder="Remarks">
+        </div>
+
+        <button onclick="addProspect()">Save Prospect</button>
+      </div>
+
+      <div id="prospectSection" class="sop-card">
+        <h3>👥 My Prospects</h3>
+
+        <input
+          type="text"
+          id="searchProspect"
+          placeholder="Search company, contact, phone or email..."
+          onkeyup="searchProspects()"
+        >
+
+        <div id="prospectTable" class="prospect-grid"></div>
+      </div>
+    </div>
+
+    <!-- TAB 3: FOLLOW UP -->
+    <div id="followupTab" class="tab-content">
+      <div id="followUpSection" class="sop-card">
+        <h3>🔥 Auto Follow Up Queue</h3>
+        <p class="sop-muted">
+          Sistem cadangkan sehingga 10 syarikat untuk follow up berdasarkan Next Follow Up Date dan Last Call Date.
+        </p>
+        <div id="suggestedFollowUps">Loading...</div>
+      </div>
+
+      <div class="sop-card">
+        <h3>📞 Follow Up Due Today</h3>
+        <div id="followUpTodayBox">Tiada follow up hari ini.</div>
+      </div>
+
+      <div class="sop-card">
+        <h3>🔴 Overdue Follow Up</h3>
+        <p class="sop-muted">
+          Senarai syarikat yang sudah melepasi tarikh follow up.
+        </p>
+
+        <div id="overdueFollowUps" class="prospect-grid">
+          Tiada overdue follow up.
+        </div>
+      </div>
+
+      <div class="sop-card">
+        <h3>📄 Quotation Follow Up</h3>
+        <p class="sop-muted">
+          Quotation yang telah dihantar lebih 3 hari dan perlu di-follow up.
+        </p>
+
+        <div id="quotationFollowUps" class="prospect-grid">
+          Tiada quotation perlu follow up.
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: RESOURCES -->
+    <div id="resourcesTab" class="tab-content">
+      <div class="sop-card">
+        <h3>📚 Resources</h3>
+        <p class="sop-muted">
+          Folder program untuk ejen. Setiap folder boleh mengandungi brochure, course outline, trainer profile, grant guideline dan registration link.
+        </p>
+
+        <div class="resource-filter">
+          <input id="resourceSearch" placeholder="Search program..." onkeyup="renderResources()">
+          <select id="resourceState" onchange="renderResources()">
+            <option value="">All States</option>
+          </select>
+          <select id="resourceMonth" onchange="renderResources()">
+            <option value="">All Months</option>
+          </select>
+        </div>
+
+        <div id="resourceList" class="prospect-grid"></div>
+      </div>
     </div>
 
   </div>
@@ -450,18 +505,47 @@
 const API_URL =
 "https://script.google.com/macros/s/AKfycby5Tl6A7Vip6GdkNsMstjl6026EvH6boWU9de-11DO6EaSR4XJTogXdY7ZDIxyJS6Go/exec";
 
-let prospectAvailable = false;
+let prospectAvailable = true;
+
+const resources = [
+  {
+    program: "Basic HR for Non-HR",
+    date: "2026-06-15",
+    state: "Kuala Lumpur",
+    link: "PASTE_GOOGLE_DRIVE_FOLDER_LINK"
+  },
+  {
+    program: "E-Invoice Implementation",
+    date: "2026-06-20",
+    state: "Pahang",
+    link: "PASTE_GOOGLE_DRIVE_FOLDER_LINK"
+  },
+  {
+    program: "Basic Accounting & Tax for SMEs",
+    date: "2026-06-25",
+    state: "Terengganu",
+    link: "PASTE_GOOGLE_DRIVE_FOLDER_LINK"
+  }
+];
 
 function setText(id, value){
   const el = document.getElementById(id);
   if(el) el.innerHTML = value;
 }
 
-function scrollToSection(id){
-  const element = document.getElementById(id);
-  if(element){
-    element.scrollIntoView({behavior:"smooth", block:"start"});
-  }
+function showTab(tabId, btn){
+  document.querySelectorAll(".tab-content").forEach(tab => {
+    tab.classList.remove("active");
+  });
+
+  document.querySelectorAll(".tab-btn").forEach(button => {
+    button.classList.remove("active");
+  });
+
+  document.getElementById(tabId).classList.add("active");
+  btn.classList.add("active");
+
+  window.scrollTo({top:0, behavior:"smooth"});
 }
 
 function cleanPhone(phone){
@@ -471,9 +555,15 @@ function cleanPhone(phone){
 function actionButtons(p){
   const phone = cleanPhone(p.phone);
   const email = p.email || "";
+  const message = encodeURIComponent(
+    "Assalamualaikum dan salam sejahtera.\n\n" +
+    "Saya dari EasyLatih Consultancy, HRD Corp Training Provider.\n\n" +
+    "Saya ingin berkongsi maklumat program latihan yang mungkin sesuai untuk syarikat Tuan/Puan."
+  );
+
   return `
     <div class="prospect-actions">
-      <a href="https://wa.me/${phone}" target="_blank" class="action-btn whatsapp-btn">💬 WhatsApp</a>
+      <a href="https://wa.me/${phone}?text=${message}" target="_blank" class="action-btn whatsapp-btn">💬 WhatsApp</a>
       <a href="tel:${phone}" class="action-btn call-btn">📞 Call</a>
       <a href="mailto:${email}" class="action-btn email-btn">✉️ Email</a>
     </div>
@@ -501,7 +591,7 @@ async function checkProspect(){
   const data = await response.json();
 
   if(!data.success){
-    prospectAvailable = false;
+    prospectAvailable = true;
     document.getElementById("checkResult").innerHTML = `
       <div class="danger-box">Ralat semakan: ${data.message || data.error || "Unknown error"}</div>
     `;
@@ -509,17 +599,31 @@ async function checkProspect(){
   }
 
   if(data.exists){
-    prospectAvailable = false;
-    document.getElementById("checkResult").innerHTML = `
-      <div class="danger-box">
-        ⚠️ Prospect already exists<br>
-        <strong>${data.company || company}</strong><br>
-        Owner: ${data.ownerName || "-"} (${data.ownerAgent || "-"})<br>
-        Status: ${data.status || "-"}<br>
-        Phone: ${data.phone || "-"}<br>
-        Email: ${data.email || "-"}
+    prospectAvailable = true;
+
+    let html = `
+      <div class="warning-box">
+        <strong>⚠ Possible Duplicate Found</strong><br>
+        Sistem menjumpai rekod yang mungkin sama. Sila semak dahulu. Jika syarikat ini berbeza, anda masih boleh tekan <strong>Save Prospect</strong>.
       </div>
     `;
+
+    (data.matches || []).forEach(m => {
+      html += `
+        <div class="match-card">
+          <strong>${m.company || "-"}</strong><br>
+          Contact: ${m.contact || "-"}<br>
+          Owner: ${m.ownerName || "-"} (${m.ownerAgent || "-"})<br>
+          Status: ${m.status || "-"}<br>
+          Phone: ${m.phone || "-"}<br>
+          Email: ${m.email || "-"}<br>
+          State: ${m.state || "-"}
+        </div>
+      `;
+    });
+
+    document.getElementById("checkResult").innerHTML = html;
+
   }else{
     prospectAvailable = true;
     document.getElementById("checkResult").innerHTML = `
@@ -570,6 +674,8 @@ async function loadDashboard(){
   renderFunnel(data.funnel || {});
   renderQuotation(data);
   renderProspects(data.prospects || []);
+  setupResourceFilters();
+  renderResources();
 }
 
 function renderAutoFollowUpQueue(list){
@@ -738,6 +844,55 @@ function renderProspects(list){
   document.getElementById("prospectTable").innerHTML = html;
 }
 
+function setupResourceFilters(){
+  const stateSelect = document.getElementById("resourceState");
+  const monthSelect = document.getElementById("resourceMonth");
+
+  if(!stateSelect || !monthSelect) return;
+
+  if(stateSelect.dataset.loaded === "true") return;
+
+  const states = [...new Set(resources.map(r => r.state))].sort();
+  states.forEach(state => {
+    stateSelect.innerHTML += `<option value="${state}">${state}</option>`;
+  });
+
+  const months = [...new Set(resources.map(r => r.date.slice(0,7)))].sort();
+  months.forEach(month => {
+    monthSelect.innerHTML += `<option value="${month}">${month}</option>`;
+  });
+
+  stateSelect.dataset.loaded = "true";
+}
+
+function renderResources(){
+  const search = (document.getElementById("resourceSearch")?.value || "").toUpperCase();
+  const state = document.getElementById("resourceState")?.value || "";
+  const month = document.getElementById("resourceMonth")?.value || "";
+
+  let html = "";
+
+  resources
+    .filter(r => !search || r.program.toUpperCase().includes(search))
+    .filter(r => !state || r.state === state)
+    .filter(r => !month || r.date.startsWith(month))
+    .forEach(r => {
+      html += `
+        <div class="prospect-card">
+          <div class="prospect-company">${r.program}</div>
+          <div class="prospect-info">📅 ${r.date}</div>
+          <div class="prospect-info">📍 ${r.state}</div>
+          <div class="prospect-actions">
+            <a href="${r.link}" target="_blank" class="action-btn folder-btn">📂 Open Folder</a>
+          </div>
+        </div>
+      `;
+    });
+
+  document.getElementById("resourceList").innerHTML =
+    html || "Tiada resource dijumpai.";
+}
+
 function logout(){
   localStorage.clear();
   location.reload();
@@ -754,7 +909,7 @@ function searchProspects(){
 }
 
 function resetProspectCheck(){
-  prospectAvailable = false;
+  prospectAvailable = true;
   const box = document.getElementById("checkResult");
   if(box) box.innerHTML = "";
 }
@@ -788,7 +943,7 @@ async function addProspect(){
 
   if(data.success){
     alert("Prospect Saved");
-    prospectAvailable = false;
+    prospectAvailable = true;
     document.getElementById("checkResult").innerHTML = "";
 
     ["company","contact","position","phone","phone2","email","state","district","training","followUpDate","remarks"]
