@@ -1029,6 +1029,7 @@ async function saveCallLog(rowNumber){
 window.onload = () => {
   if(localStorage.getItem("agentId")){
     loadDashboard();
+    showAdminButton();
   }
 
   ["company","phone","email"].forEach(id => {
