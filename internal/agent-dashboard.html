@@ -311,6 +311,7 @@
           <p class="sop-muted">Daily target: contact 10 new companies and follow up 10 existing companies.</p>
         </div>
         <button onclick="logout()">Logout</button>
+        <div id="adminButton"></div>
       </div>
 
       <div class="tab-menu">
@@ -647,6 +648,7 @@ async function login(){
   localStorage.setItem("agentId", data.agentId);
   localStorage.setItem("agentName", data.name);
   localStorage.setItem("role", data.role);
+  showAdminButton();
 
   loadDashboard();
 }
@@ -899,6 +901,32 @@ function logout(){
   location.reload();
 }
 
+function showAdminButton(){
+
+  const role = localStorage.getItem("role");
+
+  if(role === "ADMIN"){
+
+    document.getElementById("adminButton").innerHTML = `
+      <button
+        onclick="window.location.href='admin-dashboard.html'"
+        style="
+          background:#0d3b66;
+          color:white;
+          border:none;
+          padding:10px 16px;
+          border-radius:8px;
+          cursor:pointer;
+          margin-left:10px;
+        ">
+        📊 Admin Dashboard
+      </button>
+    `;
+
+  }
+
+}
+
 function searchProspects(){
   const filter = document.getElementById("searchProspect").value.toUpperCase();
   const cards = document.querySelectorAll("#prospectTable .prospect-card");
@@ -969,6 +997,7 @@ async function updateStatus(rowNumber, status){
 
   if(data.success){
     loadDashboard();
+    showAdminButton();
   }else{
     alert("Update Failed");
   }
