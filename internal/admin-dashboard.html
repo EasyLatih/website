@@ -350,7 +350,18 @@ tr:hover{
 
 <script>
 const API_URL = "https://script.google.com/macros/s/AKfycby5Tl6A7Vip6GdkNsMstjl6026EvH6boWU9de-11DO6EaSR4XJTogXdY7ZDIxyJS6Go/exec";
+const role = localStorage.getItem("role");
 
+if(role !== "ADMIN"){
+  document.body.innerHTML = `
+    <div style="text-align:center;padding:100px;font-family:Arial;">
+      <h1>Access Denied</h1>
+      <p>Admin Only</p>
+      <a href="agent-dashboard.html">Back to Login</a>
+    </div>
+  `;
+  throw new Error("Unauthorized");
+}
 let agentData = [];
 
 function setText(id,value){
