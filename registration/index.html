@@ -71,9 +71,44 @@ body{
 <div class="loading">
 Loading programme...
 </div>
+</div>
+<div class="card" id="registrationForm" style="display:none;">
+
+  <h2>Company / Contact Person Details</h2>
+
+  <label>Company Name</label>
+  <input id="companyName">
+
+  <label>Company Address</label>
+  <textarea id="companyAddress"></textarea>
+
+  <label>PIC Name</label>
+  <input id="picName">
+
+  <label>PIC Position</label>
+  <input id="picPosition">
+
+  <label>PIC Email</label>
+  <input id="picEmail">
+
+  <label>PIC Phone</label>
+  <input id="picPhone">
+
+  <h2>Participant Details</h2>
+
+  <div id="participants"></div>
+
+  <button onclick="addParticipant()">+ Add Participant</button>
+
+  <br><br>
+
+  <button onclick="submitRegistration()">
+    Submit Registration
+  </button>
+
+  <div id="submitResult"></div>
 
 </div>
-
 </div>
 
 <script>
@@ -153,8 +188,10 @@ HRD Fee
 </p>
 
 <div class="price">
-RM ${Number(data.hrdFee).toLocaleString()}
+RM ${Number(data.selfFee).toLocaleString()}
 </div>
+
+<hr>
 
 <br>
 
@@ -192,6 +229,11 @@ RM ${Number(data.selfFee).toLocaleString()}
 <br><br>
 
 <div id="finalPriceBox">
+<br>
+
+<button onclick="showRegistrationForm()">
+  Continue Registration
+</button>
 
   Final Fee
 
@@ -304,6 +346,96 @@ function updateFinalFee() {
 
   document.getElementById("finalPrice").innerHTML =
     "RM " + finalFee.toLocaleString();
+}
+
+  let participantCount = 0;
+
+function showRegistrationForm() {
+  document.getElementById("registrationForm").style.display = "block";
+
+  if (participantCount === 0) {
+    addParticipant();
+  }
+
+  document.getElementById("registrationForm").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function addParticipant() {
+  participantCount++;
+
+  const box = document.getElementById("participants");
+
+  box.innerHTML += `
+    <div class="card">
+      <h3>Participant ${participantCount}</h3>
+
+      <label>Name</label>
+      <input id="pName${participantCount}">
+
+      <label>IC No</label>
+      <input id="pIC${participantCount}">
+
+      <label>Email</label>
+      <input id="pEmail${participantCount}">
+
+      <label>Phone</label>
+      <input id="pPhone${participantCount}">
+    </div>
+  `;
+}
+
+function submitRegistration() {
+  const participants = [];
+
+  for (let i = 1; i <= participantCount; i++) {
+    const name = document.getElementById("pName" + i).value;
+
+    if (!name) continue;
+
+    participants.push({
+      name: name,
+      icNo: document.getElementById("pIC" + i).value,
+      email: document.getElementById("pEmail" + i).value,
+      phone: document.getElementById("pPhone" + i).value
+    });
+  }
+
+  if (participants.length === 0) {
+    alert("Please add at least one participant.");
+    return;
+  }
+
+  const formData = new FormData();
+
+  formData.append("courseId", courseId);
+  formData.append("companyName", document.getElementById("companyName").value);
+  formData.append("companyAddress", document.getElementById("companyAddress").value);
+  formData.append("picName", document.getElementById("picName").value);
+  formData.append("picPosition", document.getElementById("picPosition").value);
+  formData.append("picEmail", document.getElementById("picEmail").value);
+  formData.append("picPhone", document.getElementById("picPhone").value);
+  formData.append("paymentMethod", document.getElementById("paymentMethod").value);
+  formData.append("requestedPax", participants.length);
+  formData.append("discountCode", promoCodeApplied);
+  formData.append("participantsJson", JSON.stringify(participants));
+
+  document.getElementById("submitResult").innerText = "Submitting...";
+
+  fetch(WEBAPP, {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.text())
+  .then(text => {
+    document.getElementById("submitResult").innerHTML =
+      "<b>" + text + "</b>";
+  })
+  .catch(err => {
+    document.getElementById("submitResult").innerText =
+      "Error: " + err.message;
+  });
 }
 </script>
 
