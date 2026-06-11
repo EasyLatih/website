@@ -396,23 +396,27 @@ function addParticipant() {
 
   const box = document.getElementById("participants");
 
-  box.innerHTML += `
-    <div class="participant-card">
-      <h3>Participant ${participantCount}</h3>
+  const div = document.createElement("div");
 
-      <label>Name</label>
-      <input id="pName${participantCount}">
+  div.className = "participant-card";
 
-      <label>IC No</label>
-      <input id="pIC${participantCount}">
+  div.innerHTML = `
+    <h3>Participant ${participantCount}</h3>
 
-      <label>Email</label>
-      <input id="pEmail${participantCount}">
+    <label>Name</label>
+    <input id="pName${participantCount}">
 
-      <label>Phone</label>
-      <input id="pPhone${participantCount}">
-    </div>
+    <label>IC No</label>
+    <input id="pIC${participantCount}">
+
+    <label>Email</label>
+    <input id="pEmail${participantCount}">
+
+    <label>Phone</label>
+    <input id="pPhone${participantCount}">
   `;
+
+  box.appendChild(div);
 }
 
 function submitRegistration() {
