@@ -1,14 +1,174 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>EasyLatih Registration</title>
-  <meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EasyLatih Registration</title>
+
+<meta name="robots" content="noindex,nofollow">
+
+<style>
+body{
+  font-family:Arial,sans-serif;
+  background:#f5f7fb;
+  margin:0;
+  padding:20px;
+}
+
+.container{
+  max-width:900px;
+  margin:auto;
+}
+
+.header{
+  background:#0b3d91;
+  color:white;
+  padding:25px;
+  border-radius:12px;
+}
+
+.header h1{
+  margin:0;
+}
+
+.header p{
+  color:#f9d65c;
+  margin-top:8px;
+}
+
+.card{
+  background:white;
+  margin-top:20px;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.price{
+  font-size:24px;
+  font-weight:bold;
+  color:#198754;
+}
+
+.loading{
+  text-align:center;
+  padding:50px;
+}
+</style>
 </head>
+
 <body>
 
-<h1>EasyLatih Registration</h1>
+<div class="container">
 
-<p>Registration page under development.</p>
+<div class="header">
+  <h1>EasyLatih Registration</h1>
+  <p>Easy Learning, Real Results!</p>
+</div>
+
+<div class="card" id="programCard">
+
+<div class="loading">
+Loading programme...
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const WEBAPP =
+"https://script.google.com/macros/s/AKfycbxIVZoZuF2yRicdhLoXMEdOYhTQd8PETTBYGRbUJKo_FAEn52B6C6tDB8zGmnvYjnnO/exec";
+
+const params =
+new URLSearchParams(window.location.search);
+
+const courseId =
+params.get("course");
+
+if(!courseId){
+
+document.getElementById("programCard").innerHTML = `
+<h2>No programme selected</h2>
+<p>Please use a valid registration link.</p>
+`;
+
+}else{
+
+loadProgramme();
+
+}
+
+function loadProgramme(){
+
+const callbackName =
+"easyLatihCallback";
+
+window[callbackName] = function(data){
+
+if(!data || data.error){
+
+document.getElementById("programCard").innerHTML = `
+<h2>Programme not found</h2>
+`;
+
+return;
+
+}
+
+document.getElementById("programCard").innerHTML = `
+
+<h2>${data.ProgramName}</h2>
+
+<p>
+📅 ${data.StartDate}
+</p>
+
+<p>
+📍 ${data.Venue}
+</p>
+
+<hr>
+
+<p>
+HRD Fee
+</p>
+
+<div class="price">
+RM ${data.HRDFee}
+</div>
+
+<br>
+
+<p>
+Self Payment Fee
+</p>
+
+<div class="price">
+RM ${data.SelfFee}
+</div>
+
+`;
+
+};
+
+const script =
+document.createElement("script");
+
+script.src =
+WEBAPP +
+"?action=getProgramDetails" +
+"&course=" +
+encodeURIComponent(courseId) +
+"&callback=" +
+callbackName;
+
+document.body.appendChild(script);
+
+}
+
+</script>
 
 </body>
 </html>
