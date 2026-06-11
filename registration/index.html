@@ -106,6 +106,8 @@ const callbackName =
 "easyLatihCallback";
 
 window[callbackName] = function(data){
+console.log(data);
+alert(JSON.stringify(data));  
 
 if(!data || data.error){
 
