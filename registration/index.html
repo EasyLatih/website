@@ -107,7 +107,6 @@ const callbackName =
 
 window[callbackName] = function(data){
 console.log(data);
-alert(JSON.stringify(data));  
 
 if(!data || data.error){
 
@@ -121,24 +120,34 @@ return;
 
 document.getElementById("programCard").innerHTML = `
 
-<h2>${data.ProgramName}</h2>
+<h2>${data.programName}</h2>
 
 <p>
-📅 ${data.StartDate}
+📅 ${data.programDate}
 </p>
 
 <p>
-📍 ${data.Venue}
+📍 ${data.venue}
 </p>
 
 <hr>
+
+<p>
+Duration
+</p>
+
+<div>
+${data.duration} (${data.totalTime})
+</div>
+
+<br>
 
 <p>
 HRD Fee
 </p>
 
 <div class="price">
-RM ${data.HRDFee}
+RM ${Number(data.hrdFee).toLocaleString()}
 </div>
 
 <br>
@@ -148,9 +157,8 @@ Self Payment Fee
 </p>
 
 <div class="price">
-RM ${data.SelfFee}
+RM ${Number(data.selfFee).toLocaleString()}
 </div>
-
 `;
 
 };
