@@ -125,126 +125,69 @@ params.get("course");
 if(!courseId){
 
 document.getElementById("programCard").innerHTML = `
-<h2>No programme selected</h2>
-<p>Please use a valid registration link.</p>
-`;
 
-}else{
+  <h2>${data.programName}</h2>
 
-loadProgramme();
+  <p>📅 ${data.programDate}</p>
+  <p>📍 ${data.venue}</p>
 
-}
-let currentProgram = null;
+  <hr>
 
-let promoDiscount = 0;
-let promoAgentId = "";
-let promoAgentName = "";
-let promoCodeApplied = "";
-function loadProgramme(){
+  <p>Duration</p>
+  <div>${data.duration} (${data.totalTime})</div>
 
-const callbackName =
-"easyLatihCallback";
+  <br>
 
-window[callbackName] = function(data){
-currentProgram = data;
-console.log(data);
+  <p>HRD Fee</p>
+  <div class="price">
+    RM ${Number(data.hrdFee).toLocaleString()}
+  </div>
 
-if(!data || data.error){
+  <hr>
 
-document.getElementById("programCard").innerHTML = `
-<h2>Programme not found</h2>
-`;
+  <p>Self Payment Fee</p>
+  <div class="price">
+    RM ${Number(data.selfFee).toLocaleString()}
+  </div>
 
-return;
+  <hr>
 
-}
+  <h3>Discount Code</h3>
 
-document.getElementById("programCard").innerHTML = `
+  <input
+    type="text"
+    id="promoCode"
+    placeholder="Enter promo code">
 
-<h2>${data.programName}</h2>
+  <button onclick="applyPromoCode()">
+    Apply Promo Code
+  </button>
 
-<p>
-📅 ${data.programDate}
-</p>
+  <div id="promoResult"></div>
 
-<p>
-📍 ${data.venue}
-</p>
+  <br>
 
-<hr>
+  <h3>Payment Method</h3>
 
-<p>
-Duration
-</p>
+  <select id="paymentMethod" onchange="updateFinalFee()">
+    <option value="HRD">HRD Corp Grant</option>
+    <option value="SELF">Self Payment</option>
+  </select>
 
-<div>
-${data.duration} (${data.totalTime})
-</div>
+  <br><br>
 
-<br>
-
-<p>
-HRD Fee
-</p>
-
-<div class="price">
-RM ${Number(data.selfFee).toLocaleString()}
-</div>
-
-<hr>
-
-<br>
-
-<p>
-Self Payment Fee
-</p>
-
-<div class="price">
-RM ${Number(data.selfFee).toLocaleString()}
-
-<hr>
-
-<h3>Discount Code</h3>
-
-<input
-  type="text"
-  id="promoCode"
-  placeholder="Enter promo code">
-
-<button onclick="applyPromoCode()">
-  Apply Promo Code
-</button>
-
-<div id="promoResult"></div>
-
-<br>
-
-<h3>Payment Method</h3>
-
-<select id="paymentMethod" onchange="updateFinalFee()">
-  <option value="HRD">HRD Corp Grant</option>
-  <option value="SELF">Self Payment</option>
-</select>
-
-<br><br>
-
-<div id="finalPriceBox">
-<br>
-
-<button onclick="showRegistrationForm()">
-  Continue Registration
-</button>
-
-  Final Fee
-
+  <p>Final Fee</p>
   <div class="price" id="finalPrice">
     RM ${Number(data.hrdFee).toLocaleString()}
   </div>
 
-</div>
-</div>
-`;
+  <br>
 
+  <button onclick="showRegistrationForm()">
+    Continue Registration
+  </button>
+
+`;
 };
 
 const script =
