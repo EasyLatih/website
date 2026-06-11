@@ -99,13 +99,19 @@ document.getElementById("programCard").innerHTML = `
 loadProgramme();
 
 }
+let currentProgram = null;
 
+let promoDiscount = 0;
+let promoAgentId = "";
+let promoAgentName = "";
+let promoCodeApplied = "";
 function loadProgramme(){
 
 const callbackName =
 "easyLatihCallback";
 
 window[callbackName] = function(data){
+currentProgram = data;
 console.log(data);
 
 if(!data || data.error){
@@ -158,6 +164,42 @@ Self Payment Fee
 
 <div class="price">
 RM ${Number(data.selfFee).toLocaleString()}
+
+<hr>
+
+<h3>Discount Code</h3>
+
+<input
+  type="text"
+  id="promoCode"
+  placeholder="Enter promo code">
+
+<button onclick="applyPromoCode()">
+  Apply Promo Code
+</button>
+
+<div id="promoResult"></div>
+
+<br>
+
+<h3>Payment Method</h3>
+
+<select id="paymentMethod" onchange="updateFinalFee()">
+  <option value="HRD">HRD Corp Grant</option>
+  <option value="SELF">Self Payment</option>
+</select>
+
+<br><br>
+
+<div id="finalPriceBox">
+
+  Final Fee
+
+  <div class="price" id="finalPrice">
+    RM ${Number(data.hrdFee).toLocaleString()}
+  </div>
+
+</div>
 </div>
 `;
 
@@ -177,7 +219,92 @@ callbackName;
 document.body.appendChild(script);
 
 }
+function applyPromoCode() {
 
+  const promoCode =
+    document.getElementById("promoCode").value.trim();
+
+  if (!promoCode) {
+    alert("Please enter promo code.");
+    return;
+  }
+
+  const callbackName =
+    "promoCallback";
+
+  window[callbackName] = function(data) {
+
+    if (!data.valid) {
+
+      document.getElementById("promoResult").innerHTML =
+        "<span style='color:red'>" +
+        data.message +
+        "</span>";
+
+      return;
+    }
+
+    promoDiscount =
+      Number(data.discountAmount || 0);
+
+    promoAgentId =
+      data.agentId || "";
+
+    promoAgentName =
+      data.agentName || "";
+
+    promoCodeApplied =
+      data.promoCode || "";
+
+    document.getElementById("promoResult").innerHTML =
+      "<span style='color:green'>" +
+      "✓ Promo Code Applied<br>" +
+      "Discount: RM " +
+      promoDiscount +
+      "<br>Agent: " +
+      promoAgentName +
+      "</span>";
+
+    updateFinalFee();
+  };
+
+  const script =
+    document.createElement("script");
+
+  script.src =
+    WEBAPP +
+    "?action=validatePromoCode" +
+    "&course=" +
+    encodeURIComponent(courseId) +
+    "&promoCode=" +
+    encodeURIComponent(promoCode) +
+    "&callback=" +
+    callbackName;
+
+  document.body.appendChild(script);
+}
+
+function updateFinalFee() {
+
+  if (!currentProgram) return;
+
+  const paymentMethod =
+    document.getElementById("paymentMethod").value;
+
+  let baseFee = 0;
+
+  if (paymentMethod === "HRD") {
+    baseFee = Number(currentProgram.hrdFee || 0);
+  } else {
+    baseFee = Number(currentProgram.selfFee || 0);
+  }
+
+  const finalFee =
+    Math.max(0, baseFee - promoDiscount);
+
+  document.getElementById("finalPrice").innerHTML =
+    "RM " + finalFee.toLocaleString();
+}
 </script>
 
 </body>
