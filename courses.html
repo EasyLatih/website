@@ -106,6 +106,10 @@
         <option value="Marketing">Marketing</option>
         <option value="Leadership">Leadership</option>
         <option value="IT">IT</option>
+        <option value="Administration">Administration</option>
+        <option value="Customer Service">Customer Service</option>
+        <option value="ESG">ESG</option>
+        <option value="Wellbeing">Wellbeing</option>
       </select>
       <select id="levelFilter" style="padding: 0.5rem;">
         <option value="">All Levels</option>
@@ -207,55 +211,89 @@
     }
 
 function renderCourses() {
-  const container = document.getElementById("coursesContainer");
-  const searchText = document.getElementById("searchInput").value.toLowerCase();
-  const selectedCategory = document.getElementById("categoryFilter").value;
-  const selectedLevel = document.getElementById("levelFilter").value;
 
-  card.innerHTML = `
-  <h3>${course["Course Title"]}</h3>
+  const container =
+    document.getElementById("coursesContainer");
 
-  <p class="details">${course["Description"]}</p>
+  const searchText =
+    document.getElementById("searchInput").value.toLowerCase();
 
-  <div class="course-meta">
-    <span>${course["Category"]}</span>
-    <span>${course["Level"]}</span>
-  </div>
+  const selectedCategory =
+    document.getElementById("categoryFilter").value;
 
-  <p class="details">
-    <strong>Related Law / Act:</strong><br>
-    ${course["Related Law / Act"] || "-"}
-  </p>
+  const selectedLevel =
+    document.getElementById("levelFilter").value;
 
-  <button class="inquire-button"
-    onclick="addToCart('${course["Course Title"]}')">
-    Add to Inquiry
-  </button>
-`;
+  container.innerHTML = "";
 
-  // ✅ Show/hide the no-results message
-  const noResultsMessage = document.getElementById("noResultsMessage");
+  const filteredCourses = coursesData.filter(course => {
+
+    const matchSearch =
+      course["Course Title"].toLowerCase().includes(searchText) ||
+      course["Description"].toLowerCase().includes(searchText);
+
+    const matchCategory =
+      selectedCategory === "" ||
+      course["Category"] === selectedCategory;
+
+    const matchLevel =
+      selectedLevel === "" ||
+      course["Level"] === selectedLevel;
+
+    return matchSearch &&
+           matchCategory &&
+           matchLevel;
+
+  });
+
+  const noResultsMessage =
+    document.getElementById("noResultsMessage");
+
   if (filteredCourses.length === 0) {
+
     noResultsMessage.style.display = "block";
+
   } else {
+
     noResultsMessage.style.display = "none";
+
   }
 
   filteredCourses.forEach(course => {
-    const card = document.createElement("div");
+
+    const card =
+      document.createElement("div");
+
     card.className = "course-card";
+
     card.innerHTML = `
-      <h4>${course["Course Title"]}</h4>
-      <p class="details">${course["Description"]}</p>
+      <h3>${course["Course Title"]}</h3>
+
       <p class="details">
-        <strong>Related Law / Act:</strong> ${course["Related Law / Act"]}<br>
-        <strong>Level:</strong> ${course["Level"]}<br>
-        <strong>Category:</strong> ${course["Category"]}
+        ${course["Description"]}
       </p>
-      <button class="inquire-button" onclick="addToCart('${course["Course Title"]}')">Add to Inquiry</button>
+
+      <div class="course-meta">
+        <span>${course["Category"]}</span>
+        <span>${course["Level"]}</span>
+      </div>
+
+      <p class="details">
+        <strong>Related Law / Act:</strong><br>
+        ${course["Related Law / Act"] || "-"}
+      </p>
+
+      <button
+        class="inquire-button"
+        onclick="addToCart('${course["Course Title"]}')">
+        Add to Inquiry
+      </button>
     `;
+
     container.appendChild(card);
+
   });
+
 }
 
     function sendInquiryToGoogleForm() {
