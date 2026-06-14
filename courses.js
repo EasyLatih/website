@@ -698,7 +698,7 @@ const coursesData = [
     "Related Law \/ Act":"Immigration Act 1959\/63 & Employment Act 1955",
     "Level":"Mid-Level",
     "Category":"Construction & Manufacturing"
-  }
+  },
   {
   "Course Title": "Occupational First Aid and CPR Introduction to AED Training",
   "Description": "Basic workplace first aid, CPR and introductory AED awareness for employees and emergency response teams.",
