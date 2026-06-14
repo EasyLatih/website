@@ -699,6 +699,209 @@ const coursesData = [
     "Level":"Mid-Level",
     "Category":"Construction & Manufacturing"
   }
+  {
+  "Course Title": "Occupational First Aid and CPR Introduction to AED Training",
+  "Description": "Basic workplace first aid, CPR and introductory AED awareness for employees and emergency response teams.",
+  "Related Law / Act": "Occupational Safety and Health Act 1994",
+  "Level": "Entry-Level",
+  "Category": "Safety"
+},
+{
+  "Course Title": "Kursus Pengendalian Makanan",
+  "Description": "Latihan asas pengendalian makanan untuk pekerja premis makanan, katering, hotel dan restoran.",
+  "Related Law / Act": "Food Hygiene Regulations 2009",
+  "Level": "Entry-Level",
+  "Category": "Safety"
+},
+{
+  "Course Title": "E-Invoice Implementation: For All Business",
+  "Description": "Practical implementation of e-Invoice requirements for businesses, including workflow, documentation and compliance preparation.",
+  "Related Law / Act": "LHDN e-Invoice Guidelines",
+  "Level": "Entry-Level",
+  "Category": "Finance"
+},
+{
+  "Course Title": "Basic Accounting & Tax for SMEs",
+  "Description": "Introduction to accounting records, basic financial statements and tax essentials for SMEs.",
+  "Related Law / Act": "Income Tax Act 1967",
+  "Level": "Entry-Level",
+  "Category": "Finance"
+},
+{
+  "Course Title": "Asas Perakaunan & Cukai untuk SME",
+  "Description": "Pengenalan kepada rekod perakaunan, penyata kewangan asas dan perkara penting percukaian untuk SME.",
+  "Related Law / Act": "Akta Cukai Pendapatan 1967",
+  "Level": "Entry-Level",
+  "Category": "Finance"
+},
+{
+  "Course Title": "Expansion of Service Tax Scope 2025 – Compliance & Implementation",
+  "Description": "Overview of service tax scope expansion and practical compliance actions for affected businesses.",
+  "Related Law / Act": "Service Tax Act 2018",
+  "Level": "Intermediate",
+  "Category": "Finance"
+},
+{
+  "Course Title": "Managing Disciplinary Issue and Conducting Domestic Inquiry at Workplace According to Employment Law",
+  "Description": "Practical guidance on handling misconduct, disciplinary process and domestic inquiry in line with employment law.",
+  "Related Law / Act": "Employment Act 1955 / Industrial Relations Act 1967",
+  "Level": "Intermediate",
+  "Category": "HR"
+},
+{
+  "Course Title": "Effective Clerical & Administrative Practices",
+  "Description": "Essential clerical, documentation, filing, communication and office administration skills.",
+  "Related Law / Act": "-",
+  "Level": "Entry-Level",
+  "Category": "Administration"
+},
+{
+  "Course Title": "Effective Operation Management for Field Supervisors",
+  "Description": "Operational planning, people coordination, reporting and problem-solving skills for field supervisors.",
+  "Related Law / Act": "-",
+  "Level": "Intermediate",
+  "Category": "Leadership"
+},
+{
+  "Course Title": "Urus Kewangan, Rancang Pusaka",
+  "Description": "Program kesedaran pengurusan kewangan peribadi dan perancangan pusaka secara praktikal.",
+  "Related Law / Act": "-",
+  "Level": "Entry-Level",
+  "Category": "Finance"
+},
+{
+  "Course Title": "Basic Accounting",
+  "Description": "Basic accounting principles, bookkeeping and understanding financial records.",
+  "Related Law / Act": "-",
+  "Level": "Entry-Level",
+  "Category": "Finance"
+},
+{
+  "Course Title": "E-Invoice untuk Usahawan SME",
+  "Description": "Pengenalan dan panduan praktikal e-Invoice untuk usahawan dan perniagaan SME.",
+  "Related Law / Act": "Garis Panduan e-Invoice LHDN",
+  "Level": "Entry-Level",
+  "Category": "Finance"
+},
+{
+  "Course Title": "Konsisten dengan Jiwa: Membangun Daya Tahan & Semangat melalui Teknik Terapi Seni Ekspresif",
+  "Description": "Program pembangunan daya tahan diri dan kesejahteraan emosi melalui pendekatan expressive arts therapy.",
+  "Related Law / Act": "-",
+  "Level": "Entry-Level",
+  "Category": "Wellbeing"
+},
+{
+  "Course Title": "Menerokai Diri & Mengurus Stres melalui Expressive Arts Therapy",
+  "Description": "Program penerokaan diri dan pengurusan stres menggunakan teknik seni ekspresif.",
+  "Related Law / Act": "-",
+  "Level": "Entry-Level",
+  "Category": "Wellbeing"
+},
+{
+  "Course Title": "Self-Exploration & Stress Management through Expressive Arts Therapy",
+  "Description": "Self-awareness and stress management programme using expressive arts therapy methods.",
+  "Related Law / Act": "-",
+  "Level": "Entry-Level",
+  "Category": "Wellbeing"
+},
+{
+  "Course Title": "Stress Management Using Expressive Arts Therapy",
+  "Description": "Practical stress management session using creative and expressive arts activities.",
+  "Related Law / Act": "-",
+  "Level": "Entry-Level",
+  "Category": "Wellbeing"
+},
+{
+  "Course Title": "Excel with Confidence",
+  "Description": "Hands-on Excel training to improve spreadsheet, data handling and reporting confidence.",
+  "Related Law / Act": "-",
+  "Level": "Entry-Level",
+  "Category": "IT"
+},
+{
+  "Course Title": "Stress Management: Understand, Manage & Thrive",
+  "Description": "Practical stress awareness and coping strategies to improve workplace wellbeing and resilience.",
+  "Related Law / Act": "-",
+  "Level": "Entry-Level",
+  "Category": "Wellbeing"
+},
+{
+  "Course Title": "Effective Team Management for Supervisor",
+  "Description": "Team coordination, communication, delegation and supervisory skills for frontline supervisors.",
+  "Related Law / Act": "-",
+  "Level": "Intermediate",
+  "Category": "Leadership"
+},
+{
+  "Course Title": "Excellence in Patient Communication & Service Delivery",
+  "Description": "Customer service and communication skills for healthcare and patient-facing employees.",
+  "Related Law / Act": "-",
+  "Level": "Entry-Level",
+  "Category": "Customer Service"
+},
+{
+  "Course Title": "Basic HR for Non-HR: Managing People Lawfully, Fairly & Effectively",
+  "Description": "Essential HR and employment law knowledge for supervisors, managers and non-HR personnel.",
+  "Related Law / Act": "Employment Act 1955",
+  "Level": "Entry-Level",
+  "Category": "HR"
+},
+{
+  "Course Title": "Leadership Alignment Programme",
+  "Description": "Leadership alignment, team direction and performance focus programme for management teams.",
+  "Related Law / Act": "-",
+  "Level": "Intermediate",
+  "Category": "Leadership"
+},
+{
+  "Course Title": "Seminar Percukaian Malaysia 2026: Pengurusan Duti Setem, Borang BE & PCB",
+  "Description": "Seminar percukaian praktikal berkaitan duti setem, Borang BE dan PCB untuk individu dan majikan.",
+  "Related Law / Act": "Income Tax Act 1967 / Stamp Act 1949",
+  "Level": "Intermediate",
+  "Category": "Finance"
+},
+{
+  "Course Title": "Ignite Chief – An Experience in Leadership",
+  "Description": "Leadership experience programme designed for senior leaders and decision makers.",
+  "Related Law / Act": "-",
+  "Level": "Advanced",
+  "Category": "Leadership"
+},
+{
+  "Course Title": "Ignite Manager",
+  "Description": "Management and leadership development programme for managers and team leads.",
+  "Related Law / Act": "-",
+  "Level": "Intermediate",
+  "Category": "Leadership"
+},
+{
+  "Course Title": "Understanding Dopamine: How Habits, Motivation and Productivity Are Built",
+  "Description": "Awareness programme on behaviour, motivation and productivity through habit-building concepts.",
+  "Related Law / Act": "-",
+  "Level": "Entry-Level",
+  "Category": "Wellbeing"
+},
+{
+  "Course Title": "2.0 ESG Awareness",
+  "Description": "Introduction to ESG principles, sustainability awareness and business impact for organisations.",
+  "Related Law / Act": "-",
+  "Level": "Entry-Level",
+  "Category": "ESG"
+},
+{
+  "Course Title": "Complete Guide to Form BE Submission to LHDN",
+  "Description": "Step-by-step guidance for individual income tax Form BE submission to LHDN.",
+  "Related Law / Act": "Income Tax Act 1967",
+  "Level": "Entry-Level",
+  "Category": "Finance"
+},
+{
+  "Course Title": "In Sync: Team Alignment Drives Excellent Results",
+  "Description": "Team alignment programme to improve communication, collaboration and shared direction.",
+  "Related Law / Act": "-",
+  "Level": "Entry-Level",
+  "Category": "Leadership"
+}
 ];
 
 
