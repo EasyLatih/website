@@ -213,14 +213,35 @@ const monthNames = [
 function loadPublishedPrograms() {
   const callbackName = "publishedProgramsCallback_" + Date.now();
 
-  window[callbackName] = function(data) {
-    events2026 = data || [];
-    renderCalendar();
-  };
+window[callbackName] = function(data) {
+  events2026 = data || [];
+  populateStateFilter();
+  renderCalendar();
+};
 
   const script = document.createElement("script");
   script.src = WEBAPP + "?action=getPublishedPrograms&callback=" + callbackName;
   document.body.appendChild(script);
+}
+function populateStateFilter() {
+  const states = [
+    ...new Set(
+      events2026
+        .map(ev => ev.state)
+        .filter(Boolean)
+    )
+  ].sort();
+
+  stateFilter.innerHTML =
+    '<option value="all">All states</option>';
+
+  states.forEach(state => {
+    stateFilter.innerHTML += `
+      <option value="${state}">
+        ${state}
+      </option>
+    `;
+  });
 }
 
 function categoryToClass(cat) {
