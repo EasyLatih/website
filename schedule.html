@@ -357,6 +357,39 @@ function renderCalendar() {
           ? `<a href="${ev.registrationLink}" target="_blank" class="calendar-btn calendar-btn-primary">Register Now</a>`
           : "";
 
+        const shareUrl =
+  "https://www.easylatih.my/schedule.html?course=" +
+  encodeURIComponent(ev.courseId);
+
+const shareText =
+  `EasyLatih Scheduled Training\n\n` +
+  `${ev.programName}\n` +
+  `${ev.programDate || ev.startDate || ""}\n` +
+  `${ev.venue || ""}\n\n` +
+  `View details/register:\n${shareUrl}`;
+
+const whatsappBtn = `
+  <a href="https://wa.me/?text=${encodeURIComponent(shareText)}"
+     target="_blank"
+     class="calendar-btn calendar-btn-outline">
+    WhatsApp
+  </a>
+`;
+
+const emailBtn = `
+  <a href="mailto:?subject=${encodeURIComponent(ev.programName)}&body=${encodeURIComponent(shareText)}"
+     class="calendar-btn calendar-btn-outline">
+    Email
+  </a>
+`;
+
+const copyBtn = `
+  <button class="calendar-btn calendar-btn-outline"
+          onclick="copyShareLink('${shareUrl}')">
+    Copy Link
+  </button>
+`;
+
         stateBlock.innerHTML += `
           <div class="calendar-session">
             <div class="calendar-session-date">${day}</div>
@@ -370,9 +403,12 @@ function renderCalendar() {
             <div class="calendar-session-meta">${ev.venue || ""}</div>
 
             <div class="calendar-session-actions">
-              ${contentBtn}
-              ${trainerBtn}
-              ${registerBtn}
+${contentBtn}
+${trainerBtn}
+${registerBtn}
+${whatsappBtn}
+${emailBtn}
+${copyBtn}
             </div>
           </div>
         `;
@@ -400,6 +436,11 @@ resetBtn.addEventListener("click", () => {
   renderCalendar();
 });
 
+  function copyShareLink(url) {
+  navigator.clipboard.writeText(url);
+  alert("Share link copied.");
+}
+  
 loadPublishedPrograms();
 </script>
 
