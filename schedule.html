@@ -272,10 +272,14 @@ function getFilteredEvents() {
   const stateVal = stateFilter.value;
   const categoryVal = categoryFilter.value;
   const searchVal = searchFilter.value.trim().toLowerCase();
+  const params = new URLSearchParams(window.location.search);
+const selectedCourse = params.get("course");
 
   return events2026.filter(ev => {
     const d = getEventDate(ev);
     const evMonth = d.getMonth() + 1;
+
+    if (selectedCourse && ev.courseId !== selectedCourse) return false;
 
     if (monthVal !== "all" && evMonth !== Number(monthVal)) return false;
     if (stateVal !== "all" && ev.state !== stateVal) return false;
