@@ -11,49 +11,70 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    .container{max-width:1100px;margin:auto;padding:2rem}
-    .calendar-subtitle{color:#6b7280;font-size:.95rem}
-    .calendar-filters-card{background:#fff;border-radius:16px;padding:18px;margin:20px 0;border:1px solid #e5e7eb;box-shadow:0 8px 20px rgba(0,0,0,.06)}
-    .calendar-filters-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-    .calendar-filter-group label{display:block;font-size:.78rem;text-transform:uppercase;color:#6b7280;margin-bottom:4px}
-    .calendar-filter-group select,.calendar-filter-group input{width:100%;padding:9px 12px;border-radius:999px;border:1px solid #e5e7eb;background:#f9fafb}
-    .calendar-months-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .calendar-month-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:14px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
-    .calendar-month-header{display:flex;justify-content:space-between;margin-bottom:10px}
-    .calendar-month-name{font-weight:700;color:#0b3d91}
-    .calendar-month-count{font-size:.75rem;color:#6b7280}
-    .calendar-state-block{background:#f9fafb;border-radius:12px;padding:10px;margin-bottom:10px}
-    .calendar-state-header{display:flex;justify-content:space-between;font-weight:700;font-size:.8rem;color:#374151;margin-bottom:8px}
-    .calendar-session{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:10px;margin-bottom:8px}
-    .calendar-session-date{font-weight:700;color:#0b3d91}
-    .calendar-session-title{font-weight:700;margin:4px 0}
-    .calendar-session-meta{font-size:.75rem;color:#6b7280;margin-top:4px}
-    .calendar-badge{display:inline-block;color:#fff;border-radius:999px;padding:3px 8px;font-size:.7rem;margin-top:5px}
-    .calendar-badge.hr{background:#4f46e5}
-    .calendar-badge.ops{background:#0369a1}
-    .calendar-badge.finance{background:#0f766e}
-    .calendar-badge.sales{background:#c2410c}
-    .calendar-badge.soft{background:#0ea5e9}
-    .calendar-badge.quality{background:#dc2626}
-    .calendar-badge.it{background:#b45309}
-    .calendar-badge.customer{background:#16a34a}
-    .calendar-badge.senior{background:#7c3aed}
-    .calendar-badge.entrep{background:#f97316}
-    .calendar-badge.esg{background:#047857}
-    .calendar-badge.safety{background:#15803d}
-    .calendar-session-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-    .calendar-btn{display:inline-block;padding:6px 10px;border-radius:999px;font-size:.75rem;font-weight:600;text-decoration:none}
-    .calendar-btn-primary{background:#0d6efd;color:#fff}
-    .calendar-btn-outline{background:#fff;color:#111827;border:1px solid #e5e7eb}
-    .calendar-empty-state{text-align:center;color:#6b7280;padding:2rem}
-    .calendar-reset-btn{border:1px solid #e5e7eb;background:#fff;border-radius:999px;padding:8px 14px;cursor:pointer}
-    .calendar-filter-extra{display:flex;justify-content:flex-end;margin-top:12px}
-    @media(max-width:900px){.calendar-filters-grid,.calendar-months-grid{grid-template-columns:1fr 1fr}}
-    @media(max-width:640px){.calendar-filters-grid,.calendar-months-grid{grid-template-columns:1fr}}
+/* Training Calendar uses the V2 marketing shell and keeps its existing data flow. */
+.calendar-page { background: #f0f5f9; }
+.calendar-main { padding-top: 2.5rem; padding-bottom: 4rem; }
+.calendar-main h1 { font-size: clamp(2.2rem, 4vw, 3.4rem); margin: .5rem 0 1rem; }
+.calendar-subtitle { max-width: 48rem; color: #526777; }
+.calendar-filters-card { background: #fff; border: 1px solid #dce4ea; border-top: 4px solid #003e6f; border-radius: 4px; padding: 1.5rem; margin: 2rem 0; }
+.calendar-filters-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1rem; }
+.calendar-filter-group label { display: block; font-size: .875rem; font-weight: 600; color: #003e6f; margin-bottom: .5rem; }
+.calendar-filter-group select, .calendar-filter-group input { width: 100%; min-width: 0; min-height: 46px; padding: .65rem .75rem; border-radius: 4px; border: 1px solid #aabcca; background: #fff; color: #233c50; font-size: 1rem; }
+.calendar-filter-extra { display: flex; justify-content: flex-end; margin-top: 1rem; }
+.calendar-reset-btn { min-height: 44px; border: 1px solid #003e6f; color: #003e6f; background: #fff; border-radius: 4px; padding: .6rem 1rem; cursor: pointer; font-size: .875rem; font-weight: 600; }
+.calendar-reset-btn:hover, .calendar-btn-outline:hover { background: #e8f1f8; }
+.calendar-months-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.5rem; align-items: start; }
+.calendar-month-card { min-width: 0; background: #fff; border: 1px solid #dce4ea; border-radius: 4px; overflow: hidden; }
+.calendar-month-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .5rem; padding: 1.25rem; background: #003e6f; color: #fff; }
+.calendar-month-name { font-weight: 700; font-size: 1.25rem; }
+.calendar-month-count { font-size: .875rem; }
+.calendar-state-block { padding: 1rem; }
+.calendar-state-header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; color: #526777; font-weight: 600; font-size: .875rem; margin-bottom: .75rem; }
+.calendar-session { background: #fff; border: 1px solid #dce4ea; border-left: 3px solid #bb4800; border-radius: 4px; padding: 0; margin-bottom: .75rem; overflow-wrap: anywhere; }
+.calendar-session:last-child { margin-bottom: 0; }
+.calendar-session-date { font-weight: 700; font-size: 1.5rem; color: #a94300; }
+.calendar-session-title { color: #003e6f; font-weight: 700; line-height: 1.45; margin: 0; padding: 1rem; cursor: pointer; }
+.calendar-session-title::marker { color: #bb4800; }
+.calendar-session-title:hover { background: #f0f5f9; }
+.calendar-session[open] > .calendar-session-title { border-bottom: 1px solid #dce4ea; }
+.calendar-session-body { padding: 1rem; }
+.calendar-session-meta { font-size: .875rem; color: #526777; margin-top: .5rem; }
+.calendar-badge { display: inline-block; background: #e8f1f8; color: #003e6f; border-radius: 4px; padding: .3rem .5rem; font-size: .875rem; }
+.calendar-session-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.calendar-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: .5rem .65rem; border: 1px solid transparent; border-radius: 4px; font-size: .875rem; font-weight: 600; text-decoration: none; cursor: pointer; }
+.calendar-btn-primary { background: #bb4800; color: #fff; }
+.calendar-btn-primary:hover { background: #963900; }
+.calendar-btn-outline { background: #fff; color: #003e6f; border-color: #aabcca; }
+.calendar-btn-disabled { background: #e7ebee; color: #526777; cursor: not-allowed; pointer-events: none; }
+.calendar-status-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: .75rem; }
+.calendar-status { display: inline-block; border-radius: 4px; padding: .3rem .5rem; font-size: .875rem; font-weight: 600; }
+.calendar-status.confirmed { background: #dcfce7; color: #166534; }
+.calendar-status.tentative { background: #fef3c7; color: #92400e; }
+.calendar-status.active { background: #dbeafe; color: #1d4ed8; }
+.calendar-status.closed { background: #fee2e2; color: #991b1b; }
+.calendar-availability { font-size: .875rem; font-weight: 600; }
+.calendar-empty-state { text-align: center; padding: 3rem 1.5rem; background: #fff; border: 1px solid #dce4ea; border-radius: 4px; color: #526777; }
+@media (max-width: 1000px) {
+  .calendar-filters-grid, .calendar-months-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 640px) {
+  .calendar-filters-grid, .calendar-months-grid { grid-template-columns: minmax(0,1fr); }
+  .calendar-filters-card { padding: 1rem; }
+}
+
+.calendar-main {max-width:1200px;padding:2.5rem 1.5rem 4rem;color:#233c50}
+.calendar-main h1 {color:#003e6f;line-height:1.2;letter-spacing:-.04em}
+.calendar-main .eyebrow {font-size:.875rem;font-weight:700;letter-spacing:.1em;color:#a94300}
+.calendar-main :focus-visible {outline:3px solid #a94300;outline-offset:4px}
+.calendar-session-title {font-size:1rem}
+.calendar-feedback {font-size:.875rem;color:#003e6f;min-height:1.5rem}
+.calendar-filter-extra {justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+@media(max-width:640px){.calendar-main{padding:1.75rem 1rem 3rem}}
+
   </style>
 </head>
 
-<body>
+<body class="calendar-page">
 
 <header>
   <div class="nav-container" style="display:flex;align-items:center;justify-content:space-between;">
@@ -80,18 +101,19 @@
   </div>
 </header>
 
-<section class="container">
-  <h2 class="section-title">Training Schedule</h2>
+<main class="container calendar-main">
+  <p class="eyebrow">PUBLIC TRAINING</p>
+  <h1>Training Schedule</h1>
   <p class="calendar-subtitle">
     View upcoming scheduled training programmes by EasyLatih. Access course content,
-    trainer profile and registration link for each programme.
+    trainer profile and registration link for each programme. Click a programme title to view its details.
   </p>
 
   <div class="calendar-filters-card">
     <div class="calendar-filters-grid">
 
       <div class="calendar-filter-group">
-        <label>Month</label>
+        <label for="calendar-filter-month">Month</label>
         <select id="calendar-filter-month">
           <option value="all">All months</option>
           <option value="1">January</option>
@@ -110,7 +132,7 @@
       </div>
 
       <div class="calendar-filter-group">
-        <label>State</label>
+        <label for="calendar-filter-state">State</label>
         <select id="calendar-filter-state">
           <option value="all">All states</option>
           <option value="Kuala Lumpur">Kuala Lumpur</option>
@@ -121,7 +143,7 @@
       </div>
 
       <div class="calendar-filter-group">
-        <label>Category</label>
+        <label for="calendar-filter-category">Category</label>
         <select id="calendar-filter-category">
           <option value="all">All categories</option>
           <option value="Human Resource Management">Human Resource Management</option>
@@ -138,23 +160,24 @@
       </div>
 
       <div class="calendar-filter-group">
-        <label>Search</label>
+        <label for="calendar-filter-search">Search</label>
         <input id="calendar-filter-search" type="text" placeholder="e.g. HR, Excel, Tax">
       </div>
 
     </div>
 
     <div class="calendar-filter-extra">
+      <p id="calendar-feedback" class="calendar-feedback" role="status"></p>
       <button type="button" class="calendar-reset-btn" id="calendar-reset-filters">
         Reset filters
       </button>
     </div>
   </div>
 
-  <section id="calendar-months-container">
+  <section id="calendar-months-container" aria-label="Scheduled programmes" aria-live="polite">
     <div class="calendar-empty-state">Loading training schedule...</div>
   </section>
-</section>
+</main>
 
 <footer>
   <div class="footer-container">
@@ -163,7 +186,7 @@
       <p>B62, Tingkat 1, Jalan IM 7/1<br>Bandar Indera Mahkota 6, 25200<br>Kuantan, Pahang, Malaysia</p>
       <p>Email: <a href="mailto:sales@easylatih.my">sales@easylatih.my</a></p>
       <p>Phone: <a href="tel:+6095604273">+60 9 560 4273</a></p>
-      <p>WhatsApp: <a href="https://wa.me/60109202811" target="_blank">+60 10 920 2811</a></p>
+      <p>WhatsApp: <a href="https://wa.me/60109202811" target="_blank" rel="noopener noreferrer">+60 10 920 2811</a></p>
     </div>
 
     <div>
@@ -210,16 +233,37 @@ const monthNames = [
   "July", "August", "September", "October", "November", "December"
 ];
 
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({"&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"}[char]));
+}
+function safeUrl(value) {
+  try { const url = new URL(value); return ["http:", "https:"].includes(url.protocol) ? url.href : ""; }
+  catch { return ""; }
+}
+
 function loadPublishedPrograms() {
+  monthsContainer.innerHTML = '<div class="calendar-empty-state">Loading training schedule...</div>';
   const callbackName = "publishedProgramsCallback_" + Date.now();
-
-window[callbackName] = function(data) {
-  events2026 = data || [];
-  populateStateFilter();
-  renderCalendar();
-};
-
   const script = document.createElement("script");
+  let settled = false;
+  const cleanup = () => { clearTimeout(timer); script.remove(); delete window[callbackName]; };
+  const fail = () => {
+    if (settled) return;
+    settled = true;
+    cleanup();
+    monthsContainer.innerHTML = '<div class="calendar-empty-state">Unable to load the training schedule. Please try again.<br><button type="button" class="calendar-reset-btn" id="calendar-retry">Try again</button></div>';
+    document.getElementById("calendar-retry").addEventListener("click", loadPublishedPrograms);
+  };
+  const timer = setTimeout(fail, 20000);
+  window[callbackName] = function(data) {
+    if (!Array.isArray(data)) { fail(); return; }
+    settled = true;
+    cleanup();
+    events2026 = data.filter(ev => ev && typeof ev === "object");
+    populateStateFilter();
+    renderCalendar();
+  };
+  script.onerror = fail;
   script.src = WEBAPP + "?action=getPublishedPrograms&callback=" + callbackName;
   document.body.appendChild(script);
 }
@@ -237,8 +281,8 @@ function populateStateFilter() {
 
   states.forEach(state => {
     stateFilter.innerHTML += `
-      <option value="${state}">
-        ${state}
+      <option value="${escapeHtml(state)}">
+        ${escapeHtml(state)}
       </option>
     `;
   });
@@ -292,22 +336,21 @@ const selectedCourse = params.get("course");
 
 function renderCalendar() {
   const events = getFilteredEvents();
-  const map = {};
+  const map = new Map();
 
+  events.sort((a, b) => (getEventDate(a).getTime() || Infinity) - (getEventDate(b).getTime() || Infinity));
   events.forEach(ev => {
     const d = getEventDate(ev);
-    const month = d.getMonth() + 1;
+    const key = Number.isNaN(d.getTime()) ? "undated" : d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0");
+    if (!map.has(key)) map.set(key, new Map());
+    const states = map.get(key);
     const state = ev.state || "Others";
-
-    if (!map[month]) map[month] = {};
-    if (!map[month][state]) map[month][state] = [];
-
-    map[month][state].push(ev);
+    if (!states.has(state)) states.set(state, []);
+    states.get(state).push(ev);
   });
-
   monthsContainer.innerHTML = "";
-
-  const months = Object.keys(map).sort((a,b) => Number(a) - Number(b));
+  document.getElementById("calendar-feedback").textContent = events.length + " programme(s) found";
+  const months = [...map.keys()].sort();
 
   if (months.length === 0) {
     monthsContainer.innerHTML = `<div class="calendar-empty-state">No scheduled training found.</div>`;
@@ -318,47 +361,47 @@ function renderCalendar() {
   grid.className = "calendar-months-grid";
 
   months.forEach(monthKey => {
-    const monthIndex = Number(monthKey);
-    const stateEvents = map[monthKey];
+    const monthIndex = Number(monthKey.split("-")[1]);
+    const stateEvents = map.get(monthKey);
 
     const monthCard = document.createElement("article");
     monthCard.className = "calendar-month-card";
 
     monthCard.innerHTML = `
       <div class="calendar-month-header">
-        <div class="calendar-month-name">${monthNames[monthIndex]}</div>
+        <div class="calendar-month-name">${monthKey === "undated" ? "Dates to be confirmed" : monthNames[monthIndex] + " " + monthKey.split("-")[0]}</div>
         <div class="calendar-month-count">
-          ${Object.values(stateEvents).reduce((sum, arr) => sum + arr.length, 0)} programme(s)
+          ${[...stateEvents.values()].reduce((sum, arr) => sum + arr.length, 0)} programme(s)
         </div>
       </div>
     `;
 
-    Object.keys(stateEvents).forEach(state => {
+    [...stateEvents.keys()].forEach(state => {
       const stateBlock = document.createElement("div");
       stateBlock.className = "calendar-state-block";
 
       stateBlock.innerHTML = `
         <div class="calendar-state-header">
-          <span>${state}</span>
-          <span>${stateEvents[state].length} programme(s)</span>
+          <span>${escapeHtml(state)}</span>
+          <span>${stateEvents.get(state).length} programme(s)</span>
         </div>
       `;
 
-      stateEvents[state].forEach(ev => {
+      stateEvents.get(state).forEach(ev => {
         const d = getEventDate(ev);
-        const day = String(d.getDate()).padStart(2, "0");
+        const day = Number.isNaN(d.getTime()) ? "—" : String(d.getDate()).padStart(2, "0");
         const badgeClass = categoryToClass(ev.category);
 
-        const contentBtn = ev.courseContentUrl
-          ? `<a href="${ev.courseContentUrl}" target="_blank" class="calendar-btn calendar-btn-outline">📄 Course Content</a>`
+        const contentBtn = safeUrl(ev.courseContentUrl)
+          ? `<a href="${escapeHtml(safeUrl(ev.courseContentUrl))}" target="_blank" rel="noopener noreferrer" class="calendar-btn calendar-btn-outline">📄 Course Content</a>`
           : "";
 
-        const trainerBtn = ev.trainerProfileUrl
-          ? `<a href="${ev.trainerProfileUrl}" target="_blank" class="calendar-btn calendar-btn-outline">👨‍🏫 Trainer Profile</a>`
+        const trainerBtn = safeUrl(ev.trainerProfileUrl)
+          ? `<a href="${escapeHtml(safeUrl(ev.trainerProfileUrl))}" target="_blank" rel="noopener noreferrer" class="calendar-btn calendar-btn-outline">👨‍🏫 Trainer Profile</a>`
           : "";
 
-        const registerBtn = ev.registrationLink
-          ? `<a href="${ev.registrationLink}" target="_blank" class="calendar-btn calendar-btn-primary">Register Now</a>`
+        const registerBtn = safeUrl(ev.registrationLink)
+          ? `<a href="${escapeHtml(safeUrl(ev.registrationLink))}" target="_blank" rel="noopener noreferrer" class="calendar-btn calendar-btn-primary">Register Now</a>`
           : "";
 
         const shareUrl =
@@ -374,7 +417,7 @@ const shareText =
 
 const whatsappBtn = `
   <a href="https://wa.me/?text=${encodeURIComponent(shareText)}"
-     target="_blank"
+     target="_blank" rel="noopener noreferrer"
      class="calendar-btn calendar-btn-outline">
     WhatsApp
   </a>
@@ -389,22 +432,23 @@ const emailBtn = `
 
 const copyBtn = `
   <button class="calendar-btn calendar-btn-outline"
-          onclick="copyShareLink('${shareUrl}')">
+          type="button" data-share-url="${escapeHtml(shareUrl)}">
     Copy Link
   </button>
 `;
 
         stateBlock.innerHTML += `
-          <div class="calendar-session">
+          <details class="calendar-session"${new URLSearchParams(location.search).has("course") ? " open" : ""}>
+            <summary class="calendar-session-title">${escapeHtml(ev.programName)}</summary>
+            <div class="calendar-session-body">
             <div class="calendar-session-date">${day}</div>
-            <div class="calendar-session-title">${ev.programName}</div>
 
             <div class="calendar-session-meta">
-              <span class="calendar-badge ${badgeClass}">${ev.category || "Training"}</span>
+              <span class="calendar-badge ${badgeClass}">${escapeHtml(ev.category || "Training")}</span>
             </div>
 
-            <div class="calendar-session-meta">${ev.programDate || ev.startDate || ""}</div>
-            <div class="calendar-session-meta">${ev.venue || ""}</div>
+            <div class="calendar-session-meta">${escapeHtml(ev.programDate || ev.startDate || "Date to be confirmed")}</div>
+            <div class="calendar-session-meta">${escapeHtml(ev.venue || "Venue to be confirmed")}</div>
 
             <div class="calendar-session-actions">
 ${contentBtn}
@@ -414,7 +458,8 @@ ${whatsappBtn}
 ${emailBtn}
 ${copyBtn}
             </div>
-          </div>
+            </div>
+          </details>
         `;
       });
 
@@ -437,12 +482,24 @@ resetBtn.addEventListener("click", () => {
   stateFilter.value = "all";
   categoryFilter.value = "all";
   searchFilter.value = "";
+  const url = new URL(location.href);
+  url.searchParams.delete("course");
+  history.replaceState(null, "", url);
   renderCalendar();
 });
 
-  function copyShareLink(url) {
-  navigator.clipboard.writeText(url);
-  alert("Share link copied.");
+monthsContainer.addEventListener("click", event => {
+  const button = event.target.closest("[data-share-url]");
+  if (button) copyShareLink(button.dataset.shareUrl);
+});
+
+  async function copyShareLink(url) {
+  try {
+    await navigator.clipboard.writeText(url);
+    document.getElementById("calendar-feedback").textContent = "Share link copied.";
+  } catch {
+    window.prompt("Copy this programme link:", url);
+  }
 }
   
 loadPublishedPrograms();
